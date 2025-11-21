@@ -1,7 +1,8 @@
+const environmentName = process.env.ENVIRONMENT_NAME || 'master';
+const spaceId = String(process.env.CONTENTFUL_SPACE_ID);
+
 export const fetchConfig = {
-  endpoint: `https://graphql.contentful.com/content/v1/spaces/${String(
-    process.env.CONTENTFUL_SPACE_ID,
-  )}`,
+  endpoint: `https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/${environmentName}`,
   params: {
     headers: {
       'Content-Type': 'application/json',

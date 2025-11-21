@@ -131,7 +131,7 @@ export const Link = (props: Props) => {
 
   if (withoutMaterial === true) {
     return (
-      <NextLink href={href} as={as} passHref>
+      <NextLink href={href} as={as} passHref legacyBehavior>
         <a className={clsx(classes.baseAnchor, className)} title={title}>
           {children}
         </a>
@@ -141,7 +141,7 @@ export const Link = (props: Props) => {
 
   if (isButton === true) {
     return (
-      <NextLink href={href} as={as} passHref>
+      <NextLink href={href} as={as} passHref legacyBehavior>
         <MuiButton
           href={as}
           className={className}
@@ -159,7 +159,7 @@ export const Link = (props: Props) => {
   }
 
   return (
-    <NextLink href={href} as={as} passHref>
+    <NextLink href={href} as={as} passHref legacyBehavior>
       <MuiLink
         href={as}
         className={className}
