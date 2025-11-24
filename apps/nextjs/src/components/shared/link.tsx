@@ -137,36 +137,38 @@ export const Link = (props: Props) => {
     );
   }
 
+  // For Material-UI components with Next.js 13+ Link, use component prop
+  // This avoids nested anchor tags that cause hydration errors
+  const finalHref = as || href;
+
   if (isButton === true) {
     return (
-      <NextLink href={href} as={as} passHref>
-        <MuiButton
-          href={as}
-          className={className}
-          color={color}
-          onClick={() => onClick && onClick()}
-          variant={variant}
-          size={size}
-          startIcon={startIcon}
-          endIcon={endIcon}
-          title={title}>
-          {children}
-        </MuiButton>
-      </NextLink>
+      <MuiButton
+        component={NextLink}
+        href={finalHref}
+        className={className}
+        color={color}
+        onClick={() => onClick && onClick()}
+        variant={variant}
+        size={size}
+        startIcon={startIcon}
+        endIcon={endIcon}
+        title={title}>
+        {children}
+      </MuiButton>
     );
   }
 
   return (
-    <NextLink href={href} as={as} passHref>
-      <MuiLink
-        href={as}
-        className={className}
-        underline={underlineStyle}
-        color={color}
-        onClick={() => onClick && onClick()}
-        title={title}>
-        {children}
-      </MuiLink>
-    </NextLink>
+    <MuiLink
+      component={NextLink}
+      href={finalHref}
+      className={className}
+      underline={underlineStyle}
+      color={color}
+      onClick={() => onClick && onClick()}
+      title={title}>
+      {children}
+    </MuiLink>
   );
 };
