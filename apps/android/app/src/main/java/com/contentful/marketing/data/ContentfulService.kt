@@ -1,61 +1,292 @@
 package com.contentful.marketing.data
 
-import com.contentful.java.cda.CDAClient
-import com.contentful.java.cda.CDAEntry
-import com.contentful.java.cda.QueryOperation
+import android.util.Log
 import com.contentful.marketing.BuildConfig
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.POST
+
+// GraphQL request/response models
+data class GraphQLRequest(
+    val query: String,
+    val variables: Map<String, Any>? = null
+)
+
+data class GraphQLResponse(
+    val data: GraphQLData?,
+    val errors: List<GraphQLError>? = null
+)
+
+data class GraphQLData(
+    val pageCollection: PageCollection? = null,
+    val navigationCollection: NavigationCollection? = null,
+    val footerCollection: FooterCollection? = null
+)
+
+data class PageCollection(
+    val items: List<GraphQLPage>
+)
+
+data class NavigationCollection(
+    val items: List<GraphQLNavigation>
+)
+
+data class FooterCollection(
+    val items: List<GraphQLFooter>
+)
+
+data class GraphQLError(
+    val message: String
+)
+
+// GraphQL API interface
+interface ContentfulGraphQLApi {
+    @POST("content/v1/spaces/{spaceId}")
+    suspend fun query(
+        @Header("Authorization") authorization: String,
+        @Header("Content-Type") contentType: String = "application/json",
+        @retrofit2.http.Path("spaceId") spaceId: String,
+        @Body request: GraphQLRequest
+    ): GraphQLResponse
+}
 
 class ContentfulService {
-    private val client: CDAClient = CDAClient.builder()
-        .setSpace(BuildConfig.CONTENTFUL_SPACE_ID)
-        .setToken(BuildConfig.CONTENTFUL_ACCESS_TOKEN)
-        .build()
-
+    private val api: ContentfulGraphQLApi by lazy {
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+        
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+        
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://graphql.contentful.com/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        
+        retrofit.create(ContentfulGraphQLApi::class.java)
+    }
+    
+    private val authorizationHeader: String
+        get() {
+            val token = BuildConfig.CONTENTFUL_ACCESS_TOKEN
+            if (token.isBlank()) {
+                throw IllegalStateException("CONTENTFUL_ACCESS_TOKEN is not configured. Please set it in gradle.properties")
+            }
+            return "Bearer $token"
+        }
+    
     suspend fun fetchPage(slug: String, locale: String = "en-US"): Page? {
-        return try {
-            val entries = client.fetch(CDAEntry::class.java)
-                .where("content_type", "page")
-                .where("fields.slug", QueryOperation.`is`, slug)
-                .all()
-            
-            entries.items.firstOrNull()?.let { entry ->
-                Page.fromEntry(entry)
+        return withContext(Dispatchers.IO) {
+            try {
+                val spaceId = BuildConfig.CONTENTFUL_SPACE_ID
+                if (spaceId.isBlank()) {
+                    throw IllegalStateException("CONTENTFUL_SPACE_ID is not configured. Please set it in gradle.properties")
+                }
+                val query = """
+                    query GetPage(${'$'}slug: String!, ${'$'}locale: String!) {
+                      pageCollection(where: { slug: ${'$'}slug }, locale: ${'$'}locale, limit: 1) {
+                        items {
+                          sys { id }
+                          slug
+                          pageName
+                          topSectionCollection {
+                            items {
+                              __typename
+                              sys { id }
+                              ... on ComponentHeroBanner {
+                                headline
+                                subline
+                                ctaText
+                                image { url }
+                                colorPalette
+                              }
+                              ... on ComponentCta {
+                                headline
+                                subline
+                                ctaText
+                                colorPalette
+                              }
+                              ... on ComponentTextBlock {
+                                headline
+                                bodyText { json }
+                                colorPalette
+                              }
+                              ... on ComponentInfoBlock {
+                                headline
+                                bodyText { json }
+                                image { url }
+                                colorPalette
+                              }
+                              ... on ComponentDuplex {
+                                headline
+                                bodyText { json }
+                                image { url }
+                                imagePosition
+                                colorPalette
+                              }
+                              ... on ComponentQuote {
+                                quoteText
+                                authorName
+                                authorTitle
+                                authorImage { url }
+                                colorPalette
+                              }
+                            }
+                          }
+                          pageContent {
+                            __typename
+                            sys { id }
+                          }
+                          extraSectionCollection {
+                            items {
+                              __typename
+                              sys { id }
+                            }
+                          }
+                        }
+                      }
+                    }
+                """.trimIndent()
+                
+                val request = GraphQLRequest(
+                    query = query,
+                    variables = mapOf(
+                        "slug" to slug,
+                        "locale" to locale
+                    )
+                )
+                
+                val response = api.query(
+                    authorizationHeader, 
+                    spaceId = BuildConfig.CONTENTFUL_SPACE_ID,
+                    request = request
+                )
+                
+                if (response.errors != null && response.errors.isNotEmpty()) {
+                    val errorMessage = response.errors.joinToString { it.message }
+                    Log.e("ContentfulService", "GraphQL errors: $errorMessage")
+                    throw Exception("Contentful API error: $errorMessage")
+                }
+                
+                response.data?.pageCollection?.items?.firstOrNull()?.let { graphQLPage ->
+                    Page.fromGraphQL(graphQLPage)
+                } ?: run {
+                    Log.w("ContentfulService", "No page found for slug: $slug")
+                    null
+                }
+            } catch (e: Exception) {
+                Log.e("ContentfulService", "Error fetching page: $slug", e)
+                throw e // Re-throw to be caught by the caller
             }
-        } catch (e: Exception) {
-            null
         }
     }
-
+    
     suspend fun fetchNavigation(locale: String = "en-US"): Navigation? {
-        return try {
-            val entries = client.fetch(CDAEntry::class.java)
-                .where("content_type", "navigation")
-                .all()
-            
-            entries.items.firstOrNull()?.let { entry ->
-                Navigation.fromEntry(entry)
+        return withContext(Dispatchers.IO) {
+            try {
+                val query = """
+                    query GetNavigation(${'$'}locale: String!) {
+                      navigationCollection(locale: ${'$'}locale, limit: 1) {
+                        items {
+                          sys { id }
+                          menuItemsCollection {
+                            items {
+                              sys { id }
+                              groupName
+                              menuItemsCollection {
+                                items {
+                                  sys { id }
+                                  label
+                                  path
+                                  externalLink
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                """.trimIndent()
+                
+                val request = GraphQLRequest(
+                    query = query,
+                    variables = mapOf("locale" to locale)
+                )
+                
+                val response = api.query(
+                    authorizationHeader, 
+                    spaceId = BuildConfig.CONTENTFUL_SPACE_ID,
+                    request = request
+                )
+                response.data?.navigationCollection?.items?.firstOrNull()?.let { graphQLNav ->
+                    Navigation.fromGraphQL(graphQLNav)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
             }
-        } catch (e: Exception) {
-            null
         }
     }
-
+    
     suspend fun fetchFooter(locale: String = "en-US"): Footer? {
-        return try {
-            val entries = client.fetch(CDAEntry::class.java)
-                .where("content_type", "footer")
-                .all()
-            
-            entries.items.firstOrNull()?.let { entry ->
-                Footer.fromEntry(entry)
+        return withContext(Dispatchers.IO) {
+            try {
+                val query = """
+                    query GetFooter(${'$'}locale: String!) {
+                      footerCollection(locale: ${'$'}locale, limit: 1) {
+                        items {
+                          sys { id }
+                          logo { url }
+                          menuItemsCollection {
+                            items {
+                              sys { id }
+                              groupName
+                              menuItemsCollection {
+                                items {
+                                  sys { id }
+                                  label
+                                  path
+                                  externalLink
+                                }
+                              }
+                            }
+                          }
+                          copyrightText
+                        }
+                      }
+                    }
+                """.trimIndent()
+                
+                val request = GraphQLRequest(
+                    query = query,
+                    variables = mapOf("locale" to locale)
+                )
+                
+                val response = api.query(
+                    authorizationHeader, 
+                    spaceId = BuildConfig.CONTENTFUL_SPACE_ID,
+                    request = request
+                )
+                response.data?.footerCollection?.items?.firstOrNull()?.let { graphQLFooter ->
+                    Footer.fromGraphQL(graphQLFooter)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
             }
-        } catch (e: Exception) {
-            null
         }
     }
-
+    
     suspend fun fetchHomePage(locale: String = "en-US"): Page? {
         return fetchPage("home", locale)
     }
 }
-

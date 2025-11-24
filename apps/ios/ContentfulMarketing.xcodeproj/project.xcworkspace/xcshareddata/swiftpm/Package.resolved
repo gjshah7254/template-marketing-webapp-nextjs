@@ -1,0 +1,51 @@
+{
+  "originHash" : "a13d319173a7866b313845746094a9d50d2ac4c2250e5a6c4bfe76610493e383",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage.git",
+      "state" : {
+        "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
+        "version" : "4.3.0"
+      }
+    },
+    {
+      "identity" : "contentful.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/contentful/contentful.swift",
+      "state" : {
+        "revision" : "d4246e940007b48175ba78a4bb90cebe8876e425",
+        "version" : "5.5.14"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
+        "version" : "7.12.0"
+      }
+    },
+    {
+      "identity" : "rich-text-renderer.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/contentful/rich-text-renderer.swift",
+      "state" : {
+        "revision" : "f5255b8847d2e84860784e0fe36c18a4f7a342e3",
+        "version" : "0.4.8"
+      }
+    }
+  ],
+  "version" : 3
+}

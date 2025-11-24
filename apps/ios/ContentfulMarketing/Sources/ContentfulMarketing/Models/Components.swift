@@ -2,7 +2,7 @@ import Foundation
 import Contentful
 
 // Hero Banner Component
-final class HeroBanner: EntryDecodable, Resource, FieldKeysQueryable {
+final class HeroBanner: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "componentHeroBanner"
     
     let id: String
@@ -40,7 +40,7 @@ final class HeroBanner: EntryDecodable, Resource, FieldKeysQueryable {
 }
 
 // CTA Component
-final class CTA: EntryDecodable, Resource, FieldKeysQueryable {
+final class CTA: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "componentCta"
     
     let id: String
@@ -76,7 +76,7 @@ final class CTA: EntryDecodable, Resource, FieldKeysQueryable {
 }
 
 // Text Block Component
-final class TextBlock: EntryDecodable, Resource, FieldKeysQueryable {
+final class TextBlock: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "componentTextBlock"
     
     let id: String
@@ -108,7 +108,7 @@ final class TextBlock: EntryDecodable, Resource, FieldKeysQueryable {
 }
 
 // Info Block Component
-final class InfoBlock: EntryDecodable, Resource, FieldKeysQueryable {
+final class InfoBlock: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "componentInfoBlock"
     
     let id: String
@@ -142,7 +142,7 @@ final class InfoBlock: EntryDecodable, Resource, FieldKeysQueryable {
 }
 
 // Duplex Component
-final class Duplex: EntryDecodable, Resource, FieldKeysQueryable {
+final class Duplex: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "componentDuplex"
     
     let id: String
@@ -178,7 +178,7 @@ final class Duplex: EntryDecodable, Resource, FieldKeysQueryable {
 }
 
 // Quote Component
-final class Quote: EntryDecodable, Resource, FieldKeysQueryable {
+final class Quote: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "componentQuote"
     
     let id: String

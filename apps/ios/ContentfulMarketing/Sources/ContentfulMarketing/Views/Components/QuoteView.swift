@@ -15,7 +15,7 @@ struct QuoteView: View {
             
             HStack(spacing: 12) {
                 if let authorImageUrl = quote.authorImage?.url {
-                    KFImage(URL(string: authorImageUrl))
+                    KFImage(authorImageUrl)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60, height: 60)

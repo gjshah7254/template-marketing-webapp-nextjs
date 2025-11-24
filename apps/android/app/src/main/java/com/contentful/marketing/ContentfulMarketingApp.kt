@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.contentful.marketing.ui.screens.HomeScreen
+import com.contentful.marketing.ui.screens.PageScreen
 
 @Composable
 fun ContentfulMarketingApp() {

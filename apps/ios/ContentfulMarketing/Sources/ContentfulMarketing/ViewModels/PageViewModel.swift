@@ -10,17 +10,23 @@ class PageViewModel: ObservableObject {
     private let contentfulService = ContentfulService.shared
     
     func loadPage(slug: String) async {
-        isLoading = true
-        error = nil
+        await MainActor.run {
+            isLoading = true
+            error = nil
+        }
         
         do {
             let loadedPage = try await contentfulService.fetchPage(slug: slug)
-            self.page = loadedPage
+            await MainActor.run {
+                self.page = loadedPage
+                self.isLoading = false
+            }
         } catch {
-            self.error = error
+            await MainActor.run {
+                self.error = error
+                self.isLoading = false
+            }
         }
-        
-        isLoading = false
     }
 }
 

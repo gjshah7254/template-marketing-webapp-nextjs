@@ -9,24 +9,38 @@ struct ContentView: View {
             ZStack {
                 if viewModel.isLoading {
                     ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = viewModel.error {
                     ErrorView(error: error) {
                         Task {
                             await viewModel.loadPage(slug: selectedSlug)
                         }
                     }
-                } else {
+                } else if let page = viewModel.page {
                     ScrollView {
                         VStack(spacing: 0) {
-                            if let page = viewModel.page {
-                                PageView(page: page)
-                            }
+                            PageView(page: page)
                         }
                     }
+                } else {
+                    VStack(spacing: 20) {
+                        Text("No content available")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                        Button("Load Home Page") {
+                            Task {
+                                await viewModel.loadPage(slug: "home")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
             .navigationTitle("Contentful Marketing")
             .task {
+                // Delay initial load slightly to ensure app is fully initialized
+                try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
                 await viewModel.loadPage(slug: selectedSlug)
             }
         }

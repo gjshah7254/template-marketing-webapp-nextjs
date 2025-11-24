@@ -1,6 +1,7 @@
 import SwiftUI
 import Kingfisher
-import ContentfulRichTextRenderer
+import RichTextRenderer
+import Contentful
 
 struct DuplexView: View {
     let duplex: Duplex
@@ -27,7 +28,7 @@ struct DuplexView: View {
     @ViewBuilder
     private var imageView: some View {
         if let imageUrl = duplex.image?.url {
-            KFImage(URL(string: imageUrl))
+            KFImage(imageUrl)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 300)

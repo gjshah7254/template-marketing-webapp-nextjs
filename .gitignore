@@ -229,3 +229,6 @@ DerivedData/
 *.dSYM
 *.swiftpm
 .swiftpm/
+/apps/android/app/build/tmp
+/apps/android/app/build/tmp
+/apps/android/app/build/tmp

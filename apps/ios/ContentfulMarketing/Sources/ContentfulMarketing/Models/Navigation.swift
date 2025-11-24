@@ -1,7 +1,7 @@
 import Foundation
 import Contentful
 
-final class Navigation: EntryDecodable, Resource, FieldKeysQueryable {
+final class Navigation: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "navigation"
     
     let id: String
@@ -28,7 +28,7 @@ final class Navigation: EntryDecodable, Resource, FieldKeysQueryable {
     }
 }
 
-final class MenuGroup: EntryDecodable, Resource, FieldKeysQueryable {
+final class MenuGroup: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "menuGroup"
     
     let id: String
@@ -57,7 +57,7 @@ final class MenuGroup: EntryDecodable, Resource, FieldKeysQueryable {
     }
 }
 
-final class MenuItem: EntryDecodable, Resource, FieldKeysQueryable {
+final class MenuItem: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "menuItem"
     
     let id: String

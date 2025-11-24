@@ -1,0 +1,442 @@
+16928fce48f869593e4a25090d7e8f355128fdbb	not-for-merge	branch '5_0_9_localizableResource_encodable' of https://github.com/contentful/contentful.swift
+88082736a8fca2e30b2b49027019b7a715937dc1	not-for-merge	branch 'COCOA-130' of https://github.com/contentful/contentful.swift
+275afec0f12be312eba78ad7758ec84101db6f56	not-for-merge	branch 'add-codeowners' of https://github.com/contentful/contentful.swift
+2ae019b91568795baa66020c0020f75708db74b6	not-for-merge	branch 'assets_host_global_override' of https://github.com/contentful/contentful.swift
+c7dd9d717b0b18455ac02f0faf1b16d2ed350476	not-for-merge	branch 'dependabot/bundler/nokogiri-1.18.8' of https://github.com/contentful/contentful.swift
+944311ae30ad8b277f1f2e0d0299185e52d97b85	not-for-merge	branch 'fix_headers' of https://github.com/contentful/contentful.swift
+5b70732eecfff1ee09cc1f70d2813a050c637af6	not-for-merge	branch 'gh-pages' of https://github.com/contentful/contentful.swift
+63d56cfb26c6c061a1dc6f23bba947df1d711196	not-for-merge	branch 'master' of https://github.com/contentful/contentful.swift
+2067a9fabadc58324b0be07efb41d94b71222267	not-for-merge	branch 'new_release' of https://github.com/contentful/contentful.swift
+948a0950dc7f478a07717c1ee0103853d82dec07	not-for-merge	branch 'release' of https://github.com/contentful/contentful.swift
+cd78c378c9cf241c6355650559e224ae74f082df	not-for-merge	'refs/pull/102/head' of https://github.com/contentful/contentful.swift
+34d69bd84869a60b66a4a11839a9342cb8404695	not-for-merge	'refs/pull/103/head' of https://github.com/contentful/contentful.swift
+ab010a8e1c9496ce066c5214beb1a4154075b385	not-for-merge	'refs/pull/106/head' of https://github.com/contentful/contentful.swift
+db56289aade1f4c54062ff64dce38a4396c3ceba	not-for-merge	'refs/pull/108/head' of https://github.com/contentful/contentful.swift
+869b51b4831a4b18b0af322b6bfe52cfb15a82b1	not-for-merge	'refs/pull/110/head' of https://github.com/contentful/contentful.swift
+8840e7df532885fbcc971c6087429ecc76da18c7	not-for-merge	'refs/pull/111/head' of https://github.com/contentful/contentful.swift
+256acbd0adb11978e0c6aae0877988e25cde1085	not-for-merge	'refs/pull/112/head' of https://github.com/contentful/contentful.swift
+05e1bf8039a36b08bbb4774b594e6c23783b9ca1	not-for-merge	'refs/pull/113/head' of https://github.com/contentful/contentful.swift
+4f63f112479f4bbdfd81b341bdcc10d7e65bd5a5	not-for-merge	'refs/pull/114/head' of https://github.com/contentful/contentful.swift
+6179012aca14677d44f9c005180b58ce70ede0c7	not-for-merge	'refs/pull/115/head' of https://github.com/contentful/contentful.swift
+278a79749ca825cc98660114cbde928d74a3b6a5	not-for-merge	'refs/pull/117/head' of https://github.com/contentful/contentful.swift
+d6b4e9f6cb39555be41ffb4e7455dae97290d6e2	not-for-merge	'refs/pull/118/head' of https://github.com/contentful/contentful.swift
+de50ee558f02a58cb72f96e45d1adc89d51d34af	not-for-merge	'refs/pull/119/head' of https://github.com/contentful/contentful.swift
+d06cbdeac801231e85f4087dd778d3e3955b816e	not-for-merge	'refs/pull/120/head' of https://github.com/contentful/contentful.swift
+b21cf288b17d2b3bc8839da82faa79ad90754fd9	not-for-merge	'refs/pull/121/head' of https://github.com/contentful/contentful.swift
+d74c92ad65a124b70b3999a378da07e413114cf4	not-for-merge	'refs/pull/122/head' of https://github.com/contentful/contentful.swift
+3267a142bd719cd4cc7921d7dfe01465ab0a791a	not-for-merge	'refs/pull/124/head' of https://github.com/contentful/contentful.swift
+5e4ddfc6c6fb0dff2e389d0d6049a32b5e7edb62	not-for-merge	'refs/pull/125/head' of https://github.com/contentful/contentful.swift
+e1cef97667ff217b8faa7cbc2c395955209eca5d	not-for-merge	'refs/pull/126/head' of https://github.com/contentful/contentful.swift
+2143c7b836cd2ba8efe051f81d7d7d818eb62c9b	not-for-merge	'refs/pull/126/merge' of https://github.com/contentful/contentful.swift
+a6d4a6ffd8694210851f3e5d404cb4d277527380	not-for-merge	'refs/pull/127/head' of https://github.com/contentful/contentful.swift
+0178712637e10e2f86feb31e415ec15f25a41630	not-for-merge	'refs/pull/128/head' of https://github.com/contentful/contentful.swift
+a51da4be0729b2fe49570fef7b74716c8e1ec30d	not-for-merge	'refs/pull/129/head' of https://github.com/contentful/contentful.swift
+21dd5f9c8d40122d6a77fb9a3f5c4f92ff218540	not-for-merge	'refs/pull/130/head' of https://github.com/contentful/contentful.swift
+441426cc681975de27d065f00c3a68004b0973b1	not-for-merge	'refs/pull/130/merge' of https://github.com/contentful/contentful.swift
+9119e5507c2daa915a0e8e9767c7a0a685e5e000	not-for-merge	'refs/pull/131/head' of https://github.com/contentful/contentful.swift
+a25bdcd6b85c015467e2c149bd7bda2598f6b705	not-for-merge	'refs/pull/134/head' of https://github.com/contentful/contentful.swift
+5eebbc9c59f4bd06a57c2ef3f8941da5cb262c8e	not-for-merge	'refs/pull/136/head' of https://github.com/contentful/contentful.swift
+271607e57fbe6f6a4f95b99e91400bb753b69c3c	not-for-merge	'refs/pull/138/head' of https://github.com/contentful/contentful.swift
+af4156b3e24714b60823e801cb2bae241a160531	not-for-merge	'refs/pull/139/head' of https://github.com/contentful/contentful.swift
+1c0815887a9b56f3bce457ba6573fc0f48817e34	not-for-merge	'refs/pull/140/head' of https://github.com/contentful/contentful.swift
+4bd1d4f9a1c626cdb10a5ed586fc904366338ade	not-for-merge	'refs/pull/141/head' of https://github.com/contentful/contentful.swift
+c3bbde75faa67397ac85ed0e3ccd2a084ef781fa	not-for-merge	'refs/pull/141/merge' of https://github.com/contentful/contentful.swift
+4d82a0ad34f81acee9929f08fe960641e880037e	not-for-merge	'refs/pull/142/head' of https://github.com/contentful/contentful.swift
+7305810415fe5deb52be552e60767b8e02f68330	not-for-merge	'refs/pull/143/head' of https://github.com/contentful/contentful.swift
+e852eff5c8b33e0cbbdbd749f9a9c104a7878f6e	not-for-merge	'refs/pull/144/head' of https://github.com/contentful/contentful.swift
+5d22f31d3681f2d6a196de89fbd18e81d6cd8671	not-for-merge	'refs/pull/145/head' of https://github.com/contentful/contentful.swift
+db83d334179547eb8db589b446f585eb956c720a	not-for-merge	'refs/pull/146/head' of https://github.com/contentful/contentful.swift
+393471bcba76e2e5bffb49b1d528397e28c48c35	not-for-merge	'refs/pull/147/head' of https://github.com/contentful/contentful.swift
+551fac7d77588fec8f137e00519dfc599ca29921	not-for-merge	'refs/pull/149/head' of https://github.com/contentful/contentful.swift
+24cdbe0b3808883323c551856d21cc590255584d	not-for-merge	'refs/pull/151/head' of https://github.com/contentful/contentful.swift
+0afd80e15c333b4c7a9bf0ca147e3d0a5120558e	not-for-merge	'refs/pull/152/head' of https://github.com/contentful/contentful.swift
+168c760ed50b7712a8b79d836f9a28d943ff2ab5	not-for-merge	'refs/pull/154/head' of https://github.com/contentful/contentful.swift
+c595caf76973a565d6fd9803846db28a947db7ce	not-for-merge	'refs/pull/155/head' of https://github.com/contentful/contentful.swift
+e6ef9d96f58293e40ca5b1d7ad680ba9ae92560e	not-for-merge	'refs/pull/157/head' of https://github.com/contentful/contentful.swift
+b307e8df0dc351d10aba895a1ad2154dfe0e51bb	not-for-merge	'refs/pull/158/head' of https://github.com/contentful/contentful.swift
+9470ba8057db5c8ef288e0f780de51d0097b6b49	not-for-merge	'refs/pull/159/head' of https://github.com/contentful/contentful.swift
+2c9bfefb1079bfeedfd27f546a6438eb3e327c00	not-for-merge	'refs/pull/16/head' of https://github.com/contentful/contentful.swift
+f9b60b2e67f8a423ce2e67793acbf8626744899a	not-for-merge	'refs/pull/161/head' of https://github.com/contentful/contentful.swift
+f6a9f057b3b3bf5ef90c4534d1636a6a5d7ea0aa	not-for-merge	'refs/pull/162/head' of https://github.com/contentful/contentful.swift
+feab8956c5e1e3e51f1eaa101b5e9e70009ac4f0	not-for-merge	'refs/pull/165/head' of https://github.com/contentful/contentful.swift
+4ad42854c0b7e399ceac27643620b52a996e33bf	not-for-merge	'refs/pull/166/head' of https://github.com/contentful/contentful.swift
+93f910574e54cf431edd0cfe3bf8199d7d171aef	not-for-merge	'refs/pull/167/head' of https://github.com/contentful/contentful.swift
+26454385d62217903db09e4ee9f544560c262039	not-for-merge	'refs/pull/168/head' of https://github.com/contentful/contentful.swift
+4e25b340bdc971076e0a0eeb06b263bc93201f0c	not-for-merge	'refs/pull/169/head' of https://github.com/contentful/contentful.swift
+cb48ba353dadcd4c82945417d101f3ae6b355479	not-for-merge	'refs/pull/17/head' of https://github.com/contentful/contentful.swift
+bc53c187f8b18331185b4ef3f705e08e8b566147	not-for-merge	'refs/pull/171/head' of https://github.com/contentful/contentful.swift
+038aa737c1bc0e310f53e59a5f62a6605f6297e5	not-for-merge	'refs/pull/172/head' of https://github.com/contentful/contentful.swift
+735a990a66d1a66c55b9bba767d0270d27ccffa5	not-for-merge	'refs/pull/173/head' of https://github.com/contentful/contentful.swift
+8f825f7207b81561a1a361356b3e9251346a6158	not-for-merge	'refs/pull/174/head' of https://github.com/contentful/contentful.swift
+e79b5aef24b390c6f717401d23946a0bde67a3c2	not-for-merge	'refs/pull/175/head' of https://github.com/contentful/contentful.swift
+9b5193d763cb4ce4451b4f0007cd71e7bc032f89	not-for-merge	'refs/pull/177/head' of https://github.com/contentful/contentful.swift
+d3b894c6397f2889082ef42b5be55386cdc6ac18	not-for-merge	'refs/pull/177/merge' of https://github.com/contentful/contentful.swift
+9c79d970499c22c9a31956e99dd72ad722862f5d	not-for-merge	'refs/pull/18/head' of https://github.com/contentful/contentful.swift
+5b98a3c1f79697b4ce864eb79c367e69069a5f97	not-for-merge	'refs/pull/182/head' of https://github.com/contentful/contentful.swift
+dccc1a3a3219c90ba24f2186f03156704b617fb9	not-for-merge	'refs/pull/183/head' of https://github.com/contentful/contentful.swift
+d8ed9a0e37a0a36050041d1f8db2b28b8e21b515	not-for-merge	'refs/pull/184/head' of https://github.com/contentful/contentful.swift
+27706fffb4d989176f29faf0cce1afe217f41d75	not-for-merge	'refs/pull/185/head' of https://github.com/contentful/contentful.swift
+abe3ca602db8d50138b71c020e77264787379966	not-for-merge	'refs/pull/186/head' of https://github.com/contentful/contentful.swift
+6f5a208e5897d63e31aa2bfeae9df10871a4471f	not-for-merge	'refs/pull/187/head' of https://github.com/contentful/contentful.swift
+d751e65e53f7d887cf399cbecf4937538f642926	not-for-merge	'refs/pull/189/head' of https://github.com/contentful/contentful.swift
+fea10e9d1719f41df2c73fd2c74207d4d606b448	not-for-merge	'refs/pull/19/head' of https://github.com/contentful/contentful.swift
+41d16b64eda558006b7954787462b1dd671608f5	not-for-merge	'refs/pull/191/head' of https://github.com/contentful/contentful.swift
+a454740ddfb406d21ee38b6ff2df3418a7398284	not-for-merge	'refs/pull/195/head' of https://github.com/contentful/contentful.swift
+94df310ed7080a476aad68b802d8150b714a4094	not-for-merge	'refs/pull/197/head' of https://github.com/contentful/contentful.swift
+1ea171932707b9165dcdcd48f223e96017503e04	not-for-merge	'refs/pull/2/head' of https://github.com/contentful/contentful.swift
+e58695fbaad70d968333b9d7c5bc3965017b0b55	not-for-merge	'refs/pull/20/head' of https://github.com/contentful/contentful.swift
+95f441cc68d54ebb97116f6cf046f1601e878d06	not-for-merge	'refs/pull/201/head' of https://github.com/contentful/contentful.swift
+fd368f9da6c846dbc9d1f1e17c4254c49f74ce3c	not-for-merge	'refs/pull/206/head' of https://github.com/contentful/contentful.swift
+5e8440ad3d4903218ce846afdf97e7c5be2a1177	not-for-merge	'refs/pull/207/head' of https://github.com/contentful/contentful.swift
+a3fd8a80b6bc26109fc10804bce188b16431e317	not-for-merge	'refs/pull/208/head' of https://github.com/contentful/contentful.swift
+fff372090423eaf7ed79445006d3996f69f59c2f	not-for-merge	'refs/pull/209/head' of https://github.com/contentful/contentful.swift
+688edf2d47f871d00ed43bb3f51be1e6695dce14	not-for-merge	'refs/pull/209/merge' of https://github.com/contentful/contentful.swift
+7b3ef427a61d07ed1c26b018ee956b386a8e3f67	not-for-merge	'refs/pull/21/head' of https://github.com/contentful/contentful.swift
+777b055523d2b942dfe1081c4fd135ed253867b3	not-for-merge	'refs/pull/210/head' of https://github.com/contentful/contentful.swift
+2612997f9052fe07a1ce270f2225478e5a86fc46	not-for-merge	'refs/pull/211/head' of https://github.com/contentful/contentful.swift
+5b5019fbe4442f473f87147c9472170acba23bc3	not-for-merge	'refs/pull/212/head' of https://github.com/contentful/contentful.swift
+f597c42d74dd5b2d5a9bc97044b2ed739bcd3547	not-for-merge	'refs/pull/213/head' of https://github.com/contentful/contentful.swift
+99d8135066316af101c2e09f0774e6ddd0519f24	not-for-merge	'refs/pull/214/head' of https://github.com/contentful/contentful.swift
+93b13b0353dd8944ee963a884c284f6ae479ee51	not-for-merge	'refs/pull/215/head' of https://github.com/contentful/contentful.swift
+3f3d1eae946b94f53f8227cf055aea5e6fadc2c5	not-for-merge	'refs/pull/215/merge' of https://github.com/contentful/contentful.swift
+93b13b0353dd8944ee963a884c284f6ae479ee51	not-for-merge	'refs/pull/216/head' of https://github.com/contentful/contentful.swift
+01c5589883d991ac557f83889769dc37c50b022d	not-for-merge	'refs/pull/217/head' of https://github.com/contentful/contentful.swift
+2ec51b56b2097b8ff7e449bc413bc3eb9f68f837	not-for-merge	'refs/pull/218/head' of https://github.com/contentful/contentful.swift
+d2dca40ba9b2b33c08be0d538bace3adb78bca7e	not-for-merge	'refs/pull/219/head' of https://github.com/contentful/contentful.swift
+ec69f194b59674b49a654608f056cf0a90bf00e1	not-for-merge	'refs/pull/22/head' of https://github.com/contentful/contentful.swift
+5a28c0eb813465cbd6f3a77c1d59cc5c6008d195	not-for-merge	'refs/pull/220/head' of https://github.com/contentful/contentful.swift
+1f33777c1f10282f42bebe56169f4fb6afafc4fa	not-for-merge	'refs/pull/221/head' of https://github.com/contentful/contentful.swift
+1c7091107d8c1bc46ce9412823c5dd0e686d975a	not-for-merge	'refs/pull/222/head' of https://github.com/contentful/contentful.swift
+3df4859fefc9a911b02882bf3101467bd4db914b	not-for-merge	'refs/pull/223/head' of https://github.com/contentful/contentful.swift
+efc8589dc10cb3f218846f23a9903bece62f542c	not-for-merge	'refs/pull/224/head' of https://github.com/contentful/contentful.swift
+45cd2846f58d560cb32596f43901a495f7a1161b	not-for-merge	'refs/pull/225/head' of https://github.com/contentful/contentful.swift
+0609c655ac973e7548d5aa690d43b41eceaa6ae4	not-for-merge	'refs/pull/226/head' of https://github.com/contentful/contentful.swift
+344a666f719ae11bebb9f9455a0aea391150caf1	not-for-merge	'refs/pull/227/head' of https://github.com/contentful/contentful.swift
+be17ff9fb1941adee2778081e787544065981424	not-for-merge	'refs/pull/228/head' of https://github.com/contentful/contentful.swift
+f6da3325cd595198f6c76b79e611e8b493461819	not-for-merge	'refs/pull/229/head' of https://github.com/contentful/contentful.swift
+11bb0755b8581e670d3526961a34671e573bd0b3	not-for-merge	'refs/pull/23/head' of https://github.com/contentful/contentful.swift
+d3fad2b8440117b00ab12c62e222b842d101f60d	not-for-merge	'refs/pull/230/head' of https://github.com/contentful/contentful.swift
+449b6cc5f79d0c995c91a94f31993290b48bacbc	not-for-merge	'refs/pull/232/head' of https://github.com/contentful/contentful.swift
+f2aa4209d5157965395e8eeb0b7793d4eab040ed	not-for-merge	'refs/pull/233/head' of https://github.com/contentful/contentful.swift
+d94b00d3be2e79343dc08e72296f5950e3c6fd23	not-for-merge	'refs/pull/234/head' of https://github.com/contentful/contentful.swift
+f5ba2b71828545e2b85026202ae2cd76f0884448	not-for-merge	'refs/pull/235/head' of https://github.com/contentful/contentful.swift
+2de1aa0d41293a78bf4b860c7ba8868f0b2a8bb1	not-for-merge	'refs/pull/236/head' of https://github.com/contentful/contentful.swift
+0f2c5b4cf9e15417b1357b55266dc048d15a3fa8	not-for-merge	'refs/pull/237/head' of https://github.com/contentful/contentful.swift
+5e7a4c9bb374184ac8a858401d63ee9298284f3d	not-for-merge	'refs/pull/238/head' of https://github.com/contentful/contentful.swift
+2dc7845baa099f82910e08439d88af072ba91e0b	not-for-merge	'refs/pull/239/head' of https://github.com/contentful/contentful.swift
+72b30f7859c7cbb82386b4e3837bed4243a991d4	not-for-merge	'refs/pull/240/head' of https://github.com/contentful/contentful.swift
+67482b879bcb7d5fac95ef577824ede65fa7e7ab	not-for-merge	'refs/pull/242/head' of https://github.com/contentful/contentful.swift
+94361043a7cb88489e7350a3c126ee6f394c3174	not-for-merge	'refs/pull/243/head' of https://github.com/contentful/contentful.swift
+a0f2431d1a5352706f03f3f79e0a18af1c3c9580	not-for-merge	'refs/pull/244/head' of https://github.com/contentful/contentful.swift
+b5659eac85556f515273dc96d78449dfcc9ea21f	not-for-merge	'refs/pull/245/head' of https://github.com/contentful/contentful.swift
+d0d1fd32aefff29259ef751836d9cf76440de930	not-for-merge	'refs/pull/246/head' of https://github.com/contentful/contentful.swift
+5a6d1562402c4ee4b08759c0fbf6429f0a0795a8	not-for-merge	'refs/pull/248/head' of https://github.com/contentful/contentful.swift
+c73e6322897f7a0c5240e38d88d47df52ead7d3e	not-for-merge	'refs/pull/249/head' of https://github.com/contentful/contentful.swift
+64303e90d1cc02461fd8aff457f90aaca4f1ad23	not-for-merge	'refs/pull/25/head' of https://github.com/contentful/contentful.swift
+beec44bf8e8246c2a440b5a64fee61348b07936a	not-for-merge	'refs/pull/250/head' of https://github.com/contentful/contentful.swift
+914e4bfc6d33c8a786f7bfde12d77e3849a49b2c	not-for-merge	'refs/pull/252/head' of https://github.com/contentful/contentful.swift
+f612903372b13ee87c7363a68081521f54ec9666	not-for-merge	'refs/pull/253/head' of https://github.com/contentful/contentful.swift
+fd51d5204da7b0e9a994f50d43137074a887d113	not-for-merge	'refs/pull/254/head' of https://github.com/contentful/contentful.swift
+e984ec686c747e274c7a4b1c3672ce8ef4e7ad1a	not-for-merge	'refs/pull/255/head' of https://github.com/contentful/contentful.swift
+f744daf971dbc87eb7788d78e01db9db93cc5f4e	not-for-merge	'refs/pull/257/head' of https://github.com/contentful/contentful.swift
+af94b8ccc18c1d2c9002ccc93391df0b4bc1bebe	not-for-merge	'refs/pull/26/head' of https://github.com/contentful/contentful.swift
+d005ff82ecf38cc584be8c5ec4e92b87e5fdc3da	not-for-merge	'refs/pull/261/head' of https://github.com/contentful/contentful.swift
+dff4dfde609b6b3d99d73d6c998e58b2ea4690af	not-for-merge	'refs/pull/262/head' of https://github.com/contentful/contentful.swift
+e7f956ba97b0af6dded85455f3f76e2ccaa6bd8a	not-for-merge	'refs/pull/264/head' of https://github.com/contentful/contentful.swift
+d8286620568b78f4bf56aa810907a6c762e53af1	not-for-merge	'refs/pull/265/head' of https://github.com/contentful/contentful.swift
+ceb98d79b1623dbe1af4b7b02f5b14ea14ffbdb5	not-for-merge	'refs/pull/268/head' of https://github.com/contentful/contentful.swift
+78bd2b7ccc5d88218434da608cdd7b5f2c50e5ea	not-for-merge	'refs/pull/269/head' of https://github.com/contentful/contentful.swift
+6c961dcc0eac7c242a38ace48d16bcb1f5377377	not-for-merge	'refs/pull/27/head' of https://github.com/contentful/contentful.swift
+16d5e8b9b29ce112e1b0514a896a3346ac437633	not-for-merge	'refs/pull/270/head' of https://github.com/contentful/contentful.swift
+a32a9d5a88ef48d49939bdf7dd415bf9c2b0be97	not-for-merge	'refs/pull/271/head' of https://github.com/contentful/contentful.swift
+22c87cbb0e93f8ec8d1f6168eecd8281e1852917	not-for-merge	'refs/pull/272/head' of https://github.com/contentful/contentful.swift
+235c9744fe495bed87bb566ffa85368a515138c6	not-for-merge	'refs/pull/273/head' of https://github.com/contentful/contentful.swift
+a6f87cd8a9b649b8ad5e5389db4e36fa9a632ad0	not-for-merge	'refs/pull/274/head' of https://github.com/contentful/contentful.swift
+731e74e1240d79fee05e6e584a63dca568e32513	not-for-merge	'refs/pull/276/head' of https://github.com/contentful/contentful.swift
+6d67c358565357b48c9185119911e5e2c7d0637f	not-for-merge	'refs/pull/277/head' of https://github.com/contentful/contentful.swift
+1895da13fce2e2c026202cb2108d07d03f7d77f6	not-for-merge	'refs/pull/279/head' of https://github.com/contentful/contentful.swift
+4cdab1e0b791bbcd99ede3daeadd72cab094c293	not-for-merge	'refs/pull/281/head' of https://github.com/contentful/contentful.swift
+8a8e0e4d50d574211b593a1d24f213b183b157a0	not-for-merge	'refs/pull/283/head' of https://github.com/contentful/contentful.swift
+6d3445dedce00b52f3dfb359c78158b18a7d2be3	not-for-merge	'refs/pull/286/head' of https://github.com/contentful/contentful.swift
+a0ebde66d34c6419d8651ad590b221a4860f5265	not-for-merge	'refs/pull/288/head' of https://github.com/contentful/contentful.swift
+b4258c403240fc7d3fefed722d47f0215fee66e3	not-for-merge	'refs/pull/289/head' of https://github.com/contentful/contentful.swift
+3819133a14cfd39d8b6f14fb88e22f10f6b556fb	not-for-merge	'refs/pull/29/head' of https://github.com/contentful/contentful.swift
+ab8d4d452a2863b9105fc2a7da9a7ddda792addd	not-for-merge	'refs/pull/290/head' of https://github.com/contentful/contentful.swift
+6e998d7accdd00ec742044de425ee1154e4adb70	not-for-merge	'refs/pull/291/head' of https://github.com/contentful/contentful.swift
+44aacbe41f4e93e260a0323741d9711009e5da02	not-for-merge	'refs/pull/292/head' of https://github.com/contentful/contentful.swift
+2ad9b3b6c4d9b54eef535dc123383a14f45d70b8	not-for-merge	'refs/pull/293/head' of https://github.com/contentful/contentful.swift
+b9d5aaeb899a6a1807dbb1011f3d0bbcab1eb41e	not-for-merge	'refs/pull/294/head' of https://github.com/contentful/contentful.swift
+bab6cfafd45f76a1ea969ac263386047ee47f771	not-for-merge	'refs/pull/295/head' of https://github.com/contentful/contentful.swift
+071971f600600e713eaab59ba85466bfce21c562	not-for-merge	'refs/pull/299/head' of https://github.com/contentful/contentful.swift
+f8a8e49546b5e0dad76779f31c2ed856848d7b21	not-for-merge	'refs/pull/30/head' of https://github.com/contentful/contentful.swift
+55116334b168788caf212523c2dbfb006cbd6ca1	not-for-merge	'refs/pull/303/head' of https://github.com/contentful/contentful.swift
+575fec1ad409be1c621045e0c047e231174e1450	not-for-merge	'refs/pull/304/head' of https://github.com/contentful/contentful.swift
+d878cf7c02fde5ee90e03c8d4ba27f362beb0e81	not-for-merge	'refs/pull/305/head' of https://github.com/contentful/contentful.swift
+734088ac38072d763641f9e214e1ffc56fd226de	not-for-merge	'refs/pull/306/head' of https://github.com/contentful/contentful.swift
+2d1e47cf19e304e73e2cb509a9bcbaf6640cc6c7	not-for-merge	'refs/pull/307/head' of https://github.com/contentful/contentful.swift
+6deefd81d85d893b557622f1ca1e9305375efbe4	not-for-merge	'refs/pull/309/head' of https://github.com/contentful/contentful.swift
+db957706a606a5372c4fd5b20d00c783da6cf5e4	not-for-merge	'refs/pull/310/head' of https://github.com/contentful/contentful.swift
+1c922910e70f2bade058483f7213659210139ee6	not-for-merge	'refs/pull/312/head' of https://github.com/contentful/contentful.swift
+dd20517e79312a6fa5f9b7fde0b1a423a1fc81d3	not-for-merge	'refs/pull/314/head' of https://github.com/contentful/contentful.swift
+0650ac8380da124fd683f64cfc00e7f665e2aada	not-for-merge	'refs/pull/316/head' of https://github.com/contentful/contentful.swift
+9ca2042a1fb080bb418c6a4125203e696ad3f967	not-for-merge	'refs/pull/317/head' of https://github.com/contentful/contentful.swift
+79dbcf094b2fd52454c5132778a233df58d3ea1a	not-for-merge	'refs/pull/318/head' of https://github.com/contentful/contentful.swift
+bdef575d82593d72bb85e54645e6d7173221ff6a	not-for-merge	'refs/pull/32/head' of https://github.com/contentful/contentful.swift
+1c17a5e525b49c3f8cb5a5fa5c8c666f73094bef	not-for-merge	'refs/pull/32/merge' of https://github.com/contentful/contentful.swift
+202e383728af05febeeb42e099234372e7dc9ead	not-for-merge	'refs/pull/320/head' of https://github.com/contentful/contentful.swift
+e8d429411185d110788082882697da6a6bc7d93d	not-for-merge	'refs/pull/321/head' of https://github.com/contentful/contentful.swift
+94a3b54b4850051a1281bd14b418de27a2693a72	not-for-merge	'refs/pull/322/head' of https://github.com/contentful/contentful.swift
+9a4b61886314a0d241ec34198f578a511e491f98	not-for-merge	'refs/pull/323/head' of https://github.com/contentful/contentful.swift
+943b0a5ac67bc416150f46a10eb8d41fb44c0e6e	not-for-merge	'refs/pull/324/head' of https://github.com/contentful/contentful.swift
+878c2319fc22164e0ed0a99bc3b667b14f521e28	not-for-merge	'refs/pull/326/head' of https://github.com/contentful/contentful.swift
+afdde5cad3318d63589488c5cc972c0a4f0f6680	not-for-merge	'refs/pull/327/head' of https://github.com/contentful/contentful.swift
+1c56d5936e5cc8e211f5263d21f1b0cb1a0962eb	not-for-merge	'refs/pull/328/head' of https://github.com/contentful/contentful.swift
+373ff78fa792190eb9090979cab1214f9d9dbb8e	not-for-merge	'refs/pull/33/head' of https://github.com/contentful/contentful.swift
+976deb264668f36cdd9ce49630e2f77bd0ec627a	not-for-merge	'refs/pull/334/head' of https://github.com/contentful/contentful.swift
+bf313e3277173a328e5eda628b3be5cd8c8edee4	not-for-merge	'refs/pull/335/head' of https://github.com/contentful/contentful.swift
+69f364a7a9cb00b99198bf39f1893874104c8505	not-for-merge	'refs/pull/336/head' of https://github.com/contentful/contentful.swift
+9bbc3786bd7866fb3abb3960b720a2ccfd9487d7	not-for-merge	'refs/pull/337/head' of https://github.com/contentful/contentful.swift
+7d3a28acad0f73e36bc9befdc78279882ad0422b	not-for-merge	'refs/pull/339/head' of https://github.com/contentful/contentful.swift
+88082736a8fca2e30b2b49027019b7a715937dc1	not-for-merge	'refs/pull/340/head' of https://github.com/contentful/contentful.swift
+edff36106a43a9d55e63c29ffb3db802c4d6b30e	not-for-merge	'refs/pull/341/head' of https://github.com/contentful/contentful.swift
+06d106216535f0f9637aa28647f522630b181a8c	not-for-merge	'refs/pull/342/head' of https://github.com/contentful/contentful.swift
+e5239eb9c6ac7fbf3124619330c82906e26556bb	not-for-merge	'refs/pull/343/head' of https://github.com/contentful/contentful.swift
+522844a9c46c4226c439240439fca777cf23797d	not-for-merge	'refs/pull/344/head' of https://github.com/contentful/contentful.swift
+dadfa3b8d73b1dcbb3fbfe84ccf10cf6b6c86387	not-for-merge	'refs/pull/347/head' of https://github.com/contentful/contentful.swift
+0fab505b6b19aad09f3bc082b16b0faea947367b	not-for-merge	'refs/pull/348/head' of https://github.com/contentful/contentful.swift
+b97209cfa858e6c1dabf6d95aebbec644cffb187	not-for-merge	'refs/pull/35/head' of https://github.com/contentful/contentful.swift
+ce07c8074e1c2fa17073e3d95bfd662b2c82fb83	not-for-merge	'refs/pull/350/head' of https://github.com/contentful/contentful.swift
+20b49b516ac3e53f98799560928ee5220ec37124	not-for-merge	'refs/pull/352/head' of https://github.com/contentful/contentful.swift
+bb02e3f00f8af9557b5a1d500d25348263f694fe	not-for-merge	'refs/pull/353/head' of https://github.com/contentful/contentful.swift
+adf0fcfac84e4934ee7801f810d5805668d2f5bb	not-for-merge	'refs/pull/354/head' of https://github.com/contentful/contentful.swift
+8f9439e1aa625977261fa36dcaf8f73708338dd2	not-for-merge	'refs/pull/355/head' of https://github.com/contentful/contentful.swift
+8f0e7c6891d6d8b2b386112dbb83a9a7edf78fc5	not-for-merge	'refs/pull/356/head' of https://github.com/contentful/contentful.swift
+8f0e7c6891d6d8b2b386112dbb83a9a7edf78fc5	not-for-merge	'refs/pull/357/head' of https://github.com/contentful/contentful.swift
+8f0e7c6891d6d8b2b386112dbb83a9a7edf78fc5	not-for-merge	'refs/pull/358/head' of https://github.com/contentful/contentful.swift
+8f0e7c6891d6d8b2b386112dbb83a9a7edf78fc5	not-for-merge	'refs/pull/359/head' of https://github.com/contentful/contentful.swift
+9d8f2ba5d5c3fb1f556392246b1c335d767eb802	not-for-merge	'refs/pull/36/head' of https://github.com/contentful/contentful.swift
+867d7e5d48833808ae08ff9c745fdd0627449958	not-for-merge	'refs/pull/360/head' of https://github.com/contentful/contentful.swift
+1a2ce0495a2d52f83c18f494e1a94f19b91f2168	not-for-merge	'refs/pull/361/head' of https://github.com/contentful/contentful.swift
+a0a50cc94b2fddb1b7c975238aa4b4e98a847ee1	not-for-merge	'refs/pull/362/head' of https://github.com/contentful/contentful.swift
+5e45c1bf879148cb966b4d3c05ba691ee250f5b5	not-for-merge	'refs/pull/363/head' of https://github.com/contentful/contentful.swift
+c2570834c84b555af38d970f5c7325ef6d0a2e05	not-for-merge	'refs/pull/363/merge' of https://github.com/contentful/contentful.swift
+744925aa65a40c7e8339b9de43cb2e9eb6fb4f01	not-for-merge	'refs/pull/365/head' of https://github.com/contentful/contentful.swift
+c0a14b713ba49b19229bf4c72e85b3ba7f7e81d5	not-for-merge	'refs/pull/366/head' of https://github.com/contentful/contentful.swift
+1cc88ba8ee23aa349ba7bdc475f34d96689e068d	not-for-merge	'refs/pull/367/head' of https://github.com/contentful/contentful.swift
+5addd39190759a469032795e85f7819d64c96d72	not-for-merge	'refs/pull/368/head' of https://github.com/contentful/contentful.swift
+5e45c1bf879148cb966b4d3c05ba691ee250f5b5	not-for-merge	'refs/pull/369/head' of https://github.com/contentful/contentful.swift
+63c4cd264470975323da93b8d1695db3a786aaef	not-for-merge	'refs/pull/37/head' of https://github.com/contentful/contentful.swift
+b294e7a4cee2f850598cade72172db292c03cb62	not-for-merge	'refs/pull/370/head' of https://github.com/contentful/contentful.swift
+2067a9fabadc58324b0be07efb41d94b71222267	not-for-merge	'refs/pull/371/head' of https://github.com/contentful/contentful.swift
+944311ae30ad8b277f1f2e0d0299185e52d97b85	not-for-merge	'refs/pull/372/head' of https://github.com/contentful/contentful.swift
+948a0950dc7f478a07717c1ee0103853d82dec07	not-for-merge	'refs/pull/373/head' of https://github.com/contentful/contentful.swift
+5addd39190759a469032795e85f7819d64c96d72	not-for-merge	'refs/pull/375/head' of https://github.com/contentful/contentful.swift
+9c3afbcc4833f76235e09dd9e169654fdc207816	not-for-merge	'refs/pull/376/head' of https://github.com/contentful/contentful.swift
+052b66585c3b9b24e184c56dbccfbf08336028ff	not-for-merge	'refs/pull/377/head' of https://github.com/contentful/contentful.swift
+2b94e3204324af1a817719a797545a5b3c35710a	not-for-merge	'refs/pull/378/head' of https://github.com/contentful/contentful.swift
+1f9f7e8ecc382feb4efae6ecffbf6911f6c96751	not-for-merge	'refs/pull/379/head' of https://github.com/contentful/contentful.swift
+59b0d6227d7ba7a0ecb24039c5cb9044a8cc61b6	not-for-merge	'refs/pull/38/head' of https://github.com/contentful/contentful.swift
+06315cb076beea6d0a1d22c8e74951fa5415d378	not-for-merge	'refs/pull/380/head' of https://github.com/contentful/contentful.swift
+b0441543d2aefa0af1894a93b5c772569cffac82	not-for-merge	'refs/pull/381/head' of https://github.com/contentful/contentful.swift
+ac0e56bd094822e46f0eab51f4d20c0741c8fa3b	not-for-merge	'refs/pull/382/head' of https://github.com/contentful/contentful.swift
+d38d59876abb4710765cabbe03fc74f029ebee7f	not-for-merge	'refs/pull/383/head' of https://github.com/contentful/contentful.swift
+d0c4c0fe0cda627bda1f85691edbdf4209d713ba	not-for-merge	'refs/pull/384/head' of https://github.com/contentful/contentful.swift
+76a56db6e7e400bfd6f21e0580fdea640d42178b	not-for-merge	'refs/pull/387/head' of https://github.com/contentful/contentful.swift
+d338f676c37b6f196cc4e4dc344e89288b765597	not-for-merge	'refs/pull/39/head' of https://github.com/contentful/contentful.swift
+57dc8319d31aab1d1af1b5656671863bfd640898	not-for-merge	'refs/pull/390/head' of https://github.com/contentful/contentful.swift
+a2ff561ec48fa36880f05aad192d26b40217cf69	not-for-merge	'refs/pull/391/head' of https://github.com/contentful/contentful.swift
+57c49ff21361581f5b4f98a3aec737210ba4b755	not-for-merge	'refs/pull/392/head' of https://github.com/contentful/contentful.swift
+885540040bc224ec1cb8c283a31462d83f6dd7dd	not-for-merge	'refs/pull/394/head' of https://github.com/contentful/contentful.swift
+c15a4b1186e6d7faed086579f53ecdd35388eec3	not-for-merge	'refs/pull/395/head' of https://github.com/contentful/contentful.swift
+275afec0f12be312eba78ad7758ec84101db6f56	not-for-merge	'refs/pull/397/head' of https://github.com/contentful/contentful.swift
+ac333eae068b2eb9ee9198bbbde30fa33abcebad	not-for-merge	'refs/pull/398/head' of https://github.com/contentful/contentful.swift
+9edeb6a702b88203dfe34662eab315b6b30552fc	not-for-merge	'refs/pull/399/head' of https://github.com/contentful/contentful.swift
+2bb0626c701736cd526d8c606e450a3b5ff4ed5a	not-for-merge	'refs/pull/4/head' of https://github.com/contentful/contentful.swift
+9f20e773703b5c33e7aaa6aa67af22ad2b97a0f5	not-for-merge	'refs/pull/40/head' of https://github.com/contentful/contentful.swift
+7c04efb2b4cfff81783e341c5dfb7fe71a41677a	not-for-merge	'refs/pull/400/head' of https://github.com/contentful/contentful.swift
+ff2d5dee087247fd1921a2e960355e9c3c7fee34	not-for-merge	'refs/pull/403/head' of https://github.com/contentful/contentful.swift
+cf7a6d57716b5e88c03372dc4d841c3ab43fe986	not-for-merge	'refs/pull/404/head' of https://github.com/contentful/contentful.swift
+d6371ac8bcbd296fe6916a0b7c82884d68fbffd0	not-for-merge	'refs/pull/405/head' of https://github.com/contentful/contentful.swift
+96c35ebc91c51b13692e4a2eba48178ef05a7738	not-for-merge	'refs/pull/407/head' of https://github.com/contentful/contentful.swift
+5a3c508dc5c6092249d0077d7ce3d93b09ae854f	not-for-merge	'refs/pull/408/head' of https://github.com/contentful/contentful.swift
+291123df93a000bc1916100f2a65e17ff17c9617	not-for-merge	'refs/pull/41/head' of https://github.com/contentful/contentful.swift
+c63a300fec21e468d85a92be60d8df5a1040a3dc	not-for-merge	'refs/pull/410/head' of https://github.com/contentful/contentful.swift
+2f1c4eab20ede49c9cff7145deece3e3d9d56700	not-for-merge	'refs/pull/411/head' of https://github.com/contentful/contentful.swift
+91d8af9948faa52a53391cb360a9c8e55b2e1d48	not-for-merge	'refs/pull/412/head' of https://github.com/contentful/contentful.swift
+03e758fb4b9f04abc48cbae26c6f4ed76ea26efe	not-for-merge	'refs/pull/413/head' of https://github.com/contentful/contentful.swift
+6d3be9d0298482251801aa9ea45e42f9b47f56aa	not-for-merge	'refs/pull/414/head' of https://github.com/contentful/contentful.swift
+a6379b5429475391da55b04fc5297bae40d055b7	not-for-merge	'refs/pull/415/head' of https://github.com/contentful/contentful.swift
+d0dd454409c6de34ff104e96c2015af9ed73d665	not-for-merge	'refs/pull/416/head' of https://github.com/contentful/contentful.swift
+f2e3505564375c859924da7f18f6e0e4d0317fbd	not-for-merge	'refs/pull/417/head' of https://github.com/contentful/contentful.swift
+0aeeecc1a55f5e607ff3744d4e1bba301ed71868	not-for-merge	'refs/pull/418/head' of https://github.com/contentful/contentful.swift
+7adee7b477f2701bdd74413197ce5011d5d7c274	not-for-merge	'refs/pull/419/head' of https://github.com/contentful/contentful.swift
+e45162b37171610860c05c5433bf9b43b5e3f461	not-for-merge	'refs/pull/42/head' of https://github.com/contentful/contentful.swift
+b32ea7ee3a4a09c0e6e74d20f47652132ebe908b	not-for-merge	'refs/pull/420/head' of https://github.com/contentful/contentful.swift
+8bd4194bf63e580f77039e89a6e7ac42471c73b0	not-for-merge	'refs/pull/422/head' of https://github.com/contentful/contentful.swift
+e5d507ffca19259383a7f1cb2844019d3a96e184	not-for-merge	'refs/pull/424/head' of https://github.com/contentful/contentful.swift
+5c840a0c1dc17041b9eb22eaea6ecd40215614b7	not-for-merge	'refs/pull/425/head' of https://github.com/contentful/contentful.swift
+c7dd9d717b0b18455ac02f0faf1b16d2ed350476	not-for-merge	'refs/pull/427/head' of https://github.com/contentful/contentful.swift
+5a16ace8dad38538cb682a1006fa4ba2f112440a	not-for-merge	'refs/pull/427/merge' of https://github.com/contentful/contentful.swift
+283f0ffc3b1ad201cde08b12def8dc5c8a60eb12	not-for-merge	'refs/pull/428/head' of https://github.com/contentful/contentful.swift
+b8b4bf05edef894c627e093f0b4fbf0eea085700	not-for-merge	'refs/pull/429/head' of https://github.com/contentful/contentful.swift
+f62c67c05e615948f9368095d08036bf4b1ef599	not-for-merge	'refs/pull/43/head' of https://github.com/contentful/contentful.swift
+84311fcc7b368c359343a4ce8bdaa8b301e7b761	not-for-merge	'refs/pull/430/head' of https://github.com/contentful/contentful.swift
+6d850d081ea551cd736da048a1849cd8fb2ef5c4	not-for-merge	'refs/pull/432/head' of https://github.com/contentful/contentful.swift
+0548cea29af501846a87378ff7008372dc1efcea	not-for-merge	'refs/pull/433/head' of https://github.com/contentful/contentful.swift
+ef130999a8235d51ef73ebefe3bb9a33fd8038d7	not-for-merge	'refs/pull/434/head' of https://github.com/contentful/contentful.swift
+f6d5175d5fe8497e00528e324a9637a5840dd755	not-for-merge	'refs/pull/434/merge' of https://github.com/contentful/contentful.swift
+7be5050bb1a835b4b04bb7f6a57529a4f43d2cf7	not-for-merge	'refs/pull/435/head' of https://github.com/contentful/contentful.swift
+589e523cf97f26722aacd3fa793327ea7168759c	not-for-merge	'refs/pull/44/head' of https://github.com/contentful/contentful.swift
+21173d0de34168900564ce383c47fdf71d740e17	not-for-merge	'refs/pull/44/merge' of https://github.com/contentful/contentful.swift
+d0614cccf2319fccb69160541f5f0fb4fb457b63	not-for-merge	'refs/pull/45/head' of https://github.com/contentful/contentful.swift
+8803fd440a5e4c8efef87a2f79506d1c2e4c0a73	not-for-merge	'refs/pull/46/head' of https://github.com/contentful/contentful.swift
+bb11b30e8af921884dab2787213281f4dd6ad5b0	not-for-merge	'refs/pull/47/head' of https://github.com/contentful/contentful.swift
+127bdd3d7f15a388f88bd2979a853661a1b3531a	not-for-merge	'refs/pull/48/head' of https://github.com/contentful/contentful.swift
+1c009b4c7457bedfa95feb9454e1242ac9983b41	not-for-merge	'refs/pull/49/head' of https://github.com/contentful/contentful.swift
+5e89ec389638887fa58cb9db169b6935a9c4df16	not-for-merge	'refs/pull/50/head' of https://github.com/contentful/contentful.swift
+4bbc0ce25901d401c016d97ba56f360b50b35ba1	not-for-merge	'refs/pull/51/head' of https://github.com/contentful/contentful.swift
+1a7c10bfde8697e51468988d5e8f9eb59cfdf9c6	not-for-merge	'refs/pull/52/head' of https://github.com/contentful/contentful.swift
+01ba316dff196bd8b8145f4c2107a5354561a007	not-for-merge	'refs/pull/53/head' of https://github.com/contentful/contentful.swift
+8e943c7b660aeab8847548fca229668955daef04	not-for-merge	'refs/pull/54/head' of https://github.com/contentful/contentful.swift
+b924df7481cd56eff2c992a2e5828db8816b1bcb	not-for-merge	'refs/pull/54/merge' of https://github.com/contentful/contentful.swift
+8e943c7b660aeab8847548fca229668955daef04	not-for-merge	'refs/pull/55/head' of https://github.com/contentful/contentful.swift
+447ae774c1d5c5e369b23b87df5b0f56226584f0	not-for-merge	'refs/pull/56/head' of https://github.com/contentful/contentful.swift
+7c102dec7cd3c72c17dec5a8d2ea6839056206f8	not-for-merge	'refs/pull/57/head' of https://github.com/contentful/contentful.swift
+73ffe9ea69b78ce2e04ec017e9f264cb1db59ca7	not-for-merge	'refs/pull/58/head' of https://github.com/contentful/contentful.swift
+9afd1d69f5fff57baefa57971d0100abcab8cb65	not-for-merge	'refs/pull/59/head' of https://github.com/contentful/contentful.swift
+229edcf9cafadbc4a1840dcdc986ae60b397ef95	not-for-merge	'refs/pull/6/head' of https://github.com/contentful/contentful.swift
+ed825730ddc9ee0752fd72e36d4e5b55fc3e8fb4	not-for-merge	'refs/pull/6/merge' of https://github.com/contentful/contentful.swift
+1f53f4535bd66ea84bf454d33917ffdb7fb22174	not-for-merge	'refs/pull/60/head' of https://github.com/contentful/contentful.swift
+309008b1bfd079e8da55f034012fbfe7eb2c722a	not-for-merge	'refs/pull/61/head' of https://github.com/contentful/contentful.swift
+a9f08a93dcebd93772cd29cd6301035345c50e8d	not-for-merge	'refs/pull/63/head' of https://github.com/contentful/contentful.swift
+6e85fb2d46cf82751c0fe406e1a5f2c40b0f5b5b	not-for-merge	'refs/pull/64/head' of https://github.com/contentful/contentful.swift
+11a34121bffda7d785d4123be59518599746f923	not-for-merge	'refs/pull/66/head' of https://github.com/contentful/contentful.swift
+7270dadad28a5535710493a80255614998e78011	not-for-merge	'refs/pull/67/head' of https://github.com/contentful/contentful.swift
+68d8095fcb4a396f65d4c8d3fc022bfd45cbaeb7	not-for-merge	'refs/pull/70/head' of https://github.com/contentful/contentful.swift
+715c39bb2092761e13153419d6e6ed2427a11cc3	not-for-merge	'refs/pull/72/head' of https://github.com/contentful/contentful.swift
+091e16512f0b8e1a0273bbc3131aa79b3943f081	not-for-merge	'refs/pull/73/head' of https://github.com/contentful/contentful.swift
+c3296635b3c9b109c56e34c5b23626983fbab24e	not-for-merge	'refs/pull/74/head' of https://github.com/contentful/contentful.swift
+7c630be14671e9713f2e904374445bae3d5428f6	not-for-merge	'refs/pull/75/head' of https://github.com/contentful/contentful.swift
+ef44fb71f4eb418635c6c4101e8efc13232d373d	not-for-merge	'refs/pull/76/head' of https://github.com/contentful/contentful.swift
+a25ae1fafdc13ecfa6b08f40c6206035be0f7768	not-for-merge	'refs/pull/78/head' of https://github.com/contentful/contentful.swift
+8f6d88c6e4dacbd01a4c270ae4f5542ae2296846	not-for-merge	'refs/pull/79/head' of https://github.com/contentful/contentful.swift
+20effb2e52c0f3de755c51d98826e63fb9308932	not-for-merge	'refs/pull/8/head' of https://github.com/contentful/contentful.swift
+057c404a6cde691fdf5b3cfe7091f08fc2adcf90	not-for-merge	'refs/pull/8/merge' of https://github.com/contentful/contentful.swift
+c9fe30b98836732a568919c0617aa34a3c28b880	not-for-merge	'refs/pull/80/head' of https://github.com/contentful/contentful.swift
+0bc900eb20512833ec518420bf5adcc2a621385d	not-for-merge	'refs/pull/81/head' of https://github.com/contentful/contentful.swift
+8d85bb8ca6eab0371b60d0731ce379dbe3f7d099	not-for-merge	'refs/pull/82/head' of https://github.com/contentful/contentful.swift
+5d24e54596064c16de0fe327c9b4b925047754a9	not-for-merge	'refs/pull/83/head' of https://github.com/contentful/contentful.swift
+64e6990bfe8d8edcdf8ac34a068e82692fc9d73e	not-for-merge	'refs/pull/84/head' of https://github.com/contentful/contentful.swift
+6334ffe741a15b52e2ba2b8b5dc13f7c62e971fd	not-for-merge	'refs/pull/87/head' of https://github.com/contentful/contentful.swift
+2433da32098e50d6694625d3f0fb024700e0b5cc	not-for-merge	'refs/pull/89/head' of https://github.com/contentful/contentful.swift
+a0c307ca7738678e07957eeb9aea5ac9b24dea97	not-for-merge	'refs/pull/90/head' of https://github.com/contentful/contentful.swift
+499e08a2efb2697358d7d70951e1c290f180e87e	not-for-merge	'refs/pull/91/head' of https://github.com/contentful/contentful.swift
+7f9fade99244c3a4c0f7ded535b1e369c4ecdacc	not-for-merge	'refs/pull/92/head' of https://github.com/contentful/contentful.swift
+dea1803109fcf825b7b1d60c7075e8ed126113da	not-for-merge	'refs/pull/93/head' of https://github.com/contentful/contentful.swift
+0182ce4146d572925a9562d0967351c0896c62c2	not-for-merge	'refs/pull/94/head' of https://github.com/contentful/contentful.swift
+006ecae7014f37157abe2531bc186a5f11acf001	not-for-merge	'refs/pull/95/head' of https://github.com/contentful/contentful.swift
+9b986689a323f500e7e7e469269ec4f568752da1	not-for-merge	'refs/pull/96/head' of https://github.com/contentful/contentful.swift
+94b1aa78f86afe54d5b882ec3e434c1a31462278	not-for-merge	'refs/pull/98/head' of https://github.com/contentful/contentful.swift
+5f7bfcd954147ee3be5b307db81ceb54181b1c80	not-for-merge	'refs/pull/99/head' of https://github.com/contentful/contentful.swift
+9f93131294d89190b3aaf088eb9d5d1be404ab97	not-for-merge	tag '0.1.0' of https://github.com/contentful/contentful.swift
+79dc7873c0b241f7aa48f43720a7f22758525ed5	not-for-merge	tag '0.1.1' of https://github.com/contentful/contentful.swift
+125ae428023b1b384fff31391eaa019f0efd944b	not-for-merge	tag '0.1.2' of https://github.com/contentful/contentful.swift
+3e9db95387698236d75b256daade80b3aaea8fe5	not-for-merge	tag '0.1.3' of https://github.com/contentful/contentful.swift
+3ba0d1fc26576b8497c64347ca324d141f5e862e	not-for-merge	tag '0.1.4' of https://github.com/contentful/contentful.swift
+624c6f308f783d771c0aa579d71bcceed1625767	not-for-merge	tag '0.10.0' of https://github.com/contentful/contentful.swift
+e6ed254095f1862fa2f91fed10416dee46dc795f	not-for-merge	tag '0.10.1' of https://github.com/contentful/contentful.swift
+5452a8e26065d611ee017e601f77fd46cfc24c2e	not-for-merge	tag '0.10.2' of https://github.com/contentful/contentful.swift
+ffff6cb2324f4925c64bb9c489c65e88671e6891	not-for-merge	tag '0.11.0' of https://github.com/contentful/contentful.swift
+e0f44a03b5b8388e260bf61401ea78c8c17ae05b	not-for-merge	tag '0.2.0' of https://github.com/contentful/contentful.swift
+4c01cc3d1effab6f292eec76562ffe930fce7fae	not-for-merge	tag '0.2.1' of https://github.com/contentful/contentful.swift
+94a1e04859a14663481d2de0a551b369056ee5f2	not-for-merge	tag '0.2.2' of https://github.com/contentful/contentful.swift
+0982e1db4845216e2611066f1825d6ba58fad51d	not-for-merge	tag '0.2.3' of https://github.com/contentful/contentful.swift
+07f05983d70d3d7ac866aaa0ff6de5f723f19708	not-for-merge	tag '0.3.0' of https://github.com/contentful/contentful.swift
+a02fcb222e04f6b51367450937dd32d90041bc00	not-for-merge	tag '0.3.1' of https://github.com/contentful/contentful.swift
+00f626e388902fd87ad944f59ded5ad4d6c8584a	not-for-merge	tag '0.4.0' of https://github.com/contentful/contentful.swift
+4a0f85712b09ecead2bc80cf9f807fe92466b1f7	not-for-merge	tag '0.4.0-beta1' of https://github.com/contentful/contentful.swift
+73ffe9ea69b78ce2e04ec017e9f264cb1db59ca7	not-for-merge	tag '0.4.0-beta2' of https://github.com/contentful/contentful.swift
+c88c7d0d47cbb63c013ea0b23e41ff3a43850f10	not-for-merge	tag '0.4.1' of https://github.com/contentful/contentful.swift
+33afda486220fa1ba8419db42aa3ce66d85e24cf	not-for-merge	tag '0.5.0' of https://github.com/contentful/contentful.swift
+6d82ad71ab55de32c396854bd433d030f0b003b0	not-for-merge	tag '0.6.0' of https://github.com/contentful/contentful.swift
+52f92d4682754e17ef0e2605b2b74e374292b726	not-for-merge	tag '0.6.1' of https://github.com/contentful/contentful.swift
+71b50d3cbb6b13661baae702aa3d16e06b05c571	not-for-merge	tag '0.7.0' of https://github.com/contentful/contentful.swift
+bc67d3d9f7f1de9f3375b7eab82e50ee51f190d1	not-for-merge	tag '0.7.1' of https://github.com/contentful/contentful.swift
+13a8f5b57d6d35dd2f140914ae8c7110f35ba208	not-for-merge	tag '0.7.2' of https://github.com/contentful/contentful.swift
+72e8fe35de452fe803f0909e5be557d5458ff8b3	not-for-merge	tag '0.7.3' of https://github.com/contentful/contentful.swift
+00d6e5681812dc76df51bf44fdeb0501a82243f9	not-for-merge	tag '0.7.4' of https://github.com/contentful/contentful.swift
+80fd768c301bebf86fb443c9ffc06f91a3a2e882	not-for-merge	tag '0.7.5' of https://github.com/contentful/contentful.swift
+3c6bc8022329382122982dbd75c1f9cc5c33e9c0	not-for-merge	tag '0.7.6' of https://github.com/contentful/contentful.swift
+14dcd0578244aaba61c029211c23db858d119d88	not-for-merge	tag '0.7.7' of https://github.com/contentful/contentful.swift
+1a72557a30242c7d04b7c2a0b7fde35801184c0a	not-for-merge	tag '0.8.0' of https://github.com/contentful/contentful.swift
+2c735965731a732613b983eb13625518a2ac7b48	not-for-merge	tag '0.9.0' of https://github.com/contentful/contentful.swift
+e00d86ab32e966047ee05c534bfd6b9d638796f2	not-for-merge	tag '0.9.1' of https://github.com/contentful/contentful.swift
+a6fafcae7bd19dd8a482a8fabe4b90b8900a9470	not-for-merge	tag '0.9.2' of https://github.com/contentful/contentful.swift
+7219f9003d3fd8c9edddea2a571f17dc8c1453d7	not-for-merge	tag '0.9.3' of https://github.com/contentful/contentful.swift
+10f9e5f7451667fd477376a81ac5f4f33b96d6b9	not-for-merge	tag '1.0.0' of https://github.com/contentful/contentful.swift
+5f5b93a5934fd3b7c06a40a9ca8cdc3e8be4e352	not-for-merge	tag '1.0.0-beta1' of https://github.com/contentful/contentful.swift
+808d7fcda1365217efcf884678aa97c21a89f37c	not-for-merge	tag '1.0.0-beta2' of https://github.com/contentful/contentful.swift
+5b9e4e33ce2716a91278ffea7d52cc6991eb7f71	not-for-merge	tag '1.0.0-beta3' of https://github.com/contentful/contentful.swift
+69311f9ca948e7cfc354ba92c6e98d70f807edf2	not-for-merge	tag '1.0.0-beta4' of https://github.com/contentful/contentful.swift
+0d92519daa17d5a68b14806a840f4a718bbd788d	not-for-merge	tag '1.0.0-beta5' of https://github.com/contentful/contentful.swift
+12be3854979078666d3348b0fb3781d5ea664a24	not-for-merge	tag '1.0.1' of https://github.com/contentful/contentful.swift
+ba493986fff8b8bbd9dd4f3e56f074904c090ab6	not-for-merge	tag '2.0.0' of https://github.com/contentful/contentful.swift
+fdd861c83cfb24731ab6fcc1d7fd1613556edecf	not-for-merge	tag '2.0.0-alpha1' of https://github.com/contentful/contentful.swift
+609cda82ae88c3dc8c459c8f411e4c7b80e9b42b	not-for-merge	tag '2.0.0-alpha2' of https://github.com/contentful/contentful.swift
+80c6c02bf0d5f2dfda32dfb837fd383ff3f25ffd	not-for-merge	tag '2.0.0-alpha3' of https://github.com/contentful/contentful.swift
+4f2d5bb2935f903a4ef09b00cecca9f0d825d192	not-for-merge	tag '2.0.0-alpha4' of https://github.com/contentful/contentful.swift
+bcf2808cf2a51543fc3a755663b47d67c3a1b42e	not-for-merge	tag '2.1.0' of https://github.com/contentful/contentful.swift
+5e8440ad3d4903218ce846afdf97e7c5be2a1177	not-for-merge	tag '2.2.0' of https://github.com/contentful/contentful.swift
+01c5589883d991ac557f83889769dc37c50b022d	not-for-merge	tag '2.2.1' of https://github.com/contentful/contentful.swift
+16c8e2f1a471ecdd9332c11137924436e5827bad	not-for-merge	tag '3.0.0' of https://github.com/contentful/contentful.swift
+d8e85dafed3cbf6501ac87a1e7e0b9b78fa38323	not-for-merge	tag '3.1.0' of https://github.com/contentful/contentful.swift
+f0587e275dbab9ea1ec07dbb524676df198458a1	not-for-merge	tag '3.1.1' of https://github.com/contentful/contentful.swift
+ce0c8440251898c102a20e250d44bee26fb45c2e	not-for-merge	tag '3.1.2' of https://github.com/contentful/contentful.swift
+697de08b5582b124c0524b71e10307178488d6d8	not-for-merge	tag '4.0.0' of https://github.com/contentful/contentful.swift
+71183d40c68d5a98d2d690cfc42ad11b9eaaa801	not-for-merge	tag '4.0.1' of https://github.com/contentful/contentful.swift
+a850b42f1dcb161b3a494b4fd9b4e7a4c96bbc85	not-for-merge	tag '4.1.0' of https://github.com/contentful/contentful.swift
+2e2d5b97429d9dd60e3d00702143dbd00d28e64b	not-for-merge	tag '4.1.1' of https://github.com/contentful/contentful.swift
+8cbe2e8d553f13f9565d392e4125c5f42c865e45	not-for-merge	tag '4.1.2' of https://github.com/contentful/contentful.swift
+798781b398bdc07cee8cd00f28f3b6bd78beb137	not-for-merge	tag '4.1.3' of https://github.com/contentful/contentful.swift
+4b5cc2dd9e71cece4c05e4788b2b045f3eb47beb	not-for-merge	tag '4.2.0' of https://github.com/contentful/contentful.swift
+40c3c99af92ad7c47881f8eb9ee730d64e07780e	not-for-merge	tag '4.2.1' of https://github.com/contentful/contentful.swift
+99517399466a29c776712e97fb7bcab3d09320df	not-for-merge	tag '4.2.2' of https://github.com/contentful/contentful.swift
+6df932423a730634f305e7488cae41122bcd2a44	not-for-merge	tag '4.2.3' of https://github.com/contentful/contentful.swift
+17eab50d3d9ea18f9335077eb4d846871c957c12	not-for-merge	tag '4.2.4' of https://github.com/contentful/contentful.swift
+4e812b29d7fb4d794584376599ff87e3998fd42c	not-for-merge	tag '5.0.0' of https://github.com/contentful/contentful.swift
+8276d174669d5591a8ef9d8f99ffe38daa904e8f	not-for-merge	tag '5.0.1' of https://github.com/contentful/contentful.swift
+ce412c5cf4ed999c2b77d6c1f5b17147749952f7	not-for-merge	tag '5.0.10' of https://github.com/contentful/contentful.swift
+deefc3f10d98b57d1a5887db68b38737f829da3f	not-for-merge	tag '5.0.11' of https://github.com/contentful/contentful.swift
+bd684e1bed784420c54651786f82676ab416134f	not-for-merge	tag '5.0.12' of https://github.com/contentful/contentful.swift
+8276d174669d5591a8ef9d8f99ffe38daa904e8f	not-for-merge	tag '5.0.2' of https://github.com/contentful/contentful.swift
+81bec4f9c8b31706c561a1657b7526edffc6fd62	not-for-merge	tag '5.0.3' of https://github.com/contentful/contentful.swift
+1c3d5ee8e6835d31ab7fab969652788a38d9de96	not-for-merge	tag '5.0.4' of https://github.com/contentful/contentful.swift
+979528cd5d1ad701c46abef0129705c39ef43570	not-for-merge	tag '5.0.5' of https://github.com/contentful/contentful.swift
+450e33d01455d4968f7151695a11a53de41c3a39	not-for-merge	tag '5.0.6' of https://github.com/contentful/contentful.swift
+7017c7c8da6f035a9e8c60c85158d5b7808b79da	not-for-merge	tag '5.0.7' of https://github.com/contentful/contentful.swift
+f0e581ebaf65bc9920fe807bcfe0b7efc8a217b7	not-for-merge	tag '5.0.8' of https://github.com/contentful/contentful.swift
+59402c444e0015c2e781e2212e2d815ad8c11745	not-for-merge	tag '5.0.9' of https://github.com/contentful/contentful.swift
+1e25cdc0553aa604073f9bb0a8e0826cac377ab8	not-for-merge	tag '5.1.0' of https://github.com/contentful/contentful.swift
+16afcd238b8cd4af23726b8f046db2aa366b129b	not-for-merge	tag '5.1.1' of https://github.com/contentful/contentful.swift
+66cd4326d4e0dc1977caa558d7368ddd31b6e27c	not-for-merge	tag '5.1.2' of https://github.com/contentful/contentful.swift
+b04dbee0ec99f11880ef9273059a06b9140d3a40	not-for-merge	tag '5.1.3' of https://github.com/contentful/contentful.swift
+56e136b4282fc66531688722c893b82b8fbde86f	not-for-merge	tag '5.2.0' of https://github.com/contentful/contentful.swift
+91f2306270a76fadc4c0c8237eff22966b608c08	not-for-merge	tag '5.3.0' of https://github.com/contentful/contentful.swift
+9b65d0b86b3b53194dcde7c5e3cc95b40a71a8c2	not-for-merge	tag '5.3.1' of https://github.com/contentful/contentful.swift
+cfc14e34f7d94a6fa322e438747d9beef420f2df	not-for-merge	tag '5.4.0' of https://github.com/contentful/contentful.swift
+71be0f24624275414f9be1a39a7faebace2cd830	not-for-merge	tag '5.4.1' of https://github.com/contentful/contentful.swift
+69f364a7a9cb00b99198bf39f1893874104c8505	not-for-merge	tag '5.5.0' of https://github.com/contentful/contentful.swift
+265a67e67fb3a722f73bd298f0879f3878528ca8	not-for-merge	tag '5.5.1' of https://github.com/contentful/contentful.swift
+530c8f5ef6d9b9dc2c9eea219258738b0e0bdc1b	not-for-merge	tag '5.5.10' of https://github.com/contentful/contentful.swift
+9662dccfe515bcc0c0aa5517663accea3f6209e1	not-for-merge	tag '5.5.11' of https://github.com/contentful/contentful.swift
+8977d5d6a780b322183214f408b82066b6381b2b	not-for-merge	tag '5.5.12' of https://github.com/contentful/contentful.swift
+a8124b0c0f151d6aff40fbb7663632dbc0b279e4	not-for-merge	tag '5.5.13' of https://github.com/contentful/contentful.swift
+d4246e940007b48175ba78a4bb90cebe8876e425	not-for-merge	tag '5.5.14' of https://github.com/contentful/contentful.swift
+df754312e0d96ea727ebdf4231f070fe6e99abe9	not-for-merge	tag '5.5.2' of https://github.com/contentful/contentful.swift
+fc1a5cbc4793d82368f0573dd241ac759643d4f8	not-for-merge	tag '5.5.3' of https://github.com/contentful/contentful.swift
+649ceda657768d2e5641e5b57104e6339c696482	not-for-merge	tag '5.5.4' of https://github.com/contentful/contentful.swift
+1ac9dd3adece6c8a222af8ab5265bc0f3730fec1	not-for-merge	tag '5.5.5' of https://github.com/contentful/contentful.swift
+54c37bc976ee2b7bd7c9019d02d43be65b416117	not-for-merge	tag '5.5.6' of https://github.com/contentful/contentful.swift
+cb73112b021b4dc33a8ddb03f87381fddf4e5eab	not-for-merge	tag '5.5.7' of https://github.com/contentful/contentful.swift
+84c9a150a1d6c05c75a3f86f4a62ff5dc3819e50	not-for-merge	tag '5.5.8' of https://github.com/contentful/contentful.swift
+ef74f4d62891db05b60a060306d3fcc8b63a4f2b	not-for-merge	tag '5.5.9' of https://github.com/contentful/contentful.swift

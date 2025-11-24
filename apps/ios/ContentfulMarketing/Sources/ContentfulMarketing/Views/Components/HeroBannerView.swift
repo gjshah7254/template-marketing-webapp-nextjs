@@ -7,7 +7,7 @@ struct HeroBannerView: View {
     var body: some View {
         ZStack {
             if let imageUrl = heroBanner.image?.url {
-                KFImage(URL(string: imageUrl))
+                KFImage(imageUrl)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 400)

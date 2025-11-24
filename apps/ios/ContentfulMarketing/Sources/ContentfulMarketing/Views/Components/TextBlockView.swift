@@ -1,5 +1,6 @@
 import SwiftUI
-import ContentfulRichTextRenderer
+import RichTextRenderer
+import Contentful
 
 struct TextBlockView: View {
     let textBlock: TextBlock

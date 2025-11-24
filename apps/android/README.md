@@ -22,16 +22,22 @@ Native Android app built with Kotlin and Jetpack Compose that connects to Conten
 
 ## Setup
 
-1. Configure Contentful credentials in `gradle.properties` or `local.properties`:
+1. **Configure Contentful credentials** in `gradle.properties` or `local.properties`:
    ```properties
    CONTENTFUL_SPACE_ID=your_space_id
    CONTENTFUL_ACCESS_TOKEN=your_access_token
    CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
    ```
 
-2. Open the project in Android Studio and sync Gradle files.
+2. **Sync Gradle files**: Open the project in Android Studio and click "Sync Project with Gradle Files" (or File → Sync Project with Gradle Files).
 
-3. Run the app on an emulator or device.
+3. **If you encounter dependency resolution errors**:
+   - Make sure you have an active internet connection
+   - Try "Invalidate Caches / Restart" in Android Studio (File → Invalidate Caches...)
+   - Clean and rebuild the project (Build → Clean Project, then Build → Rebuild Project)
+   - Ensure your `local.properties` file has the correct Android SDK path
+
+4. **Run the app** on an emulator or device.
 
 ## Project Structure
 
@@ -54,10 +60,11 @@ app/
 ## Dependencies
 
 - Jetpack Compose
-- Contentful Java SDK
+- Contentful GraphQL API (via Retrofit) - Using GraphQL API directly instead of Java SDK
 - Coil (for image loading)
 - Navigation Compose
 - Material Design 3
+- Retrofit & OkHttp (for networking)
 
 ## Building
 

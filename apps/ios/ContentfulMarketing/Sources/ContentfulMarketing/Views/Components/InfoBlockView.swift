@@ -1,6 +1,7 @@
 import SwiftUI
 import Kingfisher
-import ContentfulRichTextRenderer
+import RichTextRenderer
+import Contentful
 
 struct InfoBlockView: View {
     let infoBlock: InfoBlock
@@ -8,7 +9,7 @@ struct InfoBlockView: View {
     var body: some View {
         VStack(spacing: 20) {
             if let imageUrl = infoBlock.image?.url {
-                KFImage(URL(string: imageUrl))
+                KFImage(imageUrl)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: 300)

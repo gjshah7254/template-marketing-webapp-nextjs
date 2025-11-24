@@ -1,5 +1,6 @@
 package com.contentful.marketing.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -26,10 +27,16 @@ fun HomeScreen(navController: NavController) {
         scope.launch {
             try {
                 isLoading = true
-                page = contentfulService.fetchHomePage()
                 error = null
+                val fetchedPage = contentfulService.fetchHomePage()
+                if (fetchedPage == null) {
+                    error = "No page data returned. Please check your Contentful configuration."
+                } else {
+                    page = fetchedPage
+                }
             } catch (e: Exception) {
-                error = e.message
+                error = e.message ?: "Unknown error occurred: ${e.javaClass.simpleName}"
+                Log.e("HomeScreen", "Error fetching page", e)
             } finally {
                 isLoading = false
             }
@@ -67,6 +74,45 @@ fun HomeScreen(navController: NavController) {
             }
             page != null -> {
                 PageView(page = page!!, navController = navController)
+            }
+            else -> {
+                // Fallback UI when page is null and no error (e.g., empty credentials)
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(16.dp)
+                    ) {
+                        Text(
+                            text = "No Content Available",
+                            style = MaterialTheme.typography.headlineSmall
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "Please configure Contentful credentials in gradle.properties",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(onClick = {
+                            scope.launch {
+                                try {
+                                    isLoading = true
+                                    page = contentfulService.fetchHomePage()
+                                    error = null
+                                } catch (e: Exception) {
+                                    error = e.message ?: "Unknown error"
+                                } finally {
+                                    isLoading = false
+                                }
+                            }
+                        }) {
+                            Text("Retry")
+                        }
+                    }
+                }
             }
         }
     }

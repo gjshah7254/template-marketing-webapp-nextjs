@@ -1,0 +1,119 @@
+d6029d113b5e7fdea6ef5bb54d89061947d24074	not-for-merge	branch 'add-catalog-info' of https://github.com/contentful/rich-text-renderer.swift
+d3222c1941b068abc4af6cb87a7291370068d904	not-for-merge	branch 'add-codeowners' of https://github.com/contentful/rich-text-renderer.swift
+335d0e9ae9b65e61ae17eb14b4841781047c0dc2	not-for-merge	branch 'chore/COCOA-184-fix-block-view-layout' of https://github.com/contentful/rich-text-renderer.swift
+f40081f4702381cb9c14ce17b92c02b3f938b231	not-for-merge	branch 'chore/change-owners-to-dx' of https://github.com/contentful/rich-text-renderer.swift
+4f16a35596315a3ca232ce47522e1f6979a5726d	not-for-merge	branch 'chore/dx-5-remove-tundra' of https://github.com/contentful/rich-text-renderer.swift
+bee1178b5271710dabe48a34ee265905d00f3570	not-for-merge	branch 'chore/swift-ui-compatibility' of https://github.com/contentful/rich-text-renderer.swift
+44316e0569da70594aa81d17cee74f0e012507a3	not-for-merge	branch 'chore/swift-ui-example' of https://github.com/contentful/rich-text-renderer.swift
+704e6ca72a5b874b84121f9752b8f8fcfccb24b0	not-for-merge	branch 'circleci-project-setup' of https://github.com/contentful/rich-text-renderer.swift
+bfd20c21d5bd1b0177a82994c3b75b6be3928685	not-for-merge	branch 'dependabot/bundler/activesupport-7.0.7.2' of https://github.com/contentful/rich-text-renderer.swift
+f60ce5ac1c8573dedd40a2f436e0d88df52452ae	not-for-merge	branch 'dependabot/bundler/nokogiri-1.14.3' of https://github.com/contentful/rich-text-renderer.swift
+c81dfa6f995dba25c7c440925241913a7a49b2f3	not-for-merge	branch 'dependabot/bundler/redcarpet-3.5.1' of https://github.com/contentful/rich-text-renderer.swift
+adcd5a7cb82eeac8516b766b77848fd595fe8fa5	not-for-merge	branch 'develop' of https://github.com/contentful/rich-text-renderer.swift
+507fe5c642043638bb68e19ee60d3ed918a0b0ac	not-for-merge	branch 'feature/snapshot-tests' of https://github.com/contentful/rich-text-renderer.swift
+002d97cfec33d54b7ef292bcdfbf0a9a46cbc704	not-for-merge	branch 'feature/update-configuration' of https://github.com/contentful/rich-text-renderer.swift
+35791881239cff552b50715c82fcac2283773fe0	not-for-merge	branch 'feature/update-podspec' of https://github.com/contentful/rich-text-renderer.swift
+7e1875103703468d072a38c89633ed09089f79f4	not-for-merge	branch 'fix-double-encoding' of https://github.com/contentful/rich-text-renderer.swift
+42527f70252ece24c27533282811e8673831e502	not-for-merge	branch 'fix/better-swiftui-compatibility' of https://github.com/contentful/rich-text-renderer.swift
+fdb1733bbcb427d16f1d28497f9bc5aed2d1bab2	not-for-merge	branch 'fix/embed-views-layout' of https://github.com/contentful/rich-text-renderer.swift
+14fc15de6a402a8da43d15b6aaa7e3b1b49126b7	not-for-merge	branch 'fix/hyperlink-with-special-caracters' of https://github.com/contentful/rich-text-renderer.swift
+8e7122900652633d3c1f79513aa1f4002dcb0e5b	not-for-merge	branch 'layout-fixes' of https://github.com/contentful/rich-text-renderer.swift
+cf6f0d5ef3bfacc0c3e56d465a2cdf4a46a1bf37	not-for-merge	branch 'master' of https://github.com/contentful/rich-text-renderer.swift
+9717e5831546c16d9441eae0ca227457c0662eee	not-for-merge	branch 'new-release' of https://github.com/contentful/rich-text-renderer.swift
+f5255b8847d2e84860784e0fe36c18a4f7a342e3	not-for-merge	branch 'update-version' of https://github.com/contentful/rich-text-renderer.swift
+185f226d847009602bc088745ac794ed709fbda3	not-for-merge	'refs/pull/1/head' of https://github.com/contentful/rich-text-renderer.swift
+9f1b251f2f123218340d382469a9c1d2b9200b2c	not-for-merge	'refs/pull/11/head' of https://github.com/contentful/rich-text-renderer.swift
+adcd5a7cb82eeac8516b766b77848fd595fe8fa5	not-for-merge	'refs/pull/12/head' of https://github.com/contentful/rich-text-renderer.swift
+35791881239cff552b50715c82fcac2283773fe0	not-for-merge	'refs/pull/13/head' of https://github.com/contentful/rich-text-renderer.swift
+79636f54c41efaccf844db72d34291bfd0d5e303	not-for-merge	'refs/pull/14/head' of https://github.com/contentful/rich-text-renderer.swift
+81e6d8469d1faeb97e3ec26def8e2c4ab028ee91	not-for-merge	'refs/pull/15/head' of https://github.com/contentful/rich-text-renderer.swift
+40e558ac1c3f24ada148cc7f3237404305116fc6	not-for-merge	'refs/pull/15/merge' of https://github.com/contentful/rich-text-renderer.swift
+4684e569eadb5e54330ec04682ac7fbd0303d166	not-for-merge	'refs/pull/17/head' of https://github.com/contentful/rich-text-renderer.swift
+627ca639d86904df0f0d63c24140e7247cff877d	not-for-merge	'refs/pull/18/head' of https://github.com/contentful/rich-text-renderer.swift
+860a4ea4c1fc72e1e58ece45306d3aa6f79871b8	not-for-merge	'refs/pull/19/head' of https://github.com/contentful/rich-text-renderer.swift
+a0898e56c471b2594e8df922392edb77bf40c87f	not-for-merge	'refs/pull/2/head' of https://github.com/contentful/rich-text-renderer.swift
+7ae75d7a7745326162e8aafec840773c895fee75	not-for-merge	'refs/pull/20/head' of https://github.com/contentful/rich-text-renderer.swift
+5577d1a4481a71c010c8fd2a8632a66108b50258	not-for-merge	'refs/pull/21/head' of https://github.com/contentful/rich-text-renderer.swift
+c81dfa6f995dba25c7c440925241913a7a49b2f3	not-for-merge	'refs/pull/22/head' of https://github.com/contentful/rich-text-renderer.swift
+1dae453eb7b96b00b9758a650e4c7c16151c7c02	not-for-merge	'refs/pull/22/merge' of https://github.com/contentful/rich-text-renderer.swift
+5d6c57d6a076f05a67986acbd8b6939a1dba49ba	not-for-merge	'refs/pull/24/head' of https://github.com/contentful/rich-text-renderer.swift
+9717e5831546c16d9441eae0ca227457c0662eee	not-for-merge	'refs/pull/25/head' of https://github.com/contentful/rich-text-renderer.swift
+18a5c7a2f1e17509147dceea5cc096fab3efc6ff	not-for-merge	'refs/pull/28/head' of https://github.com/contentful/rich-text-renderer.swift
+043f79b51c8dc2cd7d8881e2e5d7e0934ed32c54	not-for-merge	'refs/pull/29/head' of https://github.com/contentful/rich-text-renderer.swift
+0f26e1ff4962254ff2c371a9f132bedeeb880e33	not-for-merge	'refs/pull/3/head' of https://github.com/contentful/rich-text-renderer.swift
+c7798ac7bdab1a0981dc541bbc74490e9d167732	not-for-merge	'refs/pull/30/head' of https://github.com/contentful/rich-text-renderer.swift
+9a951ed55f17d8a16687a7f3f88b5c2179f17f4d	not-for-merge	'refs/pull/31/head' of https://github.com/contentful/rich-text-renderer.swift
+9a4c4e1d32bf45e0bc309446c6bf12062181e0c8	not-for-merge	'refs/pull/33/head' of https://github.com/contentful/rich-text-renderer.swift
+7e925efbb469f03ecdfddc32072e87d2dbd34af0	not-for-merge	'refs/pull/34/head' of https://github.com/contentful/rich-text-renderer.swift
+704e6ca72a5b874b84121f9752b8f8fcfccb24b0	not-for-merge	'refs/pull/36/head' of https://github.com/contentful/rich-text-renderer.swift
+598fd783060c9230c7b5ecc7adc919e80b312581	not-for-merge	'refs/pull/36/merge' of https://github.com/contentful/rich-text-renderer.swift
+b30c793d36b58d77e8e11e6ed399132fc876ae85	not-for-merge	'refs/pull/38/head' of https://github.com/contentful/rich-text-renderer.swift
+507fe5c642043638bb68e19ee60d3ed918a0b0ac	not-for-merge	'refs/pull/4/head' of https://github.com/contentful/rich-text-renderer.swift
+b66d41cf85306ccbee4dd7e4a6d1dd194f33015d	not-for-merge	'refs/pull/4/merge' of https://github.com/contentful/rich-text-renderer.swift
+1e5c5a1aac2b1d6bc1ba6718726e73188513acd1	not-for-merge	'refs/pull/40/head' of https://github.com/contentful/rich-text-renderer.swift
+8ef074e50c53af397eb0ec919a21acb16f42b529	not-for-merge	'refs/pull/41/head' of https://github.com/contentful/rich-text-renderer.swift
+482892b26a6e157522b7f2342c0a9ce15b4c2e38	not-for-merge	'refs/pull/41/merge' of https://github.com/contentful/rich-text-renderer.swift
+1375bc1f4656afd4b53b23a71949e29b5c490a40	not-for-merge	'refs/pull/42/head' of https://github.com/contentful/rich-text-renderer.swift
+8db5a00cf7dc4c8ae4dcd0a1ae6e1710ed90f3bd	not-for-merge	'refs/pull/43/head' of https://github.com/contentful/rich-text-renderer.swift
+c591574f41407984723fcdc3690b4756774367ca	not-for-merge	'refs/pull/44/head' of https://github.com/contentful/rich-text-renderer.swift
+9962b7a2a4f88166d807dd0a7782a398c18cd0a5	not-for-merge	'refs/pull/45/head' of https://github.com/contentful/rich-text-renderer.swift
+d410d171e94cb529314d18ed6f7a0ba03f846ea4	not-for-merge	'refs/pull/46/head' of https://github.com/contentful/rich-text-renderer.swift
+bf94ca27a8e1c6b6283f39627d6984f4716408aa	not-for-merge	'refs/pull/47/head' of https://github.com/contentful/rich-text-renderer.swift
+deafe89b303164449c536c6ac619e27f13db1bfc	not-for-merge	'refs/pull/48/head' of https://github.com/contentful/rich-text-renderer.swift
+a9488675e64dfb77d42c56346234507f87ee28af	not-for-merge	'refs/pull/49/head' of https://github.com/contentful/rich-text-renderer.swift
+fc30f595159c36bc1fbd273138d28b4672e8cb1d	not-for-merge	'refs/pull/50/head' of https://github.com/contentful/rich-text-renderer.swift
+f60ce5ac1c8573dedd40a2f436e0d88df52452ae	not-for-merge	'refs/pull/51/head' of https://github.com/contentful/rich-text-renderer.swift
+5e7ff007d8b6bf4034620f8fe322d23b8a635dc6	not-for-merge	'refs/pull/51/merge' of https://github.com/contentful/rich-text-renderer.swift
+1bbcbcd8a408e7e672e2f7117f3a6ba02f96b32a	not-for-merge	'refs/pull/52/head' of https://github.com/contentful/rich-text-renderer.swift
+35e58774c7e4aa4967699be4a6747e2b4fcd88c0	not-for-merge	'refs/pull/52/merge' of https://github.com/contentful/rich-text-renderer.swift
+91d74d46e8875b79537b2ad308c98a01f4ea8222	not-for-merge	'refs/pull/54/head' of https://github.com/contentful/rich-text-renderer.swift
+e03805acbd09e317595c4378033a9a7fcac4a66f	not-for-merge	'refs/pull/55/head' of https://github.com/contentful/rich-text-renderer.swift
+1b9394e98fb7f9fe6b57c02fb1e5f549182e0273	not-for-merge	'refs/pull/56/head' of https://github.com/contentful/rich-text-renderer.swift
+e8ab05f8f75c7aa27c18efe71c6fcb0aea2484cc	not-for-merge	'refs/pull/57/head' of https://github.com/contentful/rich-text-renderer.swift
+bfd20c21d5bd1b0177a82994c3b75b6be3928685	not-for-merge	'refs/pull/59/head' of https://github.com/contentful/rich-text-renderer.swift
+1e4ecb06d07a3eb7e22a85c75e0e5725385f72e8	not-for-merge	'refs/pull/59/merge' of https://github.com/contentful/rich-text-renderer.swift
+92ad89dd85df0e532e10625ee89bf4fe12c87b85	not-for-merge	'refs/pull/60/head' of https://github.com/contentful/rich-text-renderer.swift
+31a976717339687fef9fc564d47881c71dba5ff3	not-for-merge	'refs/pull/61/head' of https://github.com/contentful/rich-text-renderer.swift
+2abe6a6545a3808cbb55525f516196a3b80bf121	not-for-merge	'refs/pull/64/head' of https://github.com/contentful/rich-text-renderer.swift
+d6029d113b5e7fdea6ef5bb54d89061947d24074	not-for-merge	'refs/pull/66/head' of https://github.com/contentful/rich-text-renderer.swift
+8ba26713f1513a26af53c3a56b5e8f3340c812f6	not-for-merge	'refs/pull/69/head' of https://github.com/contentful/rich-text-renderer.swift
+d3222c1941b068abc4af6cb87a7291370068d904	not-for-merge	'refs/pull/71/head' of https://github.com/contentful/rich-text-renderer.swift
+27c5a6e7e332c84197b2bf57973def436cb327e2	not-for-merge	'refs/pull/72/head' of https://github.com/contentful/rich-text-renderer.swift
+9fce2ef88609f9c6d97f227b1d464e1568ccd81d	not-for-merge	'refs/pull/73/head' of https://github.com/contentful/rich-text-renderer.swift
+015f59e9758aad7fa4614fe4676255c3ad0ceefc	not-for-merge	'refs/pull/74/head' of https://github.com/contentful/rich-text-renderer.swift
+4ecd4dd262899a8ed91be4c46509ffc44a9eec07	not-for-merge	'refs/pull/75/head' of https://github.com/contentful/rich-text-renderer.swift
+995440994c3a1bba691a4e640d1711defcbc9d63	not-for-merge	'refs/pull/76/head' of https://github.com/contentful/rich-text-renderer.swift
+190379699d094f3d34d73a8a3e9b4d78a3c206c6	not-for-merge	'refs/pull/77/head' of https://github.com/contentful/rich-text-renderer.swift
+5f28b0a2e57d7899ff6180bf417c8755e12ad7b3	not-for-merge	'refs/pull/78/head' of https://github.com/contentful/rich-text-renderer.swift
+3b317ab1709833060d9be1eebe78450e4364aee0	not-for-merge	'refs/pull/80/head' of https://github.com/contentful/rich-text-renderer.swift
+f40081f4702381cb9c14ce17b92c02b3f938b231	not-for-merge	'refs/pull/82/head' of https://github.com/contentful/rich-text-renderer.swift
+f1d4982e44c9b65a583fab321f6073ad4aec5a31	not-for-merge	'refs/pull/83/head' of https://github.com/contentful/rich-text-renderer.swift
+4f16a35596315a3ca232ce47522e1f6979a5726d	not-for-merge	'refs/pull/84/head' of https://github.com/contentful/rich-text-renderer.swift
+14fc15de6a402a8da43d15b6aaa7e3b1b49126b7	not-for-merge	'refs/pull/85/head' of https://github.com/contentful/rich-text-renderer.swift
+42527f70252ece24c27533282811e8673831e502	not-for-merge	'refs/pull/86/head' of https://github.com/contentful/rich-text-renderer.swift
+6ead0f6b5526a02f95605dddd25527f17e114d2d	not-for-merge	'refs/pull/87/head' of https://github.com/contentful/rich-text-renderer.swift
+0b8ea7739cb4047d0c4c930215374a781cc7ddd7	not-for-merge	'refs/pull/88/head' of https://github.com/contentful/rich-text-renderer.swift
+fdb1733bbcb427d16f1d28497f9bc5aed2d1bab2	not-for-merge	'refs/pull/89/head' of https://github.com/contentful/rich-text-renderer.swift
+44316e0569da70594aa81d17cee74f0e012507a3	not-for-merge	'refs/pull/90/head' of https://github.com/contentful/rich-text-renderer.swift
+8e7122900652633d3c1f79513aa1f4002dcb0e5b	not-for-merge	'refs/pull/91/head' of https://github.com/contentful/rich-text-renderer.swift
+6a2944a7ed908f941cbd8081b315e0c2983b1b11	not-for-merge	'refs/pull/92/head' of https://github.com/contentful/rich-text-renderer.swift
+7e1875103703468d072a38c89633ed09089f79f4	not-for-merge	'refs/pull/93/head' of https://github.com/contentful/rich-text-renderer.swift
+f5255b8847d2e84860784e0fe36c18a4f7a342e3	not-for-merge	'refs/pull/94/head' of https://github.com/contentful/rich-text-renderer.swift
+24e4fe9f8c6beaeb8e90c5181edbb0af7bc3ce05	not-for-merge	tag '0.0.1' of https://github.com/contentful/rich-text-renderer.swift
+bf35ada87aff3b58f0acbf9c5d7a9e734a2fa3cd	not-for-merge	tag '0.2.0' of https://github.com/contentful/rich-text-renderer.swift
+5ed70b97f972bde4940953c701f031764241b998	not-for-merge	tag '0.2.1' of https://github.com/contentful/rich-text-renderer.swift
+627ca639d86904df0f0d63c24140e7247cff877d	not-for-merge	tag '0.2.2' of https://github.com/contentful/rich-text-renderer.swift
+16c8130723f2a1d8663aed7c3ceaa972da79334b	not-for-merge	tag '0.2.3' of https://github.com/contentful/rich-text-renderer.swift
+eb48327a2d4bd76f1767ed67d20b924d3eb566be	not-for-merge	tag '0.2.4' of https://github.com/contentful/rich-text-renderer.swift
+233f5950c57eb3b1dbc2483bab1031b7c2ee5278	not-for-merge	tag '0.3.0' of https://github.com/contentful/rich-text-renderer.swift
+78e7bdc3c1bc21a97a183ebd128a5fb0b5d68327	not-for-merge	tag '0.3.1' of https://github.com/contentful/rich-text-renderer.swift
+a1dc1dba84bebb4a2476e2757d345357f6940f5e	not-for-merge	tag '0.3.2' of https://github.com/contentful/rich-text-renderer.swift
+31a976717339687fef9fc564d47881c71dba5ff3	not-for-merge	tag '0.4.0' of https://github.com/contentful/rich-text-renderer.swift
+840c29716777988e37423434a7c713b6aa4c6319	not-for-merge	tag '0.4.1' of https://github.com/contentful/rich-text-renderer.swift
+9fbc69c2244d37460bdd4e2aa8352dda05c70bd0	not-for-merge	tag '0.4.2' of https://github.com/contentful/rich-text-renderer.swift
+ca2748124d20305160451ef43256bf3ed57135cc	not-for-merge	tag '0.4.3' of https://github.com/contentful/rich-text-renderer.swift
+8b8ad1fe5348f1f402da0382ade1475bb9af8777	not-for-merge	tag '0.4.4' of https://github.com/contentful/rich-text-renderer.swift
+3eda62dbab015b6be7426121368c87fb58162fa8	not-for-merge	tag '0.4.5' of https://github.com/contentful/rich-text-renderer.swift
+3d4cf94339c3fe859cbdffa0a009275e902921a4	not-for-merge	tag '0.4.6' of https://github.com/contentful/rich-text-renderer.swift
+4d6e77d18cc8a68e246caa2c354f0b1f33afc088	not-for-merge	tag '0.4.7' of https://github.com/contentful/rich-text-renderer.swift
+239dc5ef3be26f4dcb3b65561325c0404c017bfa	not-for-merge	tag '0.4.8' of https://github.com/contentful/rich-text-renderer.swift

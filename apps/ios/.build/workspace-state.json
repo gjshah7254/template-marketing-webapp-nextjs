@@ -1,0 +1,98 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "alamofire",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/Alamofire/Alamofire.git",
+          "name" : "Alamofire"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+            "version" : "5.10.2"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "Alamofire"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "alamofireimage",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/Alamofire/AlamofireImage.git",
+          "name" : "AlamofireImage"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
+            "version" : "4.3.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "AlamofireImage"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "contentful.swift",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/contentful/contentful.swift",
+          "name" : "contentful.swift"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "d4246e940007b48175ba78a4bb90cebe8876e425",
+            "version" : "5.5.14"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "contentful.swift"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "kingfisher",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/onevcat/Kingfisher",
+          "name" : "Kingfisher"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
+            "version" : "7.12.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "Kingfisher"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "rich-text-renderer.swift",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/contentful/rich-text-renderer.swift",
+          "name" : "rich-text-renderer.swift"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "f5255b8847d2e84860784e0fe36c18a4f7a342e3",
+            "version" : "0.4.8"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "rich-text-renderer.swift"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

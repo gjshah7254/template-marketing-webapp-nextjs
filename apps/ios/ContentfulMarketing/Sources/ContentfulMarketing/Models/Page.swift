@@ -1,7 +1,7 @@
 import Foundation
 import Contentful
 
-final class Page: EntryDecodable, Resource, FieldKeysQueryable {
+final class Page: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "page"
     
     let id: String
@@ -12,9 +12,9 @@ final class Page: EntryDecodable, Resource, FieldKeysQueryable {
     let slug: String?
     let pageName: String?
     let seoFields: SEOFields?
-    let topSection: [EntryDecodable]?
-    let pageContent: EntryDecodable?
-    let extraSection: [EntryDecodable]?
+    var topSection: [EntryDecodable]?
+    var pageContent: EntryDecodable?
+    var extraSection: [EntryDecodable]?
     
     enum FieldKeys: String, CodingKey {
         case slug, pageName, seoFields, topSection, pageContent, extraSection
@@ -32,9 +32,26 @@ final class Page: EntryDecodable, Resource, FieldKeysQueryable {
         slug = try fields.decodeIfPresent(String.self, forKey: .slug)
         pageName = try fields.decodeIfPresent(String.self, forKey: .pageName)
         seoFields = try fields.decodeIfPresent(SEOFields.self, forKey: .seoFields)
-        topSection = try fields.decodeIfPresent([Link].self, forKey: .topSection)?.compactMap { $0 }
-        pageContent = try fields.decodeIfPresent(Link.self, forKey: .pageContent)
-        extraSection = try fields.decodeIfPresent([Link].self, forKey: .extraSection)?.compactMap { $0 }
+        
+        var topSectionItems: [EntryDecodable] = []
+        try fields.resolveLinksArray(forKey: .topSection, decoder: decoder) { item in
+            if let entryDecodable = item as? EntryDecodable {
+                topSectionItems.append(entryDecodable)
+            }
+        }
+        topSection = topSectionItems.isEmpty ? nil : topSectionItems
+        
+        try fields.resolveLink(forKey: .pageContent, decoder: decoder) { [weak self] item in
+            self?.pageContent = item as? EntryDecodable
+        }
+        
+        var extraSectionItems: [EntryDecodable] = []
+        try fields.resolveLinksArray(forKey: .extraSection, decoder: decoder) { item in
+            if let entryDecodable = item as? EntryDecodable {
+                extraSectionItems.append(entryDecodable)
+            }
+        }
+        extraSection = extraSectionItems.isEmpty ? nil : extraSectionItems
     }
 }
 

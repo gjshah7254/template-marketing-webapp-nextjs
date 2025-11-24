@@ -1,7 +1,7 @@
 import Foundation
 import Contentful
 
-final class Footer: EntryDecodable, Resource, FieldKeysQueryable {
+final class Footer: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "footer"
     
     let id: String
@@ -34,7 +34,7 @@ final class Footer: EntryDecodable, Resource, FieldKeysQueryable {
     }
 }
 
-final class SocialLink: EntryDecodable, Resource, FieldKeysQueryable {
+final class SocialLink: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "socialLink"
     
     let id: String

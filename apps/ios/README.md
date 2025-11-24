@@ -21,18 +21,38 @@ Native iOS app built with SwiftUI that connects to Contentful CMS and displays m
 
 ## Setup
 
-1. Install dependencies using Swift Package Manager:
-   ```bash
-   swift package resolve
-   ```
+### Important: Create Xcode Project First
 
-2. Configure Contentful credentials in your Xcode scheme or Info.plist:
+The current structure is a Swift Package. For an iOS app, you need an **Xcode Project** (`.xcodeproj`).
+
+**Quick Setup:**
+
+1. **Open Xcode** → File → New → Project
+2. Choose **iOS** → **App**
+3. Product Name: `ContentfulMarketing`
+4. Interface: **SwiftUI**
+5. Language: **Swift**
+6. Save in `apps/ios/` folder
+
+7. **Add Swift Package Dependencies** (File → Add Package Dependencies):
+   - `https://github.com/contentful/contentful.swift` (from: 5.0.0)
+   - `https://github.com/contentful/rich-text-renderer.swift` (from: 1.0.0)
+   - `https://github.com/onevcat/Kingfisher` (from: 7.0.0)
+
+8. **Copy Source Files**:
+   - Delete default `ContentView.swift` and `App.swift`
+   - Copy all files from `ContentfulMarketing/Sources/ContentfulMarketing/` to your Xcode project
+   - Make sure to add them to the target
+
+9. **Configure Environment Variables** (Edit Scheme → Run → Arguments → Environment Variables):
    - `CONTENTFUL_SPACE_ID`: Your Contentful Space ID
    - `CONTENTFUL_ACCESS_TOKEN`: Your Contentful Delivery API token
    - `CONTENTFUL_PREVIEW_ACCESS_TOKEN`: Your Contentful Preview API token (optional)
    - `CONTENTFUL_USE_PREVIEW`: Set to "true" to use preview API (optional)
 
-3. Open the project in Xcode and run.
+10. **Build and Run** (⌘R)
+
+**Alternative: Use XcodeGen** (see `SETUP.md` for details)
 
 ## Project Structure
 

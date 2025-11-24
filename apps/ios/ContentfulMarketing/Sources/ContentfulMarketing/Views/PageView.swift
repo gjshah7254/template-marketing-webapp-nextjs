@@ -1,4 +1,5 @@
 import SwiftUI
+import Contentful
 
 struct PageView: View {
     let page: Page

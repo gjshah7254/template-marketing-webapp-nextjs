@@ -1,9 +1,14 @@
 package com.contentful.marketing.ui.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -38,7 +43,7 @@ fun HeroBannerView(heroBanner: Component.HeroBanner) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             heroBanner.headline?.let {
@@ -217,7 +222,7 @@ fun QuoteView(quote: Component.Quote) {
             Text(
                 text = it,
                 style = MaterialTheme.typography.titleLarge,
-                fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
+                fontStyle = FontStyle.Italic
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -231,7 +236,7 @@ fun QuoteView(quote: Component.Quote) {
                     contentDescription = quote.authorName,
                     modifier = Modifier
                         .size(60.dp)
-                        .clip(androidx.compose.foundation.shape.CircleShape)
+                        .clip(CircleShape)
                 )
             }
             Column {
@@ -239,7 +244,7 @@ fun QuoteView(quote: Component.Quote) {
                     Text(
                         text = it,
                         style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                        fontWeight = FontWeight.Bold
                     )
                 }
                 quote.authorTitle?.let {
