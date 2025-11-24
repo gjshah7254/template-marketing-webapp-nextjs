@@ -100,10 +100,5 @@
     "prettier": "3.6.2",
     "react-i18next": "16.0.0",
     "typescript": "4.8.4"
-  },
-  "resolutions": {
-    "**/trim": "1.0.1",
-    "**/trim-newlines": "5.0.0",
-    "**/glob-parent": "6.0.2"
   }
 }
