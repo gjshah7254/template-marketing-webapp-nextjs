@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 const useStyles = makeStyles(() => ({
   baseAnchor: {
@@ -137,15 +137,29 @@ export const Link = (props: Props) => {
     );
   }
 
-  // For Material-UI components with Next.js 13+ Link, use component prop
+  // For Material-UI components with Next.js 13+ Link, create a wrapper that handles as prop
   // This avoids nested anchor tags that cause hydration errors
-  const finalHref = as || href;
+  const LinkComponent = React.forwardRef<HTMLAnchorElement, any>(({ children: linkChildren, ...linkProps }, ref) => {
+    if (as && as !== href) {
+      // If as is provided and different from href, use NextLink with as prop
+      return (
+        <NextLink href={href} as={as} ref={ref} {...linkProps}>
+          {linkChildren}
+        </NextLink>
+      );
+    }
+    return (
+      <NextLink href={href} ref={ref} {...linkProps}>
+        {linkChildren}
+      </NextLink>
+    );
+  });
+  LinkComponent.displayName = 'LinkComponent';
 
   if (isButton === true) {
     return (
       <MuiButton
-        component={NextLink}
-        href={finalHref}
+        component={LinkComponent}
         className={className}
         color={color}
         onClick={() => onClick && onClick()}
@@ -161,8 +175,7 @@ export const Link = (props: Props) => {
 
   return (
     <MuiLink
-      component={NextLink}
-      href={finalHref}
+      component={LinkComponent}
       className={className}
       underline={underlineStyle}
       color={color}
