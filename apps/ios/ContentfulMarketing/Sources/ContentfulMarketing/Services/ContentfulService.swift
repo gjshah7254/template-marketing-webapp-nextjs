@@ -19,5 +19,19 @@ class ContentfulService: ObservableObject {
     func fetchHomePage(locale: String = "en-US") async throws -> PageData? {
         return try await fetchPage(slug: "home", locale: locale)
     }
+    
+    func fetchNavigation(locale: String = "en-US") async throws -> NavigationData? {
+        guard let graphQLNav = try await graphQLService.fetchNavigation(locale: locale) else {
+            return nil
+        }
+        return NavigationData.fromGraphQL(graphQLNav)
+    }
+    
+    func fetchFooter(locale: String = "en-US") async throws -> FooterData? {
+        guard let graphQLFooter = try await graphQLService.fetchFooter(locale: locale) else {
+            return nil
+        }
+        return FooterData.fromGraphQL(graphQLFooter)
+    }
 }
 

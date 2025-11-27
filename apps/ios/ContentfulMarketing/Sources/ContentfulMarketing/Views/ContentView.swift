@@ -2,28 +2,65 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = PageViewModel()
+    @State private var isMenuOpen = false
     
     var body: some View {
         NavigationView {
             ZStack {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if let error = viewModel.error {
-                    ErrorView(error: error) {
-                        Task {
-                            await viewModel.loadPage(slug: "home")
+                // Content area
+                Group {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else if let error = viewModel.error {
+                        ErrorView(error: error) {
+                            Task {
+                                await viewModel.loadPage(slug: "home")
+                            }
                         }
-                    }
-                } else if let page = viewModel.page {
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            PageView(page: page)
+                    } else if let page = viewModel.page {
+                        ScrollView {
+                            VStack(spacing: 0) {
+                                PageView(page: page)
+                                FooterView(
+                                    footer: viewModel.footer,
+                                    onNavigate: { path in
+                                        Task {
+                                            await viewModel.loadPage(slug: path)
+                                        }
+                                    }
+                                )
+                            }
                         }
                     }
                 }
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    // Header - fixed at top with safe area
+                    HeaderView(onMenuClick: {
+                        withAnimation {
+                            isMenuOpen = true
+                        }
+                    })
+                    .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
+                    .background(Color(.systemBackground))
+                }
+                
+                // Mobile Menu - overlays everything
+                MobileMenuView(
+                    isOpen: $isMenuOpen,
+                    menuGroups: viewModel.navigation?.menuItems,
+                    onDismiss: {
+                        isMenuOpen = false
+                    },
+                    onNavigate: { path in
+                        Task {
+                            await viewModel.loadPage(slug: path)
+                        }
+                    }
+                )
             }
-            .navigationTitle("Contentful Marketing")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
             .task {
                 await viewModel.loadPage(slug: "home")
             }
@@ -45,11 +82,13 @@ struct ErrorView: View {
             Text("Error loading content")
                 .font(.headline)
                 
+                // Always show the full error message for debugging
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 12) {
                 // Check if it's a schema mismatch error
                 if error.localizedDescription.contains("Schema Mismatch") || 
                    error.localizedDescription.contains("Cannot query field") ||
                    error.localizedDescription.contains("Unknown type") {
-                    VStack(alignment: .leading, spacing: 12) {
                         Text("Configuration Issue")
                             .font(.subheadline)
                             .fontWeight(.semibold)
@@ -75,16 +114,26 @@ struct ErrorView: View {
                             Text("4. Clean build folder and rebuild")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
+                            }
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(8)
+                        }
+                        
+                        // Always show error details
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Error Details:")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                            Text(error.localizedDescription)
+                                .font(.system(size: 10, design: .monospaced))
+                                .foregroundColor(.secondary)
+                                .textSelection(.enabled)
                         }
                         .padding()
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(8)
                     }
-                    .padding(.horizontal)
-                } else {
-            Text(error.localizedDescription)
-                .font(.caption)
-                .foregroundColor(.secondary)
                         .padding(.horizontal)
                 }
                 

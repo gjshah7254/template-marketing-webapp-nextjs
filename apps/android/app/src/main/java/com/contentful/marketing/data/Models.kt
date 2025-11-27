@@ -75,7 +75,8 @@ data class Navigation(
 data class MenuGroup(
     val id: String,
     val groupName: String?,
-    val menuItems: List<MenuItem>?
+    val link: MenuItem?, // If present, the group name is clickable
+    val menuItems: List<MenuItem>? // Children/submenu items
 ) {
     companion object
 }
@@ -91,9 +92,20 @@ data class MenuItem(
 
 data class Footer(
     val id: String,
-    val logoUrl: String?,
-    val menuItems: List<MenuGroup>?,
-    val copyrightText: String?
+    val menuItems: List<FooterMenuGroup>?,
+    val legalLinks: List<MenuItem>?,
+    val twitterLink: String?,
+    val facebookLink: String?,
+    val linkedinLink: String?,
+    val instagramLink: String?
+) {
+    companion object
+}
+
+data class FooterMenuGroup(
+    val id: String,
+    val groupName: String?,
+    val menuItems: List<MenuItem>? // From featuredPagesCollection
 ) {
     companion object
 }

@@ -25,20 +25,12 @@ data class GraphQLResponse(
 
 data class GraphQLData(
     val pageCollection: PageCollection? = null,
-    val navigationCollection: NavigationCollection? = null,
-    val footerCollection: FooterCollection? = null
+    val navigationMenuCollection: GraphQLNavigationMenuCollection? = null,
+    val footerMenuCollection: GraphQLFooterMenuCollection? = null
 )
 
 data class PageCollection(
     val items: List<GraphQLPage>
-)
-
-data class NavigationCollection(
-    val items: List<GraphQLNavigation>
-)
-
-data class FooterCollection(
-    val items: List<GraphQLFooter>
 )
 
 data class GraphQLError(
@@ -163,6 +155,50 @@ class ContentfulService {
                               ... on Entry {
                                 sys { id }
                               }
+                              ... on ComponentHeroBanner {
+                                headline
+                                bodyText { json }
+                                ctaText
+                                image { url }
+                                imageStyle
+                                colorPalette
+                              }
+                              ... on ComponentCta {
+                                headline
+                                subline: subline { json }
+                                ctaText
+                                colorPalette
+                              }
+                              ... on ComponentTextBlock {
+                                headline
+                                sublineText: subline
+                                body { json }
+                                colorPalette
+                              }
+                              ... on ComponentInfoBlock {
+                                headline
+                                sublineText: subline
+                                block1Image { url }
+                                block1Body { json }
+                                block2Image { url }
+                                block2Body { json }
+                                block3Image { url }
+                                block3Body { json }
+                                colorPalette
+                              }
+                              ... on ComponentDuplex {
+                                headline
+                                bodyText { json }
+                                image { url }
+                                imageStyle
+                                colorPalette
+                              }
+                              ... on ComponentQuote {
+                                quote { json }
+                                image { url }
+                                imagePosition
+                                colorPalette
+                              }
                             }
                           }
                         }
@@ -215,19 +251,29 @@ class ContentfulService {
             try {
                 val query = """
                     query GetNavigation(${'$'}locale: String!) {
-                      navigationCollection(locale: ${'$'}locale, limit: 1) {
+                      navigationMenuCollection(locale: ${'$'}locale, limit: 1) {
                         items {
-                          sys { id }
                           menuItemsCollection {
                             items {
+                              __typename
                               sys { id }
                               groupName
-                              menuItemsCollection {
-                                items {
+                              groupLink {
+                                ... on Page {
+                                  __typename
+                                  slug
                                   sys { id }
-                                  label
-                                  path
-                                  externalLink
+                                  pageName
+                                }
+                              }
+                              featuredPagesCollection {
+                                items {
+                                  ... on Page {
+                                    __typename
+                                    slug
+                                  sys { id }
+                                    pageName
+                                  }
                                 }
                               }
                             }
@@ -254,7 +300,7 @@ class ContentfulService {
                     environmentName = environmentName,
                     request = request
                 )
-                response.data?.navigationCollection?.items?.firstOrNull()?.let { graphQLNav ->
+                response.data?.navigationMenuCollection?.items?.firstOrNull()?.let { graphQLNav ->
                     Navigation.fromGraphQL(graphQLNav)
                 }
             } catch (e: Exception) {
@@ -269,25 +315,43 @@ class ContentfulService {
             try {
                 val query = """
                     query GetFooter(${'$'}locale: String!) {
-                      footerCollection(locale: ${'$'}locale, limit: 1) {
+                      footerMenuCollection(locale: ${'$'}locale, limit: 1) {
                         items {
+                          __typename
                           sys { id }
-                          logo { url }
                           menuItemsCollection {
                             items {
+                              __typename
                               sys { id }
                               groupName
-                              menuItemsCollection {
+                              featuredPagesCollection {
                                 items {
-                                  sys { id }
-                                  label
-                                  path
-                                  externalLink
+                                  ... on Page {
+                                    __typename
+                                    slug
+                                    sys { id }
+                                    pageName
+                                  }
                                 }
                               }
                             }
                           }
-                          copyrightText
+                          legalLinks {
+                            featuredPagesCollection {
+                              items {
+                                ... on Page {
+                                  __typename
+                                  slug
+                                  sys { id }
+                                  pageName
+                                }
+                              }
+                            }
+                          }
+                          twitterLink
+                          facebookLink
+                          linkedinLink
+                          instagramLink
                         }
                       }
                     }
@@ -310,7 +374,7 @@ class ContentfulService {
                     environmentName = environmentName,
                     request = request
                 )
-                response.data?.footerCollection?.items?.firstOrNull()?.let { graphQLFooter ->
+                response.data?.footerMenuCollection?.items?.firstOrNull()?.let { graphQLFooter ->
                     Footer.fromGraphQL(graphQLFooter)
                 }
             } catch (e: Exception) {
@@ -324,3 +388,4 @@ class ContentfulService {
         return fetchPage("home", locale)
     }
 }
+

@@ -19,6 +19,9 @@
 		CDC713E85A2F52A9B7FA0FBF /* ContentfulService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6391E993F0C55B7A5911A12 /* ContentfulService.swift */; };
 		CFD04B3465EB937DD20925CF /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F37A8F1B5BA9A5FB57AF7 /* App.swift */; };
 		E5B1597607C6FFD2442AEA64 /* EnvLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021299BFFFDFBC0E423AA075 /* EnvLoader.swift */; };
+		K07U0S92G646NQXV3RI2ZNZR /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10PVT243U92GRQ8RQJVFYLRI /* HeaderView.swift */; };
+		FJVQ8S8P2KNJZGTQ1Q5PAC6N /* MobileMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = W7SDUH00UVUOF3Q8CGSF6E2X /* MobileMenuView.swift */; };
+		GQYCJFQ6C0Y1KKCLLTXX5R93 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5OMP42GTR626U42A7OH3QB5G /* FooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		DDB6E9482DCA25ECE11530E9 /* GraphQLModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLModels.swift; sourceTree = "<group>"; };
 		FA6F37A8F1B5BA9A5FB57AF7 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		FB5124916C639C8007C99D3C /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		10PVT243U92GRQ8RQJVFYLRI /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		W7SDUH00UVUOF3Q8CGSF6E2X /* MobileMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileMenuView.swift; sourceTree = "<group>"; };
+		5OMP42GTR626U42A7OH3QB5G /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				335ACF7A994C796D58FB84CC /* ContentView.swift */,
+				10PVT243U92GRQ8RQJVFYLRI /* HeaderView.swift */,
+				W7SDUH00UVUOF3Q8CGSF6E2X /* MobileMenuView.swift */,
+				5OMP42GTR626U42A7OH3QB5G /* FooterView.swift */,
 				FB5124916C639C8007C99D3C /* PageView.swift */,
 				1E527FE8C806A4C83072BFD5 /* Components */,
 			);
@@ -190,6 +199,9 @@
 				95385FAB287260EA0B34AFAE /* GraphQLConverters.swift in Sources */,
 				A139A9DFD123B23E59319E54 /* GraphQLModels.swift in Sources */,
 				2132F0B003CCC150FB593015 /* GraphQLService.swift in Sources */,
+				K07U0S92G646NQXV3RI2ZNZR /* HeaderView.swift in Sources */,
+				FJVQ8S8P2KNJZGTQ1Q5PAC6N /* MobileMenuView.swift in Sources */,
+				GQYCJFQ6C0Y1KKCLLTXX5R93 /* FooterView.swift in Sources */,
 				4D892CC4D42D1581E4A3CE96 /* PageView.swift in Sources */,
 				78F304C90F8FFDCD78619C37 /* PageViewModel.swift in Sources */,
 			);

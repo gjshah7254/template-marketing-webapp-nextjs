@@ -11,11 +11,91 @@ struct GraphQLPage: Codable {
     let extraSectionCollection: GraphQLCollection<GraphQLComponent>?
 }
 
-struct GraphQLNavigation: Codable {
-    let sys: GraphQLSys
+struct GraphQLNavigationMenu: Codable {
     let menuItemsCollection: GraphQLCollection<GraphQLMenuGroup>?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        menuItemsCollection = try? container.decodeIfPresent(GraphQLCollection<GraphQLMenuGroup>.self, forKey: .menuItemsCollection)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case menuItemsCollection
+    }
 }
 
+struct GraphQLNavigationMenuCollection: Codable {
+    let items: [GraphQLNavigationMenu]
+}
+
+struct GraphQLFooterMenu: Codable {
+    let sys: GraphQLSys
+    let menuItemsCollection: GraphQLCollection<GraphQLFooterMenuGroup>?
+    let legalLinks: GraphQLLegalLinks?
+    let twitterLink: String?
+    let facebookLink: String?
+    let linkedinLink: String?
+    let instagramLink: String?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        sys = try container.decode(GraphQLSys.self, forKey: .sys)
+        menuItemsCollection = try? container.decodeIfPresent(GraphQLCollection<GraphQLFooterMenuGroup>.self, forKey: .menuItemsCollection)
+        legalLinks = try? container.decodeIfPresent(GraphQLLegalLinks.self, forKey: .legalLinks)
+        twitterLink = try? container.decodeIfPresent(String.self, forKey: .twitterLink)
+        facebookLink = try? container.decodeIfPresent(String.self, forKey: .facebookLink)
+        linkedinLink = try? container.decodeIfPresent(String.self, forKey: .linkedinLink)
+        instagramLink = try? container.decodeIfPresent(String.self, forKey: .instagramLink)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case sys
+        case menuItemsCollection
+        case legalLinks
+        case twitterLink
+        case facebookLink
+        case linkedinLink
+        case instagramLink
+    }
+}
+
+struct GraphQLFooterMenuCollection: Codable {
+    let items: [GraphQLFooterMenu]
+}
+
+struct GraphQLFooterMenuGroup: Codable {
+    let sys: GraphQLSys
+    let groupName: String?
+    let featuredPagesCollection: GraphQLCollection<GraphQLPageLink>?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        sys = try container.decode(GraphQLSys.self, forKey: .sys)
+        groupName = try? container.decodeIfPresent(String.self, forKey: .groupName)
+        featuredPagesCollection = try? container.decodeIfPresent(GraphQLCollection<GraphQLPageLink>.self, forKey: .featuredPagesCollection)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case sys
+        case groupName
+        case featuredPagesCollection
+    }
+}
+
+struct GraphQLLegalLinks: Codable {
+    let featuredPagesCollection: GraphQLCollection<GraphQLPageLink>?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        featuredPagesCollection = try? container.decodeIfPresent(GraphQLCollection<GraphQLPageLink>.self, forKey: .featuredPagesCollection)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case featuredPagesCollection
+    }
+}
+
+// Keep old GraphQLFooter for backward compatibility if needed
 struct GraphQLFooter: Codable {
     let sys: GraphQLSys
     let logo: GraphQLAsset?
@@ -29,6 +109,20 @@ struct GraphQLSys: Codable {
 
 struct GraphQLCollection<T: Codable>: Codable {
     let items: [T]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Safely decode items array, defaulting to empty array if decoding fails
+        do {
+            items = try container.decode([T].self, forKey: .items)
+        } catch {
+            items = []
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case items
+    }
 }
 
 struct GraphQLComponent: Codable {
@@ -57,7 +151,53 @@ struct GraphQLComponent: Codable {
 struct GraphQLMenuGroup: Codable {
     let sys: GraphQLSys
     let groupName: String?
-    let menuItemsCollection: GraphQLCollection<GraphQLMenuItem>?
+    let groupLink: GraphQLPageLink?
+    let featuredPagesCollection: GraphQLCollection<GraphQLPageLink>?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        sys = try container.decode(GraphQLSys.self, forKey: .sys)
+        groupName = try? container.decodeIfPresent(String.self, forKey: .groupName)
+        
+        // Handle groupLink - it might be null or missing
+        if container.contains(.groupLink) {
+            // Try to decode, but handle gracefully if it fails
+            groupLink = try? container.decodeIfPresent(GraphQLPageLink.self, forKey: .groupLink)
+        } else {
+            groupLink = nil
+        }
+        
+        featuredPagesCollection = try? container.decodeIfPresent(GraphQLCollection<GraphQLPageLink>.self, forKey: .featuredPagesCollection)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case sys
+        case groupName
+        case groupLink
+        case featuredPagesCollection
+    }
+}
+
+struct GraphQLPageLink: Codable {
+    let __typename: String?
+    let sys: GraphQLSys?
+    let slug: String?
+    let pageName: String?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        __typename = try? container.decode(String.self, forKey: .__typename)
+        sys = try? container.decode(GraphQLSys.self, forKey: .sys)
+        slug = try? container.decodeIfPresent(String.self, forKey: .slug)
+        pageName = try? container.decodeIfPresent(String.self, forKey: .pageName)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case __typename
+        case sys
+        case slug
+        case pageName
+    }
 }
 
 struct GraphQLMenuItem: Codable {

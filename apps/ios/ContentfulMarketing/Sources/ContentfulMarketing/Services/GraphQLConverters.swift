@@ -210,5 +210,134 @@ extension ComponentData {
     }
 }
 
-// Navigation and Footer converters - not implemented yet for GraphQL
-// These would need to be implemented if Navigation/Footer are needed
+// Navigation data models
+struct NavigationData {
+    let id: String
+    let menuItems: [MenuGroupData]?
+}
+
+struct MenuGroupData: Identifiable {
+    let id: String
+    let groupName: String?
+    let link: MenuItemData? // If present, the group name is clickable
+    let menuItems: [MenuItemData]? // Children/submenu items
+}
+
+struct MenuItemData: Identifiable {
+    let id: String
+    let label: String?
+    let path: String?
+    let externalLink: String?
+}
+
+// Navigation converter
+extension NavigationData {
+    static func fromGraphQL(_ graphQLNav: GraphQLNavigationMenu) -> NavigationData {
+        return NavigationData(
+            id: "", // NavigationMenu doesn't have sys.id in the query
+            menuItems: graphQLNav.menuItemsCollection?.items.map { MenuGroupData.fromGraphQL($0) }
+        )
+    }
+}
+
+extension MenuGroupData {
+    static func fromGraphQL(_ graphQLGroup: GraphQLMenuGroup) -> MenuGroupData {
+        // Convert groupLink to MenuItemData if present and valid
+        let link: MenuItemData? = graphQLGroup.groupLink.flatMap { pageLink in
+            guard let sys = pageLink.sys else { return nil }
+            return MenuItemData(
+                id: sys.id,
+                label: pageLink.pageName,
+                path: pageLink.slug,
+                externalLink: nil
+            )
+        }
+        
+        // Convert featuredPagesCollection to menuItems
+        let menuItems: [MenuItemData]? = graphQLGroup.featuredPagesCollection?.items.compactMap { pageLink in
+            guard let sys = pageLink.sys else { return nil }
+            return MenuItemData(
+                id: sys.id,
+                label: pageLink.pageName,
+                path: pageLink.slug,
+                externalLink: nil
+            )
+        }
+        
+        return MenuGroupData(
+            id: graphQLGroup.sys.id,
+            groupName: graphQLGroup.groupName,
+            link: link,
+            menuItems: menuItems
+        )
+    }
+}
+
+extension MenuItemData {
+    static func fromGraphQL(_ graphQLItem: GraphQLMenuItem) -> MenuItemData {
+        return MenuItemData(
+            id: graphQLItem.sys.id,
+            label: graphQLItem.label,
+            path: graphQLItem.path,
+            externalLink: graphQLItem.externalLink
+        )
+    }
+}
+
+// Footer data models
+struct FooterData {
+    let id: String
+    let menuItems: [FooterMenuGroupData]?
+    let legalLinks: [MenuItemData]?
+    let twitterLink: String?
+    let facebookLink: String?
+    let linkedinLink: String?
+    let instagramLink: String?
+}
+
+struct FooterMenuGroupData: Identifiable {
+    let id: String
+    let groupName: String?
+    let menuItems: [MenuItemData]?
+}
+
+// Footer converter
+extension FooterData {
+    static func fromGraphQL(_ graphQLFooter: GraphQLFooterMenu) -> FooterData {
+        return FooterData(
+            id: graphQLFooter.sys.id,
+            menuItems: graphQLFooter.menuItemsCollection?.items.map { FooterMenuGroupData.fromGraphQL($0) },
+            legalLinks: graphQLFooter.legalLinks?.featuredPagesCollection?.items.compactMap { pageLink in
+                guard let sys = pageLink.sys else { return nil }
+                return MenuItemData(
+                    id: sys.id,
+                    label: pageLink.pageName,
+                    path: pageLink.slug,
+                    externalLink: nil
+                )
+            },
+            twitterLink: graphQLFooter.twitterLink,
+            facebookLink: graphQLFooter.facebookLink,
+            linkedinLink: graphQLFooter.linkedinLink,
+            instagramLink: graphQLFooter.instagramLink
+        )
+    }
+}
+
+extension FooterMenuGroupData {
+    static func fromGraphQL(_ graphQLGroup: GraphQLFooterMenuGroup) -> FooterMenuGroupData {
+        return FooterMenuGroupData(
+            id: graphQLGroup.sys.id,
+            groupName: graphQLGroup.groupName,
+            menuItems: graphQLGroup.featuredPagesCollection?.items.compactMap { pageLink in
+                guard let sys = pageLink.sys else { return nil }
+                return MenuItemData(
+                    id: sys.id,
+                    label: pageLink.pageName,
+                    path: pageLink.slug,
+                    externalLink: nil
+                )
+            }
+        )
+    }
+}

@@ -10,16 +10,36 @@ data class GraphQLPage(
     val extraSectionCollection: GraphQLCollection<GraphQLComponent>?
 )
 
-data class GraphQLNavigation(
-    val sys: GraphQLSys,
+data class GraphQLNavigationMenu(
     val menuItemsCollection: GraphQLCollection<GraphQLMenuGroup>?
 )
 
-data class GraphQLFooter(
+data class GraphQLNavigationMenuCollection(
+    val items: List<GraphQLNavigationMenu>
+)
+
+data class GraphQLFooterMenu(
     val sys: GraphQLSys,
-    val logo: GraphQLAsset?,
-    val menuItemsCollection: GraphQLCollection<GraphQLMenuGroup>?,
-    val copyrightText: String?
+    val menuItemsCollection: GraphQLCollection<GraphQLFooterMenuGroup>?,
+    val legalLinks: GraphQLLegalLinks?,
+    val twitterLink: String?,
+    val facebookLink: String?,
+    val linkedinLink: String?,
+    val instagramLink: String?
+)
+
+data class GraphQLFooterMenuCollection(
+    val items: List<GraphQLFooterMenu>
+)
+
+data class GraphQLFooterMenuGroup(
+    val sys: GraphQLSys,
+    val groupName: String?,
+    val featuredPagesCollection: GraphQLCollection<GraphQLPageLink>?
+)
+
+data class GraphQLLegalLinks(
+    val featuredPagesCollection: GraphQLCollection<GraphQLPageLink>?
 )
 
 data class GraphQLSys(
@@ -49,7 +69,15 @@ data class GraphQLComponent(
 data class GraphQLMenuGroup(
     val sys: GraphQLSys,
     val groupName: String?,
-    val menuItemsCollection: GraphQLCollection<GraphQLMenuItem>?
+    val groupLink: GraphQLPageLink?,
+    val featuredPagesCollection: GraphQLCollection<GraphQLPageLink>?
+)
+
+data class GraphQLPageLink(
+    val __typename: String? = null, // Optional since it's queried but may not always be present
+    val sys: GraphQLSys,
+    val slug: String?,
+    val pageName: String?
 )
 
 data class GraphQLMenuItem(
@@ -136,9 +164,9 @@ fun Component.Companion.fromGraphQL(component: GraphQLComponent): Component? {
     }
 }
 
-fun Navigation.Companion.fromGraphQL(nav: GraphQLNavigation): Navigation {
+fun Navigation.Companion.fromGraphQL(nav: GraphQLNavigationMenu): Navigation {
     return Navigation(
-        id = nav.sys.id,
+        id = "", // NavigationMenu doesn't have sys.id in the query
         menuItems = nav.menuItemsCollection?.items?.map { 
             MenuGroup.fromGraphQL(it) 
         }
@@ -149,8 +177,21 @@ fun MenuGroup.Companion.fromGraphQL(group: GraphQLMenuGroup): MenuGroup {
     return MenuGroup(
         id = group.sys.id,
         groupName = group.groupName,
-        menuItems = group.menuItemsCollection?.items?.map { 
-            MenuItem.fromGraphQL(it) 
+        link = group.groupLink?.let { 
+            MenuItem(
+                id = it.sys.id,
+                label = it.pageName,
+                path = it.slug,
+                externalLink = null
+            )
+        },
+        menuItems = group.featuredPagesCollection?.items?.map { pageLink ->
+            MenuItem(
+                id = pageLink.sys.id,
+                label = pageLink.pageName,
+                path = pageLink.slug,
+                externalLink = null
+            )
         }
     )
 }
@@ -164,14 +205,35 @@ fun MenuItem.Companion.fromGraphQL(item: GraphQLMenuItem): MenuItem {
     )
 }
 
-fun Footer.Companion.fromGraphQL(footer: GraphQLFooter): Footer {
+fun Footer.Companion.fromGraphQL(footer: GraphQLFooterMenu): Footer {
     return Footer(
         id = footer.sys.id,
-        logoUrl = footer.logo?.url,
-        menuItems = footer.menuItemsCollection?.items?.map { 
-            MenuGroup.fromGraphQL(it) 
+        menuItems = footer.menuItemsCollection?.items?.map { group ->
+            FooterMenuGroup(
+                id = group.sys.id,
+                groupName = group.groupName,
+                menuItems = group.featuredPagesCollection?.items?.map { pageLink ->
+                    MenuItem(
+                        id = pageLink.sys.id,
+                        label = pageLink.pageName,
+                        path = pageLink.slug,
+                        externalLink = null
+                    )
+                }
+            )
         },
-        copyrightText = footer.copyrightText
+        legalLinks = footer.legalLinks?.featuredPagesCollection?.items?.map { pageLink ->
+            MenuItem(
+                id = pageLink.sys.id,
+                label = pageLink.pageName,
+                path = pageLink.slug,
+                externalLink = null
+            )
+        },
+        twitterLink = footer.twitterLink,
+        facebookLink = footer.facebookLink,
+        linkedinLink = footer.linkedinLink,
+        instagramLink = footer.instagramLink
     )
 }
 

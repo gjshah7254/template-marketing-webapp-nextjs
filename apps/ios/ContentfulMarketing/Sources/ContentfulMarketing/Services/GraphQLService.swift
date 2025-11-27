@@ -17,8 +17,8 @@ struct GraphQLResponse<T: Codable>: Codable {
 
 struct GraphQLData: Codable {
     let pageCollection: PageCollection?
-    let navigationCollection: NavigationCollection?
-    let footerCollection: FooterCollection?
+    let navigationMenuCollection: GraphQLNavigationMenuCollection?
+    let footerMenuCollection: GraphQLFooterMenuCollection?
 }
 
 struct PageCollection: Codable {
@@ -40,24 +40,7 @@ struct PageCollection: Codable {
     }
 }
 
-struct NavigationCollection: Codable {
-    let items: [GraphQLNavigation]
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        // Safely decode items array, defaulting to empty array if decoding fails
-        // Handle case where items might be a dictionary or other type
-        do {
-            items = try container.decode([GraphQLNavigation].self, forKey: .items)
-        } catch {
-            items = []
-        }
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case items
-    }
-}
+// NavigationCollection removed - using GraphQLNavigationMenuCollection instead
 
 struct FooterCollection: Codable {
     let items: [GraphQLFooter]
@@ -175,15 +158,24 @@ class GraphQLService {
             let graphQLResponse = try decoder.decode(GraphQLResponse<T>.self, from: data)
             
             if let errors = graphQLResponse.errors, !errors.isEmpty {
-                let errorMessages = errors.map { $0.message }.joined(separator: ", ")
+                let errorMessages = errors.map { $0.message }.joined(separator: "\n")
+                
+                // Log the full error for debugging
+                print("GraphQL Error Details:")
+                print("Space ID: \(spaceId)")
+                print("Environment: \(environment)")
+                print("Error Messages: \(errorMessages)")
                 
                 if errorMessages.contains("Cannot query field") || errorMessages.contains("Unknown type") {
                     let helpfulMessage = """
                     GraphQL Schema Mismatch Error:
+                    
                     \(errorMessages)
                     
                     This usually means you're using the wrong Contentful space.
-                    The app is currently configured with spaceId: \(spaceId)
+                    The app is currently configured with:
+                    - Space ID: \(spaceId)
+                    - Environment: \(environment)
                     
                     Please configure the iOS app with the same Contentful space ID and access token
                     that your Next.js app uses. See ENV_SETUP.md for instructions.
@@ -292,6 +284,51 @@ class GraphQLService {
                       ... on Entry {
                         sys { id }
                       }
+                      ... on ComponentHeroBanner {
+                        headline
+                        bodyText { json }
+                        ctaText
+                        image { url }
+                        imageStyle
+                        colorPalette
+                      }
+                      ... on ComponentCta {
+                        headline
+                        subline: subline { json }
+                        ctaText
+                        colorPalette
+                      }
+                      ... on ComponentTextBlock {
+                        headline
+                        sublineText: subline
+                        body { json }
+                        colorPalette
+                      }
+                      ... on ComponentInfoBlock {
+                        headline
+                        sublineText: subline
+                        block1Image { url }
+                        block1Body { json }
+                        block2Image { url }
+                        block2Body { json }
+                        block3Image { url }
+                        block3Body { json }
+                        colorPalette
+                      }
+                      ... on ComponentDuplex {
+                        headline
+                        bodyText { json }
+                        image { url }
+                        imageStyle
+                        containerLayout
+                        colorPalette
+                      }
+                      ... on ComponentQuote {
+                        quote { json }
+                        image { url }
+                        imagePosition
+                        colorPalette
+                      }
                     }
                   }
                 }
@@ -310,22 +347,32 @@ class GraphQLService {
         }
     }
     
-    func fetchNavigation(locale: String = "en-US") async throws -> GraphQLNavigation? {
+    func fetchNavigation(locale: String = "en-US") async throws -> GraphQLNavigationMenu? {
         let query = """
             query GetNavigation($locale: String!) {
-              navigationCollection(locale: $locale, limit: 1) {
+              navigationMenuCollection(locale: $locale, limit: 1) {
                 items {
-                  sys { id }
                   menuItemsCollection {
                     items {
+                      __typename
                       sys { id }
                       groupName
-                      menuItemsCollection {
-                        items {
+                      groupLink {
+                        ... on Page {
+                          __typename
+                          slug
                           sys { id }
-                          label
-                          path
-                          externalLink
+                          pageName
+                        }
+                      }
+                      featuredPagesCollection {
+                        items {
+                          ... on Page {
+                            __typename
+                            slug
+                          sys { id }
+                            pageName
+                          }
                         }
                       }
                     }
@@ -336,46 +383,65 @@ class GraphQLService {
         """
         
         let data: GraphQLData = try await performQuery(query: query, variables: ["locale": locale])
-        guard let navigationCollection = data.navigationCollection,
-              !navigationCollection.items.isEmpty else {
+        guard let navigationMenuCollection = data.navigationMenuCollection,
+              !navigationMenuCollection.items.isEmpty else {
             return nil
         }
-        return navigationCollection.items.first
+        return navigationMenuCollection.items.first
     }
     
-    func fetchFooter(locale: String = "en-US") async throws -> GraphQLFooter? {
+    func fetchFooter(locale: String = "en-US") async throws -> GraphQLFooterMenu? {
         let query = """
             query GetFooter($locale: String!) {
-              footerCollection(locale: $locale, limit: 1) {
+              footerMenuCollection(locale: $locale, limit: 1) {
                 items {
+                  __typename
                   sys { id }
-                  logo { url }
                   menuItemsCollection {
                     items {
+                      __typename
                       sys { id }
                       groupName
-                      menuItemsCollection {
+                      featuredPagesCollection {
                         items {
-                          sys { id }
-                          label
-                          path
-                          externalLink
+                          ... on Page {
+                            __typename
+                            slug
+                            sys { id }
+                            pageName
+                          }
                         }
                       }
                     }
                   }
-                  copyrightText
+                  legalLinks {
+                    featuredPagesCollection {
+                      items {
+                        ... on Page {
+                          __typename
+                          slug
+                          sys { id }
+                          pageName
+                        }
+                      }
+                    }
+                  }
+                  twitterLink
+                  facebookLink
+                  linkedinLink
+                  instagramLink
                 }
               }
             }
         """
         
         let data: GraphQLData = try await performQuery(query: query, variables: ["locale": locale])
-        guard let footerCollection = data.footerCollection,
-              !footerCollection.items.isEmpty else {
+        guard let footerMenuCollection = data.footerMenuCollection,
+              !footerMenuCollection.items.isEmpty else {
             return nil
         }
-        return footerCollection.items.first
+        return footerMenuCollection.items.first
     }
 }
+
 
