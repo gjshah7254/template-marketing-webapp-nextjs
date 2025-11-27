@@ -55,6 +55,77 @@ const CustomApp = ({
     };
   }, [router.events]);
 
+  useEffect(() => {
+    // Remove Next.js and Contentful logos from bottom corners
+    const removeLogos = () => {
+      // Find and remove elements at bottom corners
+      const allElements = document.querySelectorAll('body > *');
+      allElements.forEach((el: Element) => {
+        const htmlEl = el as HTMLElement;
+        if (!htmlEl || htmlEl.style.display === 'none') return;
+
+        const style = window.getComputedStyle(htmlEl);
+        const position = style.position;
+        const bottom = style.bottom;
+        const left = style.left;
+        const right = style.right;
+
+        // Check if element is fixed/absolute at bottom corners
+        const isAtBottomLeft =
+          (position === 'fixed' || position === 'absolute') &&
+          (bottom === '0px' || bottom === '0' || parseInt(bottom) < 20) &&
+          (left === '0px' || left === '0' || parseInt(left) < 20);
+
+        const isAtBottomRight =
+          (position === 'fixed' || position === 'absolute') &&
+          (bottom === '0px' || bottom === '0' || parseInt(bottom) < 20) &&
+          (right === '0px' || right === '0' || parseInt(right) < 20);
+
+        if (isAtBottomLeft || isAtBottomRight) {
+          // Check if it's likely a logo/badge (small size, contains image, link, or text)
+          const rect = htmlEl.getBoundingClientRect();
+          if (rect.width < 100 && rect.height < 100) {
+            const hasLogoContent =
+              htmlEl.querySelector('img, svg, a[href*="nextjs"], a[href*="contentful"]') ||
+              htmlEl.textContent?.toLowerCase().includes('next.js') ||
+              htmlEl.textContent?.toLowerCase().includes('nextjs') ||
+              htmlEl.textContent?.toLowerCase().includes('contentful') ||
+              htmlEl.getAttribute('href')?.includes('nextjs') ||
+              htmlEl.getAttribute('href')?.includes('contentful') ||
+              htmlEl.getAttribute('title')?.toLowerCase().includes('next') ||
+              htmlEl.getAttribute('title')?.toLowerCase().includes('contentful');
+
+            // Only hide if it clearly contains logo content or is very small (likely a badge)
+            if (hasLogoContent || (rect.width < 60 && rect.height < 60)) {
+              htmlEl.style.display = 'none';
+            }
+          }
+        }
+      });
+    };
+
+    // Run immediately
+    removeLogos();
+
+    // Use MutationObserver to watch for dynamically added elements
+    const observer = new MutationObserver(() => {
+      removeLogos();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    // Also run on interval as fallback
+    const interval = setInterval(removeLogos, 500);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <>
       <Head>

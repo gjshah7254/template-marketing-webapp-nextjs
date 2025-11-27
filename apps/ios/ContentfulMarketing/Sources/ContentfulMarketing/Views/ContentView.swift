@@ -44,11 +44,9 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Contentful Marketing")
-            .onAppear {
-                // Don't load immediately - let user trigger it manually to avoid crashes
-                // Task {
-                //     await viewModel.loadPage(slug: selectedSlug)
-                // }
+            .task {
+                // Auto-load homepage when view appears
+                await viewModel.loadPage(slug: selectedSlug)
             }
         }
     }
