@@ -41,26 +41,24 @@ class ContentfulService: ObservableObject {
     
     func fetchPage(slug: String, locale: String = "en-US") async throws -> Page? {
         return try await withCheckedThrowingContinuation { continuation in
-            do {
-                let query = QueryOn<Page>.where(field: .slug, .equals(slug))
-                    .localizeResults(withLocaleCode: locale)
-                    .include(10)
-                
-                _ = client.fetchArray(of: Page.self, matching: query) { result in
-                    switch result {
-                    case .success(let response):
-                        // Safely access items array
-                        if !response.items.isEmpty {
-                            continuation.resume(returning: response.items.first)
-                        } else {
-                            continuation.resume(returning: nil)
-                        }
-                    case .failure(let error):
-                        continuation.resume(throwing: error)
+            // Try a simpler query first without include to avoid complex decoding
+            // This reduces the chance of SDK crashes during link resolution
+            let query = QueryOn<Page>.where(field: .slug, .equals(slug))
+                .localizeResults(withLocaleCode: locale)
+                .include(0) // Start with 0 includes to avoid complex link resolution
+            
+            _ = client.fetchArray(of: Page.self, matching: query) { result in
+                switch result {
+                case .success(let response):
+                    // Safely access items array
+                    if !response.items.isEmpty {
+                        continuation.resume(returning: response.items.first)
+                    } else {
+                        continuation.resume(returning: nil)
                     }
+                case .failure(let error):
+                    continuation.resume(throwing: error)
                 }
-            } catch {
-                continuation.resume(throwing: error)
             }
         }
     }

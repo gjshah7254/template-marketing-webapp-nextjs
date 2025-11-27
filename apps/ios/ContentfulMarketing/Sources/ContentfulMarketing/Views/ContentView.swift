@@ -24,24 +24,31 @@ struct ContentView: View {
                     }
                 } else {
                     VStack(spacing: 20) {
-                        Text("No content available")
-                            .font(.headline)
+                        Text("Contentful Marketing")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Text("Tap the button below to load content")
+                            .font(.subheadline)
                             .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
                         Button("Load Home Page") {
                             Task {
                                 await viewModel.loadPage(slug: "home")
                             }
                         }
                         .buttonStyle(.borderedProminent)
+                        .padding()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
                 }
             }
             .navigationTitle("Contentful Marketing")
-            .task {
-                // Delay initial load slightly to ensure app is fully initialized
-                try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
-                await viewModel.loadPage(slug: selectedSlug)
+            .onAppear {
+                // Don't load immediately - let user trigger it manually to avoid crashes
+                // Task {
+                //     await viewModel.loadPage(slug: selectedSlug)
+                // }
             }
         }
     }

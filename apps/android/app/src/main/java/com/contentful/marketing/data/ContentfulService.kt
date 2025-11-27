@@ -102,55 +102,67 @@ class ContentfulService {
                           topSectionCollection {
                             items {
                               __typename
-                              sys { id }
+                              ... on Entry {
+                                sys { id }
+                              }
                               ... on ComponentHeroBanner {
                                 headline
-                                subline
+                                bodyText { json }
                                 ctaText
                                 image { url }
+                                imageStyle
                                 colorPalette
                               }
                               ... on ComponentCta {
                                 headline
-                                subline
+                                subline: subline { json }
                                 ctaText
                                 colorPalette
                               }
                               ... on ComponentTextBlock {
                                 headline
-                                bodyText { json }
+                                sublineText: subline
+                                body { json }
                                 colorPalette
                               }
                               ... on ComponentInfoBlock {
                                 headline
-                                bodyText { json }
-                                image { url }
+                                sublineText: subline
+                                block1Image { url }
+                                block1Body { json }
+                                block2Image { url }
+                                block2Body { json }
+                                block3Image { url }
+                                block3Body { json }
                                 colorPalette
                               }
                               ... on ComponentDuplex {
                                 headline
                                 bodyText { json }
                                 image { url }
-                                imagePosition
+                                imageStyle
                                 colorPalette
                               }
                               ... on ComponentQuote {
-                                quoteText
-                                authorName
-                                authorTitle
-                                authorImage { url }
+                                quote { json }
+                                image { url }
+                                imagePosition
                                 colorPalette
                               }
                             }
                           }
                           pageContent {
                             __typename
-                            sys { id }
+                            ... on Entry {
+                              sys { id }
+                            }
                           }
                           extraSectionCollection {
                             items {
                               __typename
-                              sys { id }
+                              ... on Entry {
+                                sys { id }
+                              }
                             }
                           }
                         }
