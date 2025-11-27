@@ -50,9 +50,7 @@ The current structure is a Swift Package. For an iOS app, you need an **Xcode Pr
    - Edit Scheme → Run → Arguments → Environment Variables
    - Add these variables:
      - `CONTENTFUL_SPACE_ID` = `your_space_id`
-     - `CONTENTFUL_ACCESS_TOKEN` = `your_access_token`
-     - `CONTENTFUL_PREVIEW_ACCESS_TOKEN` = `your_preview_token` (optional)
-     - `CONTENTFUL_USE_PREVIEW` = `false` (or `true` for preview mode)
+     - `CONTENTFUL_DELIVERY_ACCESS_TOKEN` = `your_access_token`
    
    **Option B: Using Config.xcconfig (Recommended for Production)**
    - Copy `Config.xcconfig.example` to `Config.xcconfig`

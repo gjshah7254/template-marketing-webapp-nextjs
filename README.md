@@ -40,8 +40,8 @@ All three apps require Contentful credentials. Configure them as follows:
 Create `apps/nextjs/.env`:
 ```env
 CONTENTFUL_SPACE_ID=your_space_id
-CONTENTFUL_ACCESS_TOKEN=your_access_token
-CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
+CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_access_token
+ENVIRONMENT_NAME=master
 ```
 
 #### iOS App
@@ -53,9 +53,7 @@ See `apps/ios/ENV_SETUP.md` for detailed instructions.
 
 Required variables:
 - `CONTENTFUL_SPACE_ID` = `your_space_id`
-- `CONTENTFUL_ACCESS_TOKEN` = `your_access_token`
-- `CONTENTFUL_PREVIEW_ACCESS_TOKEN` = `your_preview_token` (optional)
-- `CONTENTFUL_USE_PREVIEW` = `false` (optional)
+- `CONTENTFUL_DELIVERY_ACCESS_TOKEN` = `your_access_token`
 
 #### Android App
 See `apps/android/ENV_SETUP.md` for detailed instructions.
@@ -67,8 +65,8 @@ See `apps/android/ENV_SETUP.md` for detailed instructions.
 Required variables:
 ```properties
 CONTENTFUL_SPACE_ID=your_space_id
-CONTENTFUL_ACCESS_TOKEN=your_access_token
-CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
+CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_access_token
+ENVIRONMENT_NAME=master
 ```
 
 ## 📱 Applications

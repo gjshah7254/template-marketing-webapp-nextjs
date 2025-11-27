@@ -11,8 +11,8 @@ If you're seeing a white screen, it's most likely because **Contentful credentia
 2. **Add your Contentful credentials**:
    ```properties
    CONTENTFUL_SPACE_ID=your_space_id_here
-   CONTENTFUL_ACCESS_TOKEN=your_access_token_here
-   CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token_here
+   CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_access_token_here
+   ENVIRONMENT_NAME=master
    ```
 
 3. **Sync Gradle** in Android Studio (File → Sync Project with Gradle Files)
@@ -38,7 +38,7 @@ If you still see a white screen:
    - Look for error messages
 
 2. **Verify Credentials**:
-   - Make sure `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` are set
+   - Make sure `CONTENTFUL_SPACE_ID` and `CONTENTFUL_DELIVERY_ACCESS_TOKEN` are set
    - They should NOT be empty strings
    - Check that they're correct in your Contentful dashboard
 

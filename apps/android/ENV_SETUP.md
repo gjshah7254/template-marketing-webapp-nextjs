@@ -10,8 +10,8 @@ Edit `apps/android/gradle.properties` and replace the placeholder values:
 
 ```properties
 CONTENTFUL_SPACE_ID=your_actual_space_id
-CONTENTFUL_ACCESS_TOKEN=your_actual_access_token
-CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_actual_preview_token
+CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_actual_access_token
+ENVIRONMENT_NAME=master
 ```
 
 **Pros:**
@@ -32,8 +32,8 @@ CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_actual_preview_token
    ```properties
    sdk.dir=/Users/YOUR_USERNAME/Library/Android/sdk
    CONTENTFUL_SPACE_ID=your_actual_space_id
-   CONTENTFUL_ACCESS_TOKEN=your_actual_access_token
-   CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_actual_preview_token
+   CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_actual_access_token
+   ENVIRONMENT_NAME=master
    ```
 
 **Pros:**
@@ -68,11 +68,8 @@ CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_actual_preview_token
    - Settings → API keys
    - Create or use an existing Content Delivery API key
    - Copy the Access token
-
-3. **Preview Token (Preview API)**:
-   - Settings → API keys
-   - Create or use an existing Content Preview API key
-   - Copy the Access token
+   
+   **Note**: This app uses only the Content Delivery API (CDA) for production content.
 
 ## Verification
 

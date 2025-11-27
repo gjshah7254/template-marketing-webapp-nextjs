@@ -29,8 +29,8 @@ Native Android app built with Kotlin and Jetpack Compose that connects to Conten
    - Replace the placeholder values with your actual credentials:
      ```properties
      CONTENTFUL_SPACE_ID=your_space_id
-     CONTENTFUL_ACCESS_TOKEN=your_access_token
-     CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
+     CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_access_token
+     ENVIRONMENT_NAME=master
      ```
    
    **Option B: Using local.properties (Alternative)**

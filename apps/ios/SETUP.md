@@ -30,9 +30,7 @@ The current structure is a **Swift Package**, which is used for libraries. For a
    - Select your app target → Edit Scheme → Run → Arguments
    - Add Environment Variables:
      - `CONTENTFUL_SPACE_ID` = your_space_id
-     - `CONTENTFUL_ACCESS_TOKEN` = your_access_token
-     - `CONTENTFUL_PREVIEW_ACCESS_TOKEN` = your_preview_token (optional)
-     - `CONTENTFUL_USE_PREVIEW` = false (or true for preview mode)
+     - `CONTENTFUL_DELIVERY_ACCESS_TOKEN` = your_access_token
 
 5. **Build and Run**:
    - Select a simulator or device

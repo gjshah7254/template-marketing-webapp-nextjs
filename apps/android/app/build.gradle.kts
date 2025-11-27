@@ -21,8 +21,7 @@ android {
 
         // Contentful configuration
         buildConfigField("String", "CONTENTFUL_SPACE_ID", "\"${project.findProperty("CONTENTFUL_SPACE_ID") ?: ""}\"")
-        buildConfigField("String", "CONTENTFUL_ACCESS_TOKEN", "\"${project.findProperty("CONTENTFUL_ACCESS_TOKEN") ?: ""}\"")
-        buildConfigField("String", "CONTENTFUL_PREVIEW_ACCESS_TOKEN", "\"${project.findProperty("CONTENTFUL_PREVIEW_ACCESS_TOKEN") ?: ""}\"")
+        buildConfigField("String", "CONTENTFUL_DELIVERY_ACCESS_TOKEN", "\"${project.findProperty("CONTENTFUL_DELIVERY_ACCESS_TOKEN") ?: ""}\"")
         buildConfigField("String", "ENVIRONMENT_NAME", "\"${project.findProperty("ENVIRONMENT_NAME") ?: "master"}\"")
     }
 

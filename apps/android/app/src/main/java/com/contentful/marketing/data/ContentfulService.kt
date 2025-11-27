@@ -78,9 +78,9 @@ class ContentfulService {
     
     private val authorizationHeader: String
         get() {
-            val token = BuildConfig.CONTENTFUL_ACCESS_TOKEN
+            val token = BuildConfig.CONTENTFUL_DELIVERY_ACCESS_TOKEN
             if (token.isBlank()) {
-                throw IllegalStateException("CONTENTFUL_ACCESS_TOKEN is not configured. Please set it in gradle.properties")
+                throw IllegalStateException("CONTENTFUL_DELIVERY_ACCESS_TOKEN is not configured. Please set it in gradle.properties")
             }
             return "Bearer $token"
         }

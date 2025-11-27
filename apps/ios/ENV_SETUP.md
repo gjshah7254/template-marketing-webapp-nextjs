@@ -16,9 +16,7 @@ The iOS app requires Contentful credentials to fetch content. You can configure 
    | Name | Value |
    |------|-------|
    | `CONTENTFUL_SPACE_ID` | `your_actual_space_id` |
-   | `CONTENTFUL_ACCESS_TOKEN` | `your_actual_access_token` |
-   | `CONTENTFUL_PREVIEW_ACCESS_TOKEN` | `your_actual_preview_token` |
-   | `CONTENTFUL_USE_PREVIEW` | `false` (or `true` for preview mode) |
+   | `CONTENTFUL_DELIVERY_ACCESS_TOKEN` | `your_actual_access_token` |
 
 **Pros:**
 - Easy to set up
@@ -39,9 +37,7 @@ The iOS app requires Contentful credentials to fetch content. You can configure 
 2. Edit `Config.xcconfig` and add your actual credentials:
    ```
    CONTENTFUL_SPACE_ID = your_actual_space_id
-   CONTENTFUL_ACCESS_TOKEN = your_actual_access_token
-   CONTENTFUL_PREVIEW_ACCESS_TOKEN = your_actual_preview_token
-   CONTENTFUL_USE_PREVIEW = false
+   CONTENTFUL_DELIVERY_ACCESS_TOKEN = your_actual_access_token
    ```
 
 3. In Xcode:
@@ -75,11 +71,8 @@ You can also add environment variables to Info.plist, but this is less secure an
    - Settings → API keys
    - Create or use an existing Content Delivery API key
    - Copy the Access token
-
-3. **Preview Token (Preview API)**:
-   - Settings → API keys
-   - Create or use an existing Content Preview API key
-   - Copy the Access token
+   
+   **Note**: This app uses only the Content Delivery API (CDA) for production content.
 
 ## Verification
 

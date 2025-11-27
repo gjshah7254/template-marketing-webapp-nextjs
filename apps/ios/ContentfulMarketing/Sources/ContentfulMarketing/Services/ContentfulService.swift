@@ -9,15 +9,12 @@ class ContentfulService: ObservableObject {
     init() {
         // Try to get from environment variables, fallback to empty strings
         let spaceId = ProcessInfo.processInfo.environment["CONTENTFUL_SPACE_ID"] ?? ""
-        let accessToken = ProcessInfo.processInfo.environment["CONTENTFUL_ACCESS_TOKEN"] ?? ""
-        let previewToken = ProcessInfo.processInfo.environment["CONTENTFUL_PREVIEW_ACCESS_TOKEN"] ?? ""
-        let usePreview = ProcessInfo.processInfo.environment["CONTENTFUL_USE_PREVIEW"] == "true"
+        let accessToken = ProcessInfo.processInfo.environment["CONTENTFUL_DELIVERY_ACCESS_TOKEN"] ?? ""
         
-        let token = usePreview ? previewToken : accessToken
-        
+        // Always use Delivery API (CDA) token
         // Use default demo credentials if not provided (for testing)
         let finalSpaceId = spaceId.isEmpty ? "developer_bookshelf" : spaceId
-        let finalToken = token.isEmpty ? "0b7f6x59a0" : token
+        let finalToken = accessToken.isEmpty ? "0b7f6x59a0" : accessToken
         
         self.client = Client(
             spaceId: finalSpaceId,
