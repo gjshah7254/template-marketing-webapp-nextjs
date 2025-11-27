@@ -1,0 +1,18 @@
+// Contentful Configuration
+// This file can be used to configure Contentful credentials for iOS
+// 
+// To use this file:
+// 1. Copy this file and rename it to Config.xcconfig (remove .example)
+// 2. Add your actual credentials
+// 3. In Xcode, go to your target's Build Settings
+// 4. Add this file to your project's configuration
+//
+// Alternatively, set environment variables in Xcode Scheme:
+// Edit Scheme → Run → Arguments → Environment Variables
+
+CONTENTFUL_SPACE_ID = 8h57exoe5pxe
+CONTENTFUL_ACCESS_TOKEN = QJZxXVAqBJsA1iby6RIBh1GgL4U2_10afTsfnPOSV4M
+CONTENTFUL_PREVIEW_ACCESS_TOKEN = V2mt5bqVd_q_s1MkT2iwAsTzwyRdLVfmWmR8Xb2upaI
+CONTENTFUL_USE_PREVIEW = false
+ENVIRONMENT_NAME = gitesh
+

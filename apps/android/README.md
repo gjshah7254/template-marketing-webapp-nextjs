@@ -22,12 +22,26 @@ Native Android app built with Kotlin and Jetpack Compose that connects to Conten
 
 ## Setup
 
-1. **Configure Contentful credentials** in `gradle.properties` or `local.properties`:
-   ```properties
-   CONTENTFUL_SPACE_ID=your_space_id
-   CONTENTFUL_ACCESS_TOKEN=your_access_token
-   CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
-   ```
+1. **Configure Contentful credentials**:
+
+   **Option A: Using gradle.properties (Recommended)**
+   - Open `apps/android/gradle.properties`
+   - Replace the placeholder values with your actual credentials:
+     ```properties
+     CONTENTFUL_SPACE_ID=your_space_id
+     CONTENTFUL_ACCESS_TOKEN=your_access_token
+     CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
+     ```
+   
+   **Option B: Using local.properties (Alternative)**
+   - Copy `local.properties.example` to `local.properties`
+   - Add your actual credentials to `local.properties`
+   - Note: `local.properties` is git-ignored and won't be committed
+   
+   **Option C: Using .env file**
+   - Copy `.env.example` to `.env`
+   - Add your actual credentials to `.env`
+   - Note: You'll need to load .env values into gradle.properties manually or use a plugin
 
 2. **Sync Gradle files**: Open the project in Android Studio and click "Sync Project with Gradle Files" (or File → Sync Project with Gradle Files).
 

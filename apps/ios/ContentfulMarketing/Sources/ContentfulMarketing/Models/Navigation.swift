@@ -9,7 +9,7 @@ final class Navigation: EntryDecodable, FieldKeysQueryable {
     let updatedAt: Date?
     let createdAt: Date?
     
-    let menuItems: [MenuGroup]?
+    var menuItems: [MenuGroup]?
     
     enum FieldKeys: String, CodingKey {
         case menuItems
@@ -24,7 +24,13 @@ final class Navigation: EntryDecodable, FieldKeysQueryable {
         updatedAt = sys.updatedAt
         createdAt = sys.createdAt
         
-        menuItems = try fields.decodeIfPresent([Link].self, forKey: .menuItems)?.compactMap { $0 as? MenuGroup }
+        var menuItemsArray: [MenuGroup] = []
+        try fields.resolveLinksArray(forKey: .menuItems, decoder: decoder) { item in
+            if let menuGroup = item as? MenuGroup {
+                menuItemsArray.append(menuGroup)
+            }
+        }
+        menuItems = menuItemsArray.isEmpty ? nil : menuItemsArray
     }
 }
 
@@ -37,7 +43,7 @@ final class MenuGroup: EntryDecodable, FieldKeysQueryable {
     let createdAt: Date?
     
     let groupName: String?
-    let menuItems: [MenuItem]?
+    var menuItems: [MenuItem]?
     
     enum FieldKeys: String, CodingKey {
         case groupName, menuItems
@@ -53,7 +59,14 @@ final class MenuGroup: EntryDecodable, FieldKeysQueryable {
         createdAt = sys.createdAt
         
         groupName = try fields.decodeIfPresent(String.self, forKey: .groupName)
-        menuItems = try fields.decodeIfPresent([Link].self, forKey: .menuItems)?.compactMap { $0 as? MenuItem }
+        
+        var menuItemsArray: [MenuItem] = []
+        try fields.resolveLinksArray(forKey: .menuItems, decoder: decoder) { item in
+            if let menuItem = item as? MenuItem {
+                menuItemsArray.append(menuItem)
+            }
+        }
+        menuItems = menuItemsArray.isEmpty ? nil : menuItemsArray
     }
 }
 

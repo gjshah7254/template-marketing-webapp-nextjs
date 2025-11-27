@@ -44,11 +44,24 @@ The current structure is a Swift Package. For an iOS app, you need an **Xcode Pr
    - Copy all files from `ContentfulMarketing/Sources/ContentfulMarketing/` to your Xcode project
    - Make sure to add them to the target
 
-9. **Configure Environment Variables** (Edit Scheme → Run → Arguments → Environment Variables):
-   - `CONTENTFUL_SPACE_ID`: Your Contentful Space ID
-   - `CONTENTFUL_ACCESS_TOKEN`: Your Contentful Delivery API token
-   - `CONTENTFUL_PREVIEW_ACCESS_TOKEN`: Your Contentful Preview API token (optional)
-   - `CONTENTFUL_USE_PREVIEW`: Set to "true" to use preview API (optional)
+9. **Configure Environment Variables**:
+   
+   **Option A: Using Xcode Scheme (Recommended for Development)**
+   - Edit Scheme → Run → Arguments → Environment Variables
+   - Add these variables:
+     - `CONTENTFUL_SPACE_ID` = `your_space_id`
+     - `CONTENTFUL_ACCESS_TOKEN` = `your_access_token`
+     - `CONTENTFUL_PREVIEW_ACCESS_TOKEN` = `your_preview_token` (optional)
+     - `CONTENTFUL_USE_PREVIEW` = `false` (or `true` for preview mode)
+   
+   **Option B: Using Config.xcconfig (Recommended for Production)**
+   - Copy `Config.xcconfig.example` to `Config.xcconfig`
+   - Add your actual credentials to `Config.xcconfig`
+   - In Xcode, add `Config.xcconfig` to your project's build configuration
+   
+   **Option C: Using .env file**
+   - See `.env.example` for reference
+   - Note: iOS doesn't natively support .env files, so you'll need to use one of the options above
 
 10. **Build and Run** (⌘R)
 

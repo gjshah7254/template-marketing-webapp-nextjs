@@ -45,14 +45,26 @@ CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token
 ```
 
 #### iOS App
-Set environment variables in Xcode scheme or Info.plist:
-- `CONTENTFUL_SPACE_ID`
-- `CONTENTFUL_ACCESS_TOKEN`
-- `CONTENTFUL_PREVIEW_ACCESS_TOKEN` (optional)
-- `CONTENTFUL_USE_PREVIEW` (optional, set to "true" for preview mode)
+See `apps/ios/ENV_SETUP.md` for detailed instructions.
+
+**Quick setup:**
+- Option 1: Edit Scheme → Run → Arguments → Environment Variables
+- Option 2: Use `Config.xcconfig` (see `apps/ios/Config.xcconfig.example`)
+
+Required variables:
+- `CONTENTFUL_SPACE_ID` = `your_space_id`
+- `CONTENTFUL_ACCESS_TOKEN` = `your_access_token`
+- `CONTENTFUL_PREVIEW_ACCESS_TOKEN` = `your_preview_token` (optional)
+- `CONTENTFUL_USE_PREVIEW` = `false` (optional)
 
 #### Android App
-Add to `apps/android/gradle.properties` or `local.properties`:
+See `apps/android/ENV_SETUP.md` for detailed instructions.
+
+**Quick setup:**
+- Option 1: Edit `apps/android/gradle.properties` (replace placeholder values)
+- Option 2: Use `local.properties` (copy from `local.properties.example`)
+
+Required variables:
 ```properties
 CONTENTFUL_SPACE_ID=your_space_id
 CONTENTFUL_ACCESS_TOKEN=your_access_token

@@ -10,8 +10,8 @@ final class Footer: EntryDecodable, FieldKeysQueryable {
     let createdAt: Date?
     
     let logo: Asset?
-    let menuItems: [MenuGroup]?
-    let socialLinks: [SocialLink]?
+    var menuItems: [MenuGroup]?
+    var socialLinks: [SocialLink]?
     let copyrightText: String?
     
     enum FieldKeys: String, CodingKey {
@@ -28,9 +28,23 @@ final class Footer: EntryDecodable, FieldKeysQueryable {
         createdAt = sys.createdAt
         
         logo = try fields.decodeIfPresent(Asset.self, forKey: .logo)
-        menuItems = try fields.decodeIfPresent([Link].self, forKey: .menuItems)?.compactMap { $0 as? MenuGroup }
-        socialLinks = try fields.decodeIfPresent([Link].self, forKey: .socialLinks)?.compactMap { $0 as? SocialLink }
         copyrightText = try fields.decodeIfPresent(String.self, forKey: .copyrightText)
+        
+        var menuItemsArray: [MenuGroup] = []
+        try fields.resolveLinksArray(forKey: .menuItems, decoder: decoder) { item in
+            if let menuGroup = item as? MenuGroup {
+                menuItemsArray.append(menuGroup)
+            }
+        }
+        menuItems = menuItemsArray.isEmpty ? nil : menuItemsArray
+        
+        var socialLinksArray: [SocialLink] = []
+        try fields.resolveLinksArray(forKey: .socialLinks, decoder: decoder) { item in
+            if let socialLink = item as? SocialLink {
+                socialLinksArray.append(socialLink)
+            }
+        }
+        socialLinks = socialLinksArray.isEmpty ? nil : socialLinksArray
     }
 }
 

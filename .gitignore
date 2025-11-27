@@ -185,7 +185,15 @@ bower_components
 .bower-tmp
 /public/data/mind.json
 
-.env
+# .env files are kept in the repo for this project
+# .env.local
+# .env.*.local
+
+# Android local properties - keeping in repo for this project
+# apps/android/local.properties
+
+# iOS config files - keeping in repo for this project
+# apps/ios/Config.xcconfig
 
 ### Intellij ###
 .idea/
@@ -200,7 +208,7 @@ package-lock.json
 ### Android ###
 *.iml
 .gradle
-/local.properties
+# /local.properties - keeping in repo for this project
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -212,7 +220,7 @@ package-lock.json
 /captures
 .externalNativeBuild
 .cxx
-local.properties
+# local.properties - keeping in repo for this project
 
 ### iOS ###
 *.xcodeproj/*

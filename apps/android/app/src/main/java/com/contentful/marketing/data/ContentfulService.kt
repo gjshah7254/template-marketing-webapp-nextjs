@@ -47,11 +47,12 @@ data class GraphQLError(
 
 // GraphQL API interface
 interface ContentfulGraphQLApi {
-    @POST("content/v1/spaces/{spaceId}")
+    @POST("content/v1/spaces/{spaceId}/environments/{environmentName}")
     suspend fun query(
         @Header("Authorization") authorization: String,
         @Header("Content-Type") contentType: String = "application/json",
         @retrofit2.http.Path("spaceId") spaceId: String,
+        @retrofit2.http.Path("environmentName") environmentName: String = "master",
         @Body request: GraphQLRequest
     ): GraphQLResponse
 }
@@ -165,9 +166,16 @@ class ContentfulService {
                     )
                 )
                 
+                val environmentName = if (BuildConfig.ENVIRONMENT_NAME.isNotBlank()) {
+                    BuildConfig.ENVIRONMENT_NAME
+                } else {
+                    "master"
+                }
+                
                 val response = api.query(
                     authorizationHeader, 
                     spaceId = BuildConfig.CONTENTFUL_SPACE_ID,
+                    environmentName = environmentName,
                     request = request
                 )
                 
@@ -222,9 +230,16 @@ class ContentfulService {
                     variables = mapOf("locale" to locale)
                 )
                 
+                val environmentName = if (BuildConfig.ENVIRONMENT_NAME.isNotBlank()) {
+                    BuildConfig.ENVIRONMENT_NAME
+                } else {
+                    "master"
+                }
+                
                 val response = api.query(
                     authorizationHeader, 
                     spaceId = BuildConfig.CONTENTFUL_SPACE_ID,
+                    environmentName = environmentName,
                     request = request
                 )
                 response.data?.navigationCollection?.items?.firstOrNull()?.let { graphQLNav ->
@@ -271,9 +286,16 @@ class ContentfulService {
                     variables = mapOf("locale" to locale)
                 )
                 
+                val environmentName = if (BuildConfig.ENVIRONMENT_NAME.isNotBlank()) {
+                    BuildConfig.ENVIRONMENT_NAME
+                } else {
+                    "master"
+                }
+                
                 val response = api.query(
                     authorizationHeader, 
                     spaceId = BuildConfig.CONTENTFUL_SPACE_ID,
+                    environmentName = environmentName,
                     request = request
                 )
                 response.data?.footerCollection?.items?.firstOrNull()?.let { graphQLFooter ->
