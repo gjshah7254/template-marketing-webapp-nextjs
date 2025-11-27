@@ -56,27 +56,21 @@ class EnvLoader {
         possiblePaths.append(Bundle.main.path(forResource: ".env", ofType: nil))
         
         for path in possiblePaths.compactMap({ $0 }) {
-            if FileManager.default.fileExists(atPath: path) {
-                if let content = try? String(contentsOfFile: path, encoding: .utf8) {
-                    parseEnvContent(content)
-                    print("Loaded .env file from: \(path)")
-                    return
-                }
+            if FileManager.default.fileExists(atPath: path),
+               let content = try? String(contentsOfFile: path, encoding: .utf8) {
+                parseEnvContent(content)
+                return
             }
         }
         
-        // Also try reading from the iOS app directory specifically
         if let projectPath = findProjectRoot() {
             let envPath = (projectPath as NSString).appendingPathComponent(".env")
             if FileManager.default.fileExists(atPath: envPath),
                let content = try? String(contentsOfFile: envPath, encoding: .utf8) {
                 parseEnvContent(content)
-                print("Loaded .env file from: \(envPath)")
                 return
             }
         }
-        
-        print("No .env file found. Using system environment variables or defaults.")
     }
     
     /// Find the project root directory by looking for common markers

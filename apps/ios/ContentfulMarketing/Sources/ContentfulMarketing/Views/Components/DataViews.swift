@@ -8,7 +8,10 @@ struct HeroBannerDataView: View {
     
     var body: some View {
         ZStack {
-            if let imageUrlString = data.imageUrl, let imageUrl = URL(string: imageUrlString) {
+            if let imageUrlString = data.imageUrl,
+               !imageUrlString.isEmpty,
+               imageUrlString.hasPrefix("http"),
+               let imageUrl = URL(string: imageUrlString) {
                 KFImage(imageUrl)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -117,7 +120,10 @@ struct InfoBlockDataView: View {
             }
             
             HStack(spacing: 16) {
-                if let imageUrlString = data.block1ImageUrl, let imageUrl = URL(string: imageUrlString) {
+                if let imageUrlString = data.block1ImageUrl,
+                   !imageUrlString.isEmpty,
+                   imageUrlString.hasPrefix("http"),
+                   let imageUrl = URL(string: imageUrlString) {
                     VStack {
                         KFImage(imageUrl)
                             .resizable()
@@ -130,7 +136,10 @@ struct InfoBlockDataView: View {
                     }
                 }
                 
-                if let imageUrlString = data.block2ImageUrl, let imageUrl = URL(string: imageUrlString) {
+                if let imageUrlString = data.block2ImageUrl,
+                   !imageUrlString.isEmpty,
+                   imageUrlString.hasPrefix("http"),
+                   let imageUrl = URL(string: imageUrlString) {
                     VStack {
                         KFImage(imageUrl)
                             .resizable()
@@ -143,7 +152,10 @@ struct InfoBlockDataView: View {
                     }
                 }
                 
-                if let imageUrlString = data.block3ImageUrl, let imageUrl = URL(string: imageUrlString) {
+                if let imageUrlString = data.block3ImageUrl,
+                   !imageUrlString.isEmpty,
+                   imageUrlString.hasPrefix("http"),
+                   let imageUrl = URL(string: imageUrlString) {
                     VStack {
                         KFImage(imageUrl)
                             .resizable()
@@ -166,11 +178,17 @@ struct DuplexDataView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            if data.imageStyle == "left" || data.imageStyle == nil {
-                if let imageUrlString = data.imageUrl, let imageUrl = URL(string: imageUrlString) {
+            // containerLayout: true = image first, false/nil = content first
+            let imageFirst = data.containerLayout == true
+            
+            if imageFirst {
+                if let imageUrlString = data.imageUrl,
+                   !imageUrlString.isEmpty,
+                   imageUrlString.hasPrefix("http"),
+                   let imageUrl = URL(string: imageUrlString) {
                     KFImage(imageUrl)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: data.imageStyle == true ? .fill : .fit)
                         .frame(width: 200)
                 }
             }
@@ -188,11 +206,14 @@ struct DuplexDataView: View {
                 }
             }
             
-            if data.imageStyle == "right" {
-                if let imageUrlString = data.imageUrl, let imageUrl = URL(string: imageUrlString) {
+            if !imageFirst {
+                if let imageUrlString = data.imageUrl,
+                   !imageUrlString.isEmpty,
+                   imageUrlString.hasPrefix("http"),
+                   let imageUrl = URL(string: imageUrlString) {
                     KFImage(imageUrl)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: data.imageStyle == true ? .fill : .fit)
                         .frame(width: 200)
                 }
             }
@@ -212,7 +233,10 @@ struct QuoteDataView: View {
                     .italic()
             }
             
-            if let imageUrlString = data.imageUrl, let imageUrl = URL(string: imageUrlString) {
+            if let imageUrlString = data.imageUrl,
+               !imageUrlString.isEmpty,
+               imageUrlString.hasPrefix("http"),
+               let imageUrl = URL(string: imageUrlString) {
                 KFImage(imageUrl)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

@@ -14,24 +14,26 @@ class PageViewModel: ObservableObject {
     
     func loadPage(slug: String) async {
         await MainActor.run {
-        isLoading = true
-        error = nil
+            isLoading = true
+            error = nil
+            page = nil
         }
         
         do {
-            // Add a small delay to ensure app is fully initialized
-            try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
-            
             let loadedPage = try await contentfulService.fetchPage(slug: slug)
+            
             await MainActor.run {
-            self.page = loadedPage
-                self.isLoading = false
+                if let page = loadedPage {
+                    self.page = page
+                    self.isLoading = false
+                } else {
+                    self.error = NSError(domain: "PageViewModel", code: 404, userInfo: [NSLocalizedDescriptionKey: "No page found with slug: \(slug). Please check if the page exists in Contentful."])
+                    self.isLoading = false
+                }
             }
         } catch {
-            // Log error for debugging
-            print("Error loading page: \(error)")
             await MainActor.run {
-            self.error = error
+                self.error = error
                 self.isLoading = false
             }
         }

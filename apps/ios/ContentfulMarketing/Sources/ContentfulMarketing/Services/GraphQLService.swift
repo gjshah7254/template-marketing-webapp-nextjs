@@ -31,8 +31,6 @@ struct PageCollection: Codable {
         do {
             items = try container.decode([GraphQLPage].self, forKey: .items)
         } catch {
-            // If decoding fails, log and return empty array
-            print("Warning: Failed to decode PageCollection.items as array: \(error)")
             items = []
         }
     }
@@ -52,8 +50,6 @@ struct NavigationCollection: Codable {
         do {
             items = try container.decode([GraphQLNavigation].self, forKey: .items)
         } catch {
-            // If decoding fails, log and return empty array
-            print("Warning: Failed to decode NavigationCollection.items as array: \(error)")
             items = []
         }
     }
@@ -73,8 +69,6 @@ struct FooterCollection: Codable {
         do {
             items = try container.decode([GraphQLFooter].self, forKey: .items)
         } catch {
-            // If decoding fails, log and return empty array
-            print("Warning: Failed to decode FooterCollection.items as array: \(error)")
             items = []
         }
     }
@@ -123,10 +117,10 @@ class GraphQLService {
         // Store as immutable strings to prevent any type issues
         self.spaceId = getStringEnv("CONTENTFUL_SPACE_ID", defaultValue: "developer_bookshelf")
         self.accessToken = getStringEnv("CONTENTFUL_DELIVERY_ACCESS_TOKEN", defaultValue: "0b7f6x59a0")
-        self.environment = getStringEnv("CONTENTFUL_ENVIRONMENT", defaultValue: "master")
+        // Try both ENVIRONMENT_NAME (Android/Next.js format) and CONTENTFUL_ENVIRONMENT
+        let envName = getStringEnv("ENVIRONMENT_NAME", defaultValue: "")
+        self.environment = envName.isEmpty ? getStringEnv("CONTENTFUL_ENVIRONMENT", defaultValue: "master") : envName
         
-        // Log for debugging (remove sensitive data in production)
-        print("GraphQLService initialized with spaceId: \(spaceId), environment: \(environment)")
     }
     
     private func performQuery<T: Codable>(query: String, variables: [String: String] = [:]) async throws -> T {
@@ -136,11 +130,9 @@ class GraphQLService {
         let safeAccessToken = String(describing: accessToken).trimmingCharacters(in: .whitespacesAndNewlines)
         
         let urlString = "\(baseURL)/\(safeSpaceId)/environments/\(safeEnvironment)"
-        print("GraphQL URL: \(urlString)")
         
         guard let url = URL(string: urlString) else {
             let errorMsg = "Invalid URL: \(urlString) (spaceId: \(safeSpaceId), environment: \(safeEnvironment))"
-            print("Error: \(errorMsg)")
             throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMsg])
         }
         
@@ -162,7 +154,6 @@ class GraphQLService {
         do {
             request.httpBody = try JSONEncoder().encode(graphQLRequest)
         } catch {
-            print("Error encoding GraphQL request: \(error)")
             throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode request: \(error.localizedDescription)"])
         }
         
@@ -178,23 +169,14 @@ class GraphQLService {
             throw NSError(domain: "GraphQLService", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "HTTP \(httpResponse.statusCode): \(errorMessage)"])
         }
         
-        // Decode with error handling
         let decoder = JSONDecoder()
-        
-        // Log raw response for debugging (first 500 chars)
-        if let responseString = String(data: data, encoding: .utf8) {
-            let preview = String(responseString.prefix(500))
-            print("GraphQL Response Preview: \(preview)")
-        }
         
         do {
             let graphQLResponse = try decoder.decode(GraphQLResponse<T>.self, from: data)
             
             if let errors = graphQLResponse.errors, !errors.isEmpty {
                 let errorMessages = errors.map { $0.message }.joined(separator: ", ")
-                print("GraphQL Errors: \(errorMessages)")
                 
-                // Check for common schema mismatch errors
                 if errorMessages.contains("Cannot query field") || errorMessages.contains("Unknown type") {
                     let helpfulMessage = """
                     GraphQL Schema Mismatch Error:
@@ -206,7 +188,6 @@ class GraphQLService {
                     Please configure the iOS app with the same Contentful space ID and access token
                     that your Next.js app uses. See ENV_SETUP.md for instructions.
                     """
-                    print(helpfulMessage)
                     throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: helpfulMessage])
                 }
                 
@@ -214,7 +195,6 @@ class GraphQLService {
             }
             
             guard let result = graphQLResponse.data else {
-                print("GraphQL Response: No data in response")
                 throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data in response"])
             }
             
@@ -239,7 +219,6 @@ class GraphQLService {
     }
     
     func fetchPage(slug: String, locale: String = "en-US") async throws -> GraphQLPage? {
-        // Wrap in do-catch to handle any decoding errors gracefully
         do {
             let query = """
             query GetPage($slug: String!, $locale: String!) {
@@ -264,19 +243,19 @@ class GraphQLService {
                       }
                       ... on ComponentCta {
                         headline
-                        subline { json }
+                        subline: subline { json }
                         ctaText
                         colorPalette
                       }
                       ... on ComponentTextBlock {
                         headline
-                        subline
+                        sublineText: subline
                         body { json }
                         colorPalette
                       }
                       ... on ComponentInfoBlock {
                         headline
-                        subline
+                        sublineText: subline
                         block1Image { url }
                         block1Body { json }
                         block2Image { url }
@@ -290,6 +269,7 @@ class GraphQLService {
                         bodyText { json }
                         image { url }
                         imageStyle
+                        containerLayout
                         colorPalette
                       }
                       ... on ComponentQuote {
@@ -320,14 +300,12 @@ class GraphQLService {
         """
         
             let data: GraphQLData = try await performQuery(query: query, variables: ["slug": slug, "locale": locale])
-            guard let pageCollection = data.pageCollection,
-                  !pageCollection.items.isEmpty else {
-                return nil
+            
+            if let pageCollection = data.pageCollection, !pageCollection.items.isEmpty {
+                return pageCollection.items.first
             }
-            return pageCollection.items.first
+            return nil
         } catch {
-            // Log the error for debugging
-            print("GraphQL fetchPage error: \(error)")
             throw error
         }
     }

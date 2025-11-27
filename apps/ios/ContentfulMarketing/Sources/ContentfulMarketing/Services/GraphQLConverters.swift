@@ -63,7 +63,8 @@ struct DuplexData {
     let headline: String?
     let bodyText: GraphQLRichText?
     let imageUrl: String?
-    let imageStyle: String?
+    let imageStyle: Bool? // Boolean: true = fixed style, false = full style
+    let containerLayout: Bool? // Boolean: true = image first, false = content first
     let colorPalette: String?
 }
 
@@ -97,19 +98,43 @@ extension ComponentData {
         
         switch typename {
         case "ComponentHeroBanner":
+            // ComponentHeroBanner doesn't have subline in the query, so set it to nil
+            // Safely convert image URL to string
+            let imageUrlString: String? = {
+                guard let url = component.image?.url else { return nil }
+                let urlStr = String(describing: url).trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !urlStr.isEmpty, urlStr.hasPrefix("http") else { return nil }
+                return urlStr
+            }()
+            
             return .heroBanner(HeroBannerData(
                 id: sys.id,
                 headline: component.headline,
-                subline: component.subline,
+                subline: nil, // Not fetched in GraphQL query
                 ctaText: component.ctaText,
-                imageUrl: component.image?.url,
+                imageUrl: imageUrlString,
                 colorPalette: component.colorPalette
             ))
         case "ComponentCta":
+            // ComponentCta uses 'subline' which is rich text (aliased in query as 'subline: subline { json }')
+            // The subline field in CTAData is String?, so we'll extract text from rich text JSON
+            // This is a simplified extraction - for full rich text rendering, use RichTextRenderer
+            var sublineString: String? = nil
+            if let richText = component.subline, let jsonDict = richText.json {
+                // Try to extract text content from rich text JSON structure
+                // This is a basic implementation - you may want to use RichTextRenderer for proper parsing
+                // For now, just convert the JSON dictionary to a string representation
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonDict, options: []),
+                   let jsonString = String(data: jsonData, encoding: .utf8) {
+                    sublineString = jsonString
+                } else {
+                    sublineString = String(describing: jsonDict)
+                }
+            }
             return .cta(CTAData(
                 id: sys.id,
                 headline: component.headline,
-                subline: component.subline,
+                subline: sublineString,
                 ctaText: component.ctaText,
                 colorPalette: component.colorPalette
             ))
@@ -121,32 +146,61 @@ extension ComponentData {
                 colorPalette: component.colorPalette
             ))
         case "ComponentInfoBlock":
+            // ComponentInfoBlock uses 'sublineText' which is a string (aliased in query)
+            // Safely convert image URLs to strings
+            let safeUrl: (GraphQLAsset?) -> String? = { asset in
+                guard let url = asset?.url else { return nil }
+                let urlStr = String(describing: url).trimmingCharacters(in: .whitespacesAndNewlines)
+                // Validate it looks like a URL
+                guard !urlStr.isEmpty, urlStr.hasPrefix("http") else { return nil }
+                return urlStr
+            }
+            
             return .infoBlock(InfoBlockData(
                 id: sys.id,
                 headline: component.headline,
-                subline: component.subline,
-                block1ImageUrl: component.block1Image?.url,
-                block2ImageUrl: component.block2Image?.url,
-                block3ImageUrl: component.block3Image?.url,
+                subline: component.sublineText,
+                block1ImageUrl: safeUrl(component.block1Image),
+                block2ImageUrl: safeUrl(component.block2Image),
+                block3ImageUrl: safeUrl(component.block3Image),
                 block1Body: component.block1Body,
                 block2Body: component.block2Body,
                 block3Body: component.block3Body,
                 colorPalette: component.colorPalette
             ))
         case "ComponentDuplex":
+            // Safely convert image URL to string
+            let imageUrlString: String? = {
+                guard let url = component.image?.url else { return nil }
+                let urlStr = String(describing: url).trimmingCharacters(in: .whitespacesAndNewlines)
+                // Validate it looks like a URL
+                guard !urlStr.isEmpty, urlStr.hasPrefix("http") else { return nil }
+                return urlStr
+            }()
+            
             return .duplex(DuplexData(
                 id: sys.id,
                 headline: component.headline,
                 bodyText: component.bodyText,
-                imageUrl: component.image?.url,
+                imageUrl: imageUrlString,
                 imageStyle: component.imageStyle,
+                containerLayout: component.containerLayout,
                 colorPalette: component.colorPalette
             ))
         case "ComponentQuote":
+            // Safely convert image URL to string
+            let imageUrlString: String? = {
+                guard let url = component.image?.url else { return nil }
+                let urlStr = String(describing: url).trimmingCharacters(in: .whitespacesAndNewlines)
+                // Validate it looks like a URL
+                guard !urlStr.isEmpty, urlStr.hasPrefix("http") else { return nil }
+                return urlStr
+            }()
+            
             return .quote(QuoteData(
                 id: sys.id,
                 quote: component.quote,
-                imageUrl: component.image?.url,
+                imageUrl: imageUrlString,
                 imagePosition: component.imagePosition,
                 colorPalette: component.colorPalette
             ))

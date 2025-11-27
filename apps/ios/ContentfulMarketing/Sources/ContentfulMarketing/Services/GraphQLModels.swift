@@ -35,8 +35,8 @@ struct GraphQLComponent: Codable {
     let __typename: String?
     let sys: GraphQLSys?
     let headline: String?
-    let subline: String?
-    let sublineText: String? // For ComponentTextBlock
+    let subline: GraphQLRichText? // For ComponentCta (rich text, aliased)
+    let sublineText: String? // For ComponentTextBlock and ComponentInfoBlock (string, aliased)
     let ctaText: String?
     let image: GraphQLAsset?
     let block1Image: GraphQLAsset?
@@ -45,8 +45,9 @@ struct GraphQLComponent: Codable {
     let colorPalette: String?
     let bodyText: GraphQLRichText?
     let body: GraphQLRichText? // For ComponentTextBlock
-    let imageStyle: String?
-    let imagePosition: String?
+    let imageStyle: Bool? // Boolean in GraphQL schema (image style: fixed/full)
+    let containerLayout: Bool? // Boolean in GraphQL schema (layout order: image first/content first)
+    let imagePosition: String? // For ComponentQuote
     let quote: GraphQLRichText?
     let block1Body: GraphQLRichText?
     let block2Body: GraphQLRichText?
@@ -68,6 +69,31 @@ struct GraphQLMenuItem: Codable {
 
 struct GraphQLAsset: Codable {
     let url: String?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Safely decode url as string, handling cases where it might be a number or other type
+        if let urlString = try? container.decode(String.self, forKey: .url), !urlString.isEmpty {
+            url = urlString
+        } else if container.contains(.url) {
+            if let urlNumber = try? container.decode(Int.self, forKey: .url) {
+                url = String(urlNumber)
+            } else if let urlDouble = try? container.decode(Double.self, forKey: .url) {
+                url = String(urlDouble)
+            } else if let urlBool = try? container.decode(Bool.self, forKey: .url) {
+                url = String(urlBool)
+            } else {
+                url = nil
+            }
+        } else {
+            url = nil
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case url
+    }
 }
 
 struct GraphQLRichText: Codable {
