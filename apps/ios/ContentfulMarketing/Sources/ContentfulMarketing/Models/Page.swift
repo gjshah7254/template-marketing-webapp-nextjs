@@ -1,5 +1,5 @@
 import Foundation
-import Contentful
+// import Contentful // Removed - using GraphQL instead
 
 final class Page: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "page"

@@ -1,5 +1,5 @@
 import Foundation
-import Contentful
+// import Contentful // Removed - using GraphQL instead
 
 // Hero Banner Component
 final class HeroBanner: EntryDecodable, FieldKeysQueryable {

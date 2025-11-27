@@ -1,8 +1,7 @@
 import SwiftUI
-import Contentful
 
 struct PageView: View {
-    let page: Page
+    let page: PageData
     
     var body: some View {
         VStack(spacing: 0) {
@@ -29,22 +28,23 @@ struct PageView: View {
 }
 
 struct ComponentView: View {
-    let component: EntryDecodable
+    let component: ComponentData
     
     var body: some View {
         Group {
-            if let heroBanner = component as? HeroBanner {
-                HeroBannerView(heroBanner: heroBanner)
-            } else if let cta = component as? CTA {
-                CTAView(cta: cta)
-            } else if let textBlock = component as? TextBlock {
-                TextBlockView(textBlock: textBlock)
-            } else if let infoBlock = component as? InfoBlock {
-                InfoBlockView(infoBlock: infoBlock)
-            } else if let duplex = component as? Duplex {
-                DuplexView(duplex: duplex)
-            } else if let quote = component as? Quote {
-                QuoteView(quote: quote)
+            switch component {
+            case .heroBanner(let data):
+                HeroBannerDataView(data: data)
+            case .cta(let data):
+                CTADataView(data: data)
+            case .textBlock(let data):
+                TextBlockDataView(data: data)
+            case .infoBlock(let data):
+                InfoBlockDataView(data: data)
+            case .duplex(let data):
+                DuplexDataView(data: data)
+            case .quote(let data):
+                QuoteDataView(data: data)
             }
         }
     }

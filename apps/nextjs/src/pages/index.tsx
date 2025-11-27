@@ -12,9 +12,8 @@ const LangPage: NextPage = () => {
   return <CtfPageGgl slug="/" />;
 };
 
-export const getServerSideProps = async ({ locale }: NextPageContext) => {
-  // Always use Delivery API - no preview support
-  const preview = false;
+export const getServerSideProps = async ({ locale, query }: NextPageContext) => {
+  const preview = Boolean(query.preview);
 
   try {
     const queryClient = new QueryClient();

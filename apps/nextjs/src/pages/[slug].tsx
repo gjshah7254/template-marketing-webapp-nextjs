@@ -25,10 +25,9 @@ export interface CustomNextPageContext extends NextPageContext {
   id: string;
 }
 
-export const getServerSideProps = async ({ locale, params }: CustomNextPageContext) => {
+export const getServerSideProps = async ({ locale, params, query }: CustomNextPageContext) => {
   const slug = params.slug;
-  // Always use Delivery API - no preview support
-  const preview = false;
+  const preview = Boolean(query.preview);
 
   try {
     const queryClient = new QueryClient();

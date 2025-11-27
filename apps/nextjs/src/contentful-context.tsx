@@ -25,8 +25,7 @@ export const ContentfulContext = createContext<ContentfulContextInterface>(conte
 export const useContentfulContext = () => useContext(ContentfulContext);
 
 const ContentfulContentProvider = ({ children, router }) => {
-  // Always use Delivery API - no preview support
-  const previewActive = false;
+  const previewActive = !!router.query.preview;
 
   return (
     <ContentfulContext.Provider

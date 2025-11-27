@@ -4,6 +4,7 @@ module.exports = {
   contentful: {
     space_id: process.env.CONTENTFUL_SPACE_ID || '',
     cda_token: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN || '',
+    cpa_token: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN || '',
   },
   meta: {
     title: 'Digital banking for the new generation | Colorful Coin',

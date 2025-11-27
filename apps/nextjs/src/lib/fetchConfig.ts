@@ -9,9 +9,14 @@ export const fetchConfig = {
       Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN}`,
     },
   },
+  previewParams: {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
+    },
+  },
 };
 
-// Always use Delivery API (CDA) - no preview support
 export function customFetcher<TData, TVariables extends { preview?: boolean | null }>(
   query: string,
   variables?: TVariables,
@@ -21,7 +26,7 @@ export function customFetcher<TData, TVariables extends { preview?: boolean | nu
     const res = await fetch(fetchConfig.endpoint as string, {
       method: 'POST',
       ...options,
-      ...fetchConfig.params,
+      ...(variables?.preview ? fetchConfig.previewParams : fetchConfig.params),
       body: JSON.stringify({ query, variables }),
     });
 

@@ -56,7 +56,44 @@ The iOS app requires Contentful credentials to fetch content. You can configure 
 - Requires Xcode project setup
 - More complex initial setup
 
-### Option 3: Info.plist (Alternative)
+### Option 3: .env File (Recommended for Consistency)
+
+The iOS app now supports reading from `.env` files, just like the Next.js app!
+
+1. **Create a `.env` file** in the `apps/ios/` directory:
+   ```bash
+   cd apps/ios
+   cp .env.example .env
+   ```
+
+2. **Edit `.env`** and add your actual credentials:
+   ```env
+   CONTENTFUL_SPACE_ID=your_actual_space_id
+   CONTENTFUL_DELIVERY_ACCESS_TOKEN=your_actual_access_token
+   CONTENTFUL_ENVIRONMENT=master
+   ```
+
+3. **The app will automatically load values from `.env`** when it runs.
+
+**How it works:**
+- The app looks for `.env` in multiple locations:
+  - `apps/ios/.env` (recommended)
+  - Project root `.env` (monorepo root)
+  - Current working directory
+- If `.env` is not found, it falls back to system environment variables
+- Priority: `.env` file > System environment variables > Default values
+
+**Pros:**
+- Same format as Next.js app
+- Easy to share across team (just copy `.env.example`)
+- Works consistently across platforms
+- Can be git-ignored for security
+
+**Cons:**
+- `.env` file must be in the correct location
+- For production builds, you may still want to use Config.xcconfig
+
+### Option 4: Info.plist (Alternative)
 
 You can also add environment variables to Info.plist, but this is less secure and not recommended for production.
 

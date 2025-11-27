@@ -1,5 +1,8 @@
 import Foundation
 
+// Import EnvLoader for .env file support
+// Note: EnvLoader is in the Utils directory
+
 // MARK: - GraphQL Request/Response Models
 
 struct GraphQLRequest: Codable {
@@ -20,14 +23,65 @@ struct GraphQLData: Codable {
 
 struct PageCollection: Codable {
     let items: [GraphQLPage]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Safely decode items array, defaulting to empty array if decoding fails
+        // Handle case where items might be a dictionary or other type
+        do {
+            items = try container.decode([GraphQLPage].self, forKey: .items)
+        } catch {
+            // If decoding fails, log and return empty array
+            print("Warning: Failed to decode PageCollection.items as array: \(error)")
+            items = []
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case items
+    }
 }
 
 struct NavigationCollection: Codable {
     let items: [GraphQLNavigation]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Safely decode items array, defaulting to empty array if decoding fails
+        // Handle case where items might be a dictionary or other type
+        do {
+            items = try container.decode([GraphQLNavigation].self, forKey: .items)
+        } catch {
+            // If decoding fails, log and return empty array
+            print("Warning: Failed to decode NavigationCollection.items as array: \(error)")
+            items = []
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case items
+    }
 }
 
 struct FooterCollection: Codable {
     let items: [GraphQLFooter]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Safely decode items array, defaulting to empty array if decoding fails
+        // Handle case where items might be a dictionary or other type
+        do {
+            items = try container.decode([GraphQLFooter].self, forKey: .items)
+        } catch {
+            // If decoding fails, log and return empty array
+            print("Warning: Failed to decode FooterCollection.items as array: \(error)")
+            items = []
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case items
+    }
 }
 
 struct GraphQLError: Codable {
@@ -40,32 +94,80 @@ class GraphQLService {
     static let shared = GraphQLService()
     
     private let baseURL = "https://graphql.contentful.com/content/v1/spaces"
-    private var spaceId: String
-    private var accessToken: String
+    private let spaceId: String
+    private let accessToken: String
     private let environment: String
     
-    init() {
-        // Get from environment variables or use defaults
-        self.spaceId = ProcessInfo.processInfo.environment["CONTENTFUL_SPACE_ID"] ?? "developer_bookshelf"
-        self.accessToken = ProcessInfo.processInfo.environment["CONTENTFUL_DELIVERY_ACCESS_TOKEN"] ?? "0b7f6x59a0"
-        self.environment = ProcessInfo.processInfo.environment["CONTENTFUL_ENVIRONMENT"] ?? "master"
+    // Create a custom URLSession to avoid CFNetwork User-Agent issues
+    private lazy var urlSession: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = [
+            "User-Agent": "ContentfulMarketing-iOS/1.0"
+        ]
+        return URLSession(configuration: configuration)
+    }()
+    
+    private init() {
+        // Load from .env file first, then fall back to system environment variables
+        let envLoader = EnvLoader.shared
+        
+        // Get values with explicit string conversion to prevent type mismatch crashes
+        func getStringEnv(_ key: String, defaultValue: String) -> String {
+            let value = envLoader.get(key, default: defaultValue)
+            // Ensure it's a string, not a number
+            // Use explicit string conversion and trimming
+            let stringValue = String(describing: value).trimmingCharacters(in: .whitespacesAndNewlines)
+            return stringValue.isEmpty ? defaultValue : stringValue
+        }
+        
+        // Store as immutable strings to prevent any type issues
+        self.spaceId = getStringEnv("CONTENTFUL_SPACE_ID", defaultValue: "developer_bookshelf")
+        self.accessToken = getStringEnv("CONTENTFUL_DELIVERY_ACCESS_TOKEN", defaultValue: "0b7f6x59a0")
+        self.environment = getStringEnv("CONTENTFUL_ENVIRONMENT", defaultValue: "master")
+        
+        // Log for debugging (remove sensitive data in production)
+        print("GraphQLService initialized with spaceId: \(spaceId), environment: \(environment)")
     }
     
     private func performQuery<T: Codable>(query: String, variables: [String: String] = [:]) async throws -> T {
-        let urlString = "\(baseURL)/\(spaceId)/environments/\(environment)"
+        // Ensure all URL components are strings and properly formatted
+        let safeSpaceId = String(describing: spaceId).trimmingCharacters(in: .whitespacesAndNewlines)
+        let safeEnvironment = String(describing: environment).trimmingCharacters(in: .whitespacesAndNewlines)
+        let safeAccessToken = String(describing: accessToken).trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let urlString = "\(baseURL)/\(safeSpaceId)/environments/\(safeEnvironment)"
+        print("GraphQL URL: \(urlString)")
+        
         guard let url = URL(string: urlString) else {
-            throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+            let errorMsg = "Invalid URL: \(urlString) (spaceId: \(safeSpaceId), environment: \(safeEnvironment))"
+            print("Error: \(errorMsg)")
+            throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMsg])
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        // Ensure authorization header is properly formatted as string
+        let authHeader = "Bearer \(safeAccessToken)"
+        request.setValue(authHeader, forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let graphQLRequest = GraphQLRequest(query: query, variables: variables.isEmpty ? nil : variables)
-        request.httpBody = try JSONEncoder().encode(graphQLRequest)
+        // Set User-Agent explicitly to avoid CFNetwork issues
+        request.setValue("ContentfulMarketing-iOS/1.0", forHTTPHeaderField: "User-Agent")
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        // Ensure all variables are strings
+        let safeVariables: [String: String] = variables.mapValues { String(describing: $0) }
+        let graphQLRequest = GraphQLRequest(query: query, variables: safeVariables.isEmpty ? nil : safeVariables)
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(graphQLRequest)
+        } catch {
+            print("Error encoding GraphQL request: \(error)")
+            throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode request: \(error.localizedDescription)"])
+        }
+        
+        // Use custom URLSession instead of shared to avoid CFNetwork User-Agent initialization issues
+        let (data, response) = try await urlSession.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
@@ -76,23 +178,70 @@ class GraphQLService {
             throw NSError(domain: "GraphQLService", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "HTTP \(httpResponse.statusCode): \(errorMessage)"])
         }
         
+        // Decode with error handling
         let decoder = JSONDecoder()
-        let graphQLResponse = try decoder.decode(GraphQLResponse<T>.self, from: data)
         
-        if let errors = graphQLResponse.errors, !errors.isEmpty {
-            let errorMessages = errors.map { $0.message }.joined(separator: ", ")
-            throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "GraphQL errors: \(errorMessages)"])
+        // Log raw response for debugging (first 500 chars)
+        if let responseString = String(data: data, encoding: .utf8) {
+            let preview = String(responseString.prefix(500))
+            print("GraphQL Response Preview: \(preview)")
         }
         
-        guard let result = graphQLResponse.data else {
-            throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data in response"])
+        do {
+            let graphQLResponse = try decoder.decode(GraphQLResponse<T>.self, from: data)
+            
+            if let errors = graphQLResponse.errors, !errors.isEmpty {
+                let errorMessages = errors.map { $0.message }.joined(separator: ", ")
+                print("GraphQL Errors: \(errorMessages)")
+                
+                // Check for common schema mismatch errors
+                if errorMessages.contains("Cannot query field") || errorMessages.contains("Unknown type") {
+                    let helpfulMessage = """
+                    GraphQL Schema Mismatch Error:
+                    \(errorMessages)
+                    
+                    This usually means you're using the wrong Contentful space.
+                    The app is currently configured with spaceId: \(spaceId)
+                    
+                    Please configure the iOS app with the same Contentful space ID and access token
+                    that your Next.js app uses. See ENV_SETUP.md for instructions.
+                    """
+                    print(helpfulMessage)
+                    throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: helpfulMessage])
+                }
+                
+                throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "GraphQL errors: \(errorMessages)"])
+            }
+            
+            guard let result = graphQLResponse.data else {
+                print("GraphQL Response: No data in response")
+                throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data in response"])
+            }
+            
+            return result
+        } catch let decodingError as DecodingError {
+            // Better error handling for decoding issues
+            let errorDescription: String
+            switch decodingError {
+            case .typeMismatch(let type, let context):
+                errorDescription = "Type mismatch for \(type) at \(context.codingPath.map { $0.stringValue }.joined(separator: ".")): \(context.debugDescription)"
+            case .valueNotFound(let type, let context):
+                errorDescription = "Value not found for \(type) at \(context.codingPath.map { $0.stringValue }.joined(separator: ".")): \(context.debugDescription)"
+            case .keyNotFound(let key, let context):
+                errorDescription = "Key not found: \(key.stringValue) at \(context.codingPath.map { $0.stringValue }.joined(separator: "."))"
+            case .dataCorrupted(let context):
+                errorDescription = "Data corrupted at \(context.codingPath.map { $0.stringValue }.joined(separator: ".")): \(context.debugDescription)"
+            @unknown default:
+                errorDescription = "Unknown decoding error: \(decodingError.localizedDescription)"
+            }
+            throw NSError(domain: "GraphQLService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Decoding error: \(errorDescription)"])
         }
-        
-        return result
     }
     
     func fetchPage(slug: String, locale: String = "en-US") async throws -> GraphQLPage? {
-        let query = """
+        // Wrap in do-catch to handle any decoding errors gracefully
+        do {
+            let query = """
             query GetPage($slug: String!, $locale: String!) {
               pageCollection(where: { slug: $slug }, locale: $locale, limit: 1) {
                 items {
@@ -170,8 +319,17 @@ class GraphQLService {
             }
         """
         
-        let data: GraphQLData = try await performQuery(query: query, variables: ["slug": slug, "locale": locale])
-        return data.pageCollection?.items.first
+            let data: GraphQLData = try await performQuery(query: query, variables: ["slug": slug, "locale": locale])
+            guard let pageCollection = data.pageCollection,
+                  !pageCollection.items.isEmpty else {
+                return nil
+            }
+            return pageCollection.items.first
+        } catch {
+            // Log the error for debugging
+            print("GraphQL fetchPage error: \(error)")
+            throw error
+        }
     }
     
     func fetchNavigation(locale: String = "en-US") async throws -> GraphQLNavigation? {
@@ -200,7 +358,11 @@ class GraphQLService {
         """
         
         let data: GraphQLData = try await performQuery(query: query, variables: ["locale": locale])
-        return data.navigationCollection?.items.first
+        guard let navigationCollection = data.navigationCollection,
+              !navigationCollection.items.isEmpty else {
+            return nil
+        }
+        return navigationCollection.items.first
     }
     
     func fetchFooter(locale: String = "en-US") async throws -> GraphQLFooter? {
@@ -231,7 +393,11 @@ class GraphQLService {
         """
         
         let data: GraphQLData = try await performQuery(query: query, variables: ["locale": locale])
-        return data.footerCollection?.items.first
+        guard let footerCollection = data.footerCollection,
+              !footerCollection.items.isEmpty else {
+            return nil
+        }
+        return footerCollection.items.first
     }
 }
 

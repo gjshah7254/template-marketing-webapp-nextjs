@@ -1,5 +1,5 @@
 import Foundation
-import Contentful
+// import Contentful // Removed - using GraphQL instead
 
 final class Footer: EntryDecodable, FieldKeysQueryable {
     static let contentTypeId: String = "footer"
@@ -34,8 +34,8 @@ final class Footer: EntryDecodable, FieldKeysQueryable {
         try fields.resolveLinksArray(forKey: .menuItems, decoder: decoder) { item in
             if let menuGroup = item as? MenuGroup {
                 menuItemsArray.append(menuGroup)
-            }
-        }
+    }
+}
         menuItems = menuItemsArray.isEmpty ? nil : menuItemsArray
         
         var socialLinksArray: [SocialLink] = []

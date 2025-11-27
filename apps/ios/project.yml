@@ -7,9 +7,10 @@ options:
   xcodeVersion: "15.0"
 
 packages:
-  Contentful:
-    url: https://github.com/contentful/contentful.swift
-    from: 5.0.0
+  # Contentful SDK removed - using GraphQL instead
+  # Contentful:
+  #   url: https://github.com/contentful/contentful.swift
+  #   from: 5.0.0
   RichTextRenderer:
     url: https://github.com/contentful/rich-text-renderer.swift
     from: 0.4.0
@@ -24,6 +25,18 @@ targets:
     deploymentTarget: "16.0"
     sources:
       - path: ContentfulMarketing/Sources/ContentfulMarketing
+        excludes:
+          - "Models/Page.swift"
+          - "Models/Navigation.swift"
+          - "Models/Footer.swift"
+          - "Models/Components.swift"
+          - "Views/Components/DuplexView.swift"
+          - "Views/Components/InfoBlockView.swift"
+          - "Views/Components/TextBlockView.swift"
+          - "Views/Components/HeroBannerView.swift"
+          - "Views/Components/CTAView.swift"
+          - "Views/Components/QuoteView.swift"
+          - "Views/Components/RichTextDocumentView.swift"
     info:
       path: ContentfulMarketing/Info.plist
       properties:
@@ -39,10 +52,6 @@ targets:
         LSRequiresIPhoneOS: true
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
-          UISceneConfigurations:
-            UIWindowSceneSessionRoleApplication:
-              UISceneConfigurationName: Default Configuration
-              UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
         UIApplicationSupportsIndirectInputEvents: true
         UILaunchScreen: {}
         UIRequiredDeviceCapabilities:
@@ -57,8 +66,9 @@ targets:
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
     dependencies:
-      - package: Contentful
-        product: Contentful
+      # Contentful SDK removed - using GraphQL instead
+      # - package: Contentful
+      #   product: Contentful
       - package: RichTextRenderer
         product: ContentfulRichTextRenderer
       - package: Kingfisher
