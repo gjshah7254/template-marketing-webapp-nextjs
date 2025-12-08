@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFMC SDK vs API Approach Comparison</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 11pt;
+            page-break-inside: auto;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #2980b9;
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        .category-row {
+            background-color: #ecf0f1 !important;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .winner {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .check {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .cross {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .pros {
+            color: #27ae60;
+        }
+        .cons {
+            color: #e74c3c;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .recommendation-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>SFMC SDK vs API Approach Comparison</h1>
+    <h2>For Web + Mobile Personalization, Push Notifications, and In-App Messaging</h2>
+
+    <h2>Feature Comparison Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%;">Feature</th>
+                <th style="width: 30%;">SDK Approach</th>
+                <th style="width: 30%;">API Approach</th>
+                <th style="width: 15%;">Winner</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="category-row">
+                <td colspan="4"><strong>Personalization</strong></td>
+            </tr>
+            <tr>
+                <td>Server-side personalization</td>
+                <td>Limited (client-side focused)</td>
+                <td>Full control via MCP API</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Client-side personalization</td>
+                <td><span class="check">✅</span> Built-in, easy</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Edge personalization</td>
+                <td>Not supported</td>
+                <td><span class="check">✅</span> Full support</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Segment management</td>
+                <td><span class="check">✅</span> Built-in UI/helpers</td>
+                <td>Manual API calls</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>A/B testing</td>
+                <td><span class="check">✅</span> Built-in support</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Real-time personalization</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Push Notifications (Mobile)</strong></td>
+            </tr>
+            <tr>
+                <td>iOS push notifications</td>
+                <td><span class="check">✅</span> Native SDK support</td>
+                <td>Manual APNs integration</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Android push notifications</td>
+                <td><span class="check">✅</span> Native SDK support</td>
+                <td>Manual FCM integration</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Push registration</td>
+                <td><span class="check">✅</span> Automatic</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Push delivery tracking</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual tracking</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Rich push (images, actions)</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Push personalization</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual via API</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>In-App Messaging</strong></td>
+            </tr>
+            <tr>
+                <td>In-app message display</td>
+                <td><span class="check">✅</span> Built-in UI components</td>
+                <td>Manual UI implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Message triggers</td>
+                <td><span class="check">✅</span> Built-in event system</td>
+                <td>Manual event handling</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Message templates</td>
+                <td><span class="check">✅</span> Pre-built templates</td>
+                <td>Custom implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Message analytics</td>
+                <td><span class="check">✅</span> Built-in tracking</td>
+                <td>Manual tracking</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Web Features</strong></td>
+            </tr>
+            <tr>
+                <td>Web personalization</td>
+                <td><span class="check">✅</span> JavaScript SDK</td>
+                <td>Manual API integration</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Web push notifications</td>
+                <td><span class="check">✅</span> Built-in support</td>
+                <td>Manual service worker</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Cookie management</td>
+                <td><span class="check">✅</span> Automatic</td>
+                <td>Manual management</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Web analytics</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Mobile Features</strong></td>
+            </tr>
+            <tr>
+                <td>Deep linking</td>
+                <td><span class="check">✅</span> Built-in support</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>App state tracking</td>
+                <td><span class="check">✅</span> Automatic</td>
+                <td>Manual tracking</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Offline support</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Background sync</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Development</strong></td>
+            </tr>
+            <tr>
+                <td>Setup complexity</td>
+                <td><span class="check">✅</span> Low (install SDK)</td>
+                <td>High (API integration)</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Development time</td>
+                <td><span class="check">✅</span> Faster</td>
+                <td>Slower</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Learning curve</td>
+                <td><span class="check">✅</span> Easier</td>
+                <td>Steeper</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Code maintenance</td>
+                <td><span class="check">✅</span> Less code</td>
+                <td>More code</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Customization</td>
+                <td>Limited by SDK</td>
+                <td><span class="check">✅</span> Full control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Architecture</strong></td>
+            </tr>
+            <tr>
+                <td>SSR support</td>
+                <td><span class="cross">❌</span> Limited</td>
+                <td><span class="check">✅</span> Full support</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Edge computing</td>
+                <td><span class="cross">❌</span> Not supported</td>
+                <td><span class="check">✅</span> Full support</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Server-side rendering</td>
+                <td><span class="cross">❌</span> Client-side only</td>
+                <td><span class="check">✅</span> Full support</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Microservices integration</td>
+                <td>Limited</td>
+                <td><span class="check">✅</span> Full flexibility</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Performance</strong></td>
+            </tr>
+            <tr>
+                <td>Initial bundle size</td>
+                <td><span class="cross">❌</span> Larger (SDK code)</td>
+                <td><span class="check">✅</span> Smaller (API calls only)</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Runtime performance</td>
+                <td><span class="check">✅</span> Optimized SDK</td>
+                <td>Depends on implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Network requests</td>
+                <td><span class="check">✅</span> Optimized batching</td>
+                <td>Manual optimization</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Caching</td>
+                <td><span class="check">✅</span> Built-in</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Flexibility & Control</strong></td>
+            </tr>
+            <tr>
+                <td>Custom logic</td>
+                <td>Limited</td>
+                <td><span class="check">✅</span> Full control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Data ownership</td>
+                <td>Shared with SFMC</td>
+                <td><span class="check">✅</span> Full ownership</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Integration patterns</td>
+                <td>SDK patterns</td>
+                <td><span class="check">✅</span> Any pattern</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Multi-platform consistency</td>
+                <td>Platform-specific SDKs</td>
+                <td><span class="check">✅</span> Unified API</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Maintenance</strong></td>
+            </tr>
+            <tr>
+                <td>SDK updates</td>
+                <td><span class="check">✅</span> Automatic (with updates)</td>
+                <td>Manual API changes</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Breaking changes</td>
+                <td>SDK handles</td>
+                <td><span class="check">✅</span> You control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Bug fixes</td>
+                <td><span class="check">✅</span> SDK vendor fixes</td>
+                <td>You fix</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Feature updates</td>
+                <td><span class="check">✅</span> Automatic</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Cost</strong></td>
+            </tr>
+            <tr>
+                <td>Development cost</td>
+                <td><span class="check">✅</span> Lower</td>
+                <td>Higher</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Maintenance cost</td>
+                <td><span class="check">✅</span> Lower</td>
+                <td>Higher</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>API call costs</td>
+                <td><span class="check">✅</span> Optimized by SDK</td>
+                <td>Manual optimization</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Infrastructure</td>
+                <td><span class="check">✅</span> Minimal</td>
+                <td>May need more</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Security & Privacy</strong></td>
+            </tr>
+            <tr>
+                <td>Data handling</td>
+                <td>SDK manages</td>
+                <td><span class="check">✅</span> You control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Compliance control</td>
+                <td>Limited</td>
+                <td><span class="check">✅</span> Full control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Data residency</td>
+                <td>SDK dependent</td>
+                <td><span class="check">✅</span> You control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            
+            <tr class="category-row">
+                <td colspan="4"><strong>Analytics & Reporting</strong></td>
+            </tr>
+            <tr>
+                <td>Built-in dashboards</td>
+                <td><span class="check">✅</span> Yes</td>
+                <td>Manual implementation</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Custom analytics</td>
+                <td>Limited</td>
+                <td><span class="check">✅</span> Full control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Data export</td>
+                <td>Limited</td>
+                <td><span class="check">✅</span> Full access</td>
+                <td class="winner">✅ API</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Detailed Feature Breakdown</h2>
+
+    <h3>Personalization</h3>
+    <h4>SDK Approach</h4>
+    <p class="pros"><strong>✅ Pros:</strong></p>
+    <ul>
+        <li>Easy client-side personalization</li>
+        <li>Built-in segment targeting</li>
+        <li>Pre-built UI components</li>
+        <li>Automatic event tracking</li>
+        <li>Real-time personalization updates</li>
+    </ul>
+    <p class="cons"><strong>❌ Cons:</strong></p>
+    <ul>
+        <li>Limited server-side support</li>
+        <li>Can't use with SSR/Edge easily</li>
+        <li>Less control over personalization logic</li>
+        <li>Client-side only (SEO concerns)</li>
+    </ul>
+
+    <h4>API Approach</h4>
+    <p class="pros"><strong>✅ Pros:</strong></p>
+    <ul>
+        <li>Full server-side personalization</li>
+        <li>Works with SSR/Edge</li>
+        <li>Complete control over logic</li>
+        <li>SEO-friendly</li>
+        <li>Can personalize before page load</li>
+    </ul>
+    <p class="cons"><strong>❌ Cons:</strong></p>
+    <ul>
+        <li>More development work</li>
+        <li>Manual segment management</li>
+        <li>Manual A/B test implementation</li>
+        <li>More complex error handling</li>
+    </ul>
+
+    <h3>Push Notifications (Mobile)</h3>
+    <h4>SDK Approach</h4>
+    <p class="pros"><strong>✅ Pros:</strong></p>
+    <ul>
+        <li>Native iOS/Android SDKs</li>
+        <li>Automatic device registration</li>
+        <li>Built-in push handling</li>
+        <li>Rich push support (images, actions)</li>
+        <li>Automatic delivery tracking</li>
+        <li>Deep linking built-in</li>
+        <li>Background message handling</li>
+    </ul>
+    <p class="cons"><strong>❌ Cons:</strong></p>
+    <ul>
+        <li>Platform-specific SDKs (iOS vs Android)</li>
+        <li>Less control over push logic</li>
+        <li>SDK updates required</li>
+    </ul>
+
+    <h4>API Approach</h4>
+    <p class="pros"><strong>✅ Pros:</strong></p>
+    <ul>
+        <li>Full control over push logic</li>
+        <li>Unified API across platforms</li>
+        <li>Custom push handling</li>
+        <li>Can integrate with your own systems</li>
+    </ul>
+    <p class="cons"><strong>❌ Cons:</strong></p>
+    <ul>
+        <li>Manual APNs/FCM integration</li>
+        <li>Manual device registration</li>
+        <li>Manual delivery tracking</li>
+        <li>More complex implementation</li>
+        <li>Need to handle platform differences</li>
+    </ul>
+
+    <h3>In-App Messaging</h3>
+    <h4>SDK Approach</h4>
+    <p class="pros"><strong>✅ Pros:</strong></p>
+    <ul>
+        <li>Pre-built UI components</li>
+        <li>Built-in message templates</li>
+        <li>Automatic trigger system</li>
+        <li>Built-in analytics</li>
+        <li>Easy to implement</li>
+    </ul>
+    <p class="cons"><strong>❌ Cons:</strong></p>
+    <ul>
+        <li>Limited customization</li>
+        <li>SDK UI may not match your design</li>
+        <li>Less control over display logic</li>
+    </ul>
+
+    <h4>API Approach</h4>
+    <p class="pros"><strong>✅ Pros:</strong></p>
+    <ul>
+        <li>Full UI control</li>
+        <li>Custom design matching your app</li>
+        <li>Full control over triggers</li>
+        <li>Custom analytics</li>
+    </ul>
+    <p class="cons"><strong>❌ Cons:</strong></p>
+    <ul>
+        <li>Build everything from scratch</li>
+        <li>More development time</li>
+        <li>Manual message fetching</li>
+        <li>Manual trigger implementation</li>
+    </ul>
+
+    <h2>Recommendation by Use Case</h2>
+    <h3>Use SDK If:</h3>
+    <ul>
+        <li>✅ You need quick time-to-market</li>
+        <li>✅ Client-side personalization is sufficient</li>
+        <li>✅ You want built-in push notifications</li>
+        <li>✅ You want in-app messaging with minimal dev work</li>
+        <li>✅ You're okay with less control</li>
+        <li>✅ You want automatic updates and maintenance</li>
+    </ul>
+
+    <h3>Use API If:</h3>
+    <ul>
+        <li>✅ You need server-side/edge personalization</li>
+        <li>✅ You need SSR/SEO-friendly personalization</li>
+        <li>✅ You want full control over implementation</li>
+        <li>✅ You have custom requirements</li>
+        <li>✅ You want unified API across platforms</li>
+        <li>✅ You need specific integration patterns</li>
+    </ul>
+
+    <h2>Hybrid Approach (Recommended)</h2>
+    <p><strong>Best of Both Worlds:</strong></p>
+
+    <h3>Web:</h3>
+    <ul>
+        <li><strong>API Approach</strong> for server-side personalization (SSR/Edge)</li>
+        <li><strong>SDK Approach</strong> for client-side enhancements (analytics, real-time updates)</li>
+    </ul>
+
+    <h3>Mobile:</h3>
+    <ul>
+        <li><strong>SDK Approach</strong> for push notifications and in-app messaging</li>
+        <li><strong>API Approach</strong> for content personalization (via your Vercel API)</li>
+    </ul>
+
+    <h3>Architecture:</h3>
+    <pre><code>Web (Next.js):
+├── Server-side: API approach (MCP API for personalization)
+├── Client-side: SDK approach (optional, for analytics/real-time)
+└── Edge: API approach (Edge Middleware + MCP API)
+
+Mobile (iOS/Android):
+├── Push Notifications: SDK approach (native SDKs)
+├── In-App Messaging: SDK approach (native SDKs)
+├── Content Personalization: API approach (call Vercel API)
+└── Analytics: SDK approach (automatic tracking)</code></pre>
+
+    <h2>Cost Comparison</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Aspect</th>
+                <th>SDK</th>
+                <th>API</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Development Time</strong></td>
+                <td>2-4 weeks</td>
+                <td>6-12 weeks</td>
+            </tr>
+            <tr>
+                <td><strong>Initial Setup</strong></td>
+                <td>1-2 days</td>
+                <td>1-2 weeks</td>
+            </tr>
+            <tr>
+                <td><strong>Ongoing Maintenance</strong></td>
+                <td>Low (SDK updates)</td>
+                <td>Medium-High (your code)</td>
+            </tr>
+            <tr>
+                <td><strong>API Call Volume</strong></td>
+                <td>Optimized by SDK</td>
+                <td>Manual optimization needed</td>
+            </tr>
+            <tr>
+                <td><strong>Infrastructure</strong></td>
+                <td>Minimal</td>
+                <td>May need caching layer</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Decision Matrix</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Your Priority</th>
+                <th>Recommended Approach</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fast time-to-market</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Server-side personalization</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Push notifications</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>In-app messaging</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Full control</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>SEO-friendly</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Edge computing</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Low maintenance</td>
+                <td class="winner">✅ SDK</td>
+            </tr>
+            <tr>
+                <td>Custom requirements</td>
+                <td class="winner">✅ API</td>
+            </tr>
+            <tr>
+                <td>Multi-platform consistency</td>
+                <td class="winner">✅ API</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Final Recommendation</h2>
+    <div class="recommendation-box">
+        <p><strong>For Your Use Case (Personalization + Push + In-App):</strong></p>
+        <ol>
+            <li><strong>Web Personalization</strong>: Use <strong>API approach</strong> (MCP API)
+                <ul>
+                    <li>Server-side personalization with SSR</li>
+                    <li>Edge caching for performance</li>
+                    <li>SEO-friendly</li>
+                </ul>
+            </li>
+            <li><strong>Mobile Push Notifications</strong>: Use <strong>SDK approach</strong>
+                <ul>
+                    <li>Native iOS/Android SDKs</li>
+                    <li>Built-in features</li>
+                    <li>Less development work</li>
+                </ul>
+            </li>
+            <li><strong>In-App Messaging</strong>: Use <strong>SDK approach</strong>
+                <ul>
+                    <li>Pre-built components</li>
+                    <li>Faster implementation</li>
+                    <li>Built-in analytics</li>
+                </ul>
+            </li>
+            <li><strong>Mobile Content Personalization</strong>: Use <strong>API approach</strong> (via Vercel)
+                <ul>
+                    <li>Consistent with web</li>
+                    <li>Server-side logic</li>
+                    <li>Unified personalization rules</li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>Result</strong>: Hybrid approach - API for personalization logic, SDK for push/in-app messaging.</p>
+    </div>
+</body>
+</html>
+
+

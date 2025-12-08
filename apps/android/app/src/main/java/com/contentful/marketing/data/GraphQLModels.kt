@@ -55,6 +55,7 @@ data class GraphQLComponent(
     val sys: GraphQLSys?,
     val headline: String? = null,
     val subline: String? = null,
+    val sublineText: String? = null, // Alias used in some queries
     val ctaText: String? = null,
     val image: GraphQLAsset? = null,
     val colorPalette: String? = null,
@@ -63,7 +64,14 @@ data class GraphQLComponent(
     val quoteText: String? = null,
     val authorName: String? = null,
     val authorTitle: String? = null,
-    val authorImage: GraphQLAsset? = null
+    val authorImage: GraphQLAsset? = null,
+    // InfoBlock specific fields
+    val block1Image: GraphQLAsset? = null,
+    val block1Body: GraphQLRichText? = null,
+    val block2Image: GraphQLAsset? = null,
+    val block2Body: GraphQLRichText? = null,
+    val block3Image: GraphQLAsset? = null,
+    val block3Body: GraphQLRichText? = null
 )
 
 data class GraphQLMenuGroup(
@@ -93,7 +101,42 @@ data class GraphQLAsset(
 
 data class GraphQLRichText(
     val json: Map<String, Any>?
-)
+) {
+    /**
+     * Extracts plain text from Contentful rich text JSON structure.
+     * Recursively traverses the JSON to find all text nodes.
+     */
+    fun extractText(): String? {
+        val json = this.json ?: return null
+        return extractTextFromNode(json)
+    }
+    
+    private fun extractTextFromNode(node: Any?): String {
+        if (node == null) return ""
+        
+        return when (node) {
+            is Map<*, *> -> {
+                val nodeType = node["nodeType"] as? String
+                when (nodeType) {
+                    "text" -> {
+                        // This is a text node, extract the value
+                        (node["value"] as? String) ?: ""
+                    }
+                    else -> {
+                        // This is a container node, recursively extract from content
+                        val content = node["content"] as? List<*>
+                        content?.joinToString("") { extractTextFromNode(it) } ?: ""
+                    }
+                }
+            }
+            is List<*> -> {
+                node.joinToString("") { extractTextFromNode(it) }
+            }
+            is String -> node
+            else -> ""
+        }
+    }
+}
 
 // Extension functions to convert GraphQL models to app models
 fun Page.Companion.fromGraphQL(graphQLPage: GraphQLPage): Page {
@@ -140,8 +183,13 @@ fun Component.Companion.fromGraphQL(component: GraphQLComponent): Component? {
         "ComponentInfoBlock" -> Component.InfoBlock(
             id = id,
             headline = component.headline,
-            bodyText = component.bodyText?.json?.toString(),
-            imageUrl = component.image?.url,
+            subline = component.sublineText ?: component.subline, // Use sublineText if available (from alias), otherwise subline
+            block1ImageUrl = component.block1Image?.url,
+            block1Body = component.block1Body?.extractText(),
+            block2ImageUrl = component.block2Image?.url,
+            block2Body = component.block2Body?.extractText(),
+            block3ImageUrl = component.block3Image?.url,
+            block3Body = component.block3Body?.extractText(),
             colorPalette = component.colorPalette
         )
         "ComponentDuplex" -> Component.Duplex(

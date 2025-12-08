@@ -28,8 +28,6 @@ class PageViewModel: ObservableObject {
             await MainActor.run {
                 if let page = pageResult {
                     self.page = page
-                    self.navigation = navigationResult
-                    self.footer = footerResult
                     self.isLoading = false
                 } else {
                     self.error = NSError(domain: "PageViewModel", code: 404, userInfo: [NSLocalizedDescriptionKey: "No page found with slug: \(slug). Please check if the page exists in Contentful."])

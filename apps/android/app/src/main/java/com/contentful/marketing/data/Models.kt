@@ -39,8 +39,13 @@ sealed class Component {
     data class InfoBlock(
         val id: String,
         val headline: String?,
-        val bodyText: String?,
-        val imageUrl: String?,
+        val subline: String?,
+        val block1ImageUrl: String?,
+        val block1Body: String?,
+        val block2ImageUrl: String?,
+        val block2Body: String?,
+        val block3ImageUrl: String?,
+        val block3Body: String?,
         val colorPalette: String?
     ) : Component()
 

@@ -62,77 +62,77 @@ fun HomeScreen(navController: NavController) {
         }
     ) { paddingValues ->
         Box(modifier = Modifier.padding(paddingValues)) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-            ) {
-                when {
-                    isLoading -> {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            CircularProgressIndicator()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        when {
+            isLoading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+            error != null -> {
+                ErrorView(error = error!!) {
+                    scope.launch {
+                        try {
+                            isLoading = true
+                            page = contentfulService.fetchHomePage()
+                            error = null
+                        } catch (e: Exception) {
+                            error = e.message
+                        } finally {
+                            isLoading = false
                         }
                     }
-                    error != null -> {
-                        ErrorView(error = error!!) {
+                }
+            }
+            page != null -> {
+                PageView(page = page!!, navController = navController)
+            }
+            else -> {
+                // Fallback UI when page is null and no error (e.g., empty credentials)
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(16.dp)
+                    ) {
+                        Text(
+                            text = "No Content Available",
+                            style = MaterialTheme.typography.headlineSmall
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "Please configure Contentful credentials in gradle.properties",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(onClick = {
                             scope.launch {
                                 try {
                                     isLoading = true
                                     page = contentfulService.fetchHomePage()
                                     error = null
                                 } catch (e: Exception) {
-                                    error = e.message
+                                    error = e.message ?: "Unknown error"
                                 } finally {
                                     isLoading = false
                                 }
                             }
+                        }) {
+                            Text("Retry")
                         }
                     }
-                    page != null -> {
-                        PageView(page = page!!, navController = navController)
-                    }
-                    else -> {
-                        // Fallback UI when page is null and no error (e.g., empty credentials)
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier.padding(16.dp)
-                            ) {
-                                Text(
-                                    text = "No Content Available",
-                                    style = MaterialTheme.typography.headlineSmall
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "Please configure Contentful credentials in gradle.properties",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Spacer(modifier = Modifier.height(16.dp))
-                                Button(onClick = {
-                                    scope.launch {
-                                        try {
-                                            isLoading = true
-                                            page = contentfulService.fetchHomePage()
-                                            error = null
-                                        } catch (e: Exception) {
-                                            error = e.message ?: "Unknown error"
-                                        } finally {
-                                            isLoading = false
-                                        }
-                                    }
-                                }) {
-                                    Text("Retry")
-                                }
-                            }
-                        }
-                    }
+                }
+            }
                 }
                 
                 // Footer - always show at bottom if available

@@ -7,95 +7,98 @@ struct MobileMenuView: View {
     let onNavigate: (String) -> Void
     
     var body: some View {
-        if isOpen {
-            GeometryReader { geometry in
-                ZStack(alignment: .trailing) {
-                    // Overlay background
-                    Color.black.opacity(0.3)
-                        .ignoresSafeArea()
-                        .onTapGesture {
+        GeometryReader { geometry in
+            ZStack(alignment: .trailing) {
+                // Overlay background - only visible when open
+                Color.black.opacity(isOpen ? 0.3 : 0)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        if isOpen {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 isOpen = false
                             }
                         }
+                    }
+                    .animation(.easeInOut(duration: 0.3), value: isOpen)
+                
+                // Drawer - always rendered but offset when closed
+                HStack {
+                    Spacer()
                     
-                    // Drawer
-                    HStack {
-                        Spacer()
-                        
-                        VStack(alignment: .leading, spacing: 0) {
-                            ScrollView {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    if let menuGroups = menuGroups {
-                                        ForEach(Array(menuGroups.enumerated()), id: \.element.id) { index, menuGroup in
-                                            if index > 0 {
-                                                Spacer()
-                                                    .frame(height: 16)
-                                            }
+                    VStack(alignment: .leading, spacing: 0) {
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 0) {
+                                if let menuGroups = menuGroups {
+                                    ForEach(Array(menuGroups.enumerated()), id: \.element.id) { index, menuGroup in
+                                        if index > 0 {
+                                            Spacer()
+                                                .frame(height: 16)
+                                        }
+                                        
+                                        // If menuGroup has a link, make it clickable (like Next.js)
+                                        if let link = menuGroup.link {
+                                            MenuItemText(
+                                                text: menuGroup.groupName ?? "",
+                                                onClick: {
+                                                    if let path = link.path {
+                                                        let cleanPath = path.hasPrefix("/") ? String(path.dropFirst()) : path
+                                                        onNavigate(cleanPath)
+                                                    }
+                                                    withAnimation {
+                                                        isOpen = false
+                                                    }
+                                                    onDismiss()
+                                                }
+                                            )
+                                        } else if let menuItems = menuGroup.menuItems, !menuItems.isEmpty {
+                                            // If has children but no link, show as header with submenu
+                                            MenuItemText(
+                                                text: menuGroup.groupName ?? "",
+                                                onClick: {},
+                                                isHeader: true
+                                            )
                                             
-                                            // If menuGroup has a link, make it clickable (like Next.js)
-                                            if let link = menuGroup.link {
+                                            // Menu items as submenu (with left border)
+                                            ForEach(menuItems) { menuItem in
                                                 MenuItemText(
-                                                    text: menuGroup.groupName ?? "",
+                                                    text: menuItem.label ?? "",
                                                     onClick: {
-                                                        if let path = link.path {
+                                                        if let path = menuItem.path {
                                                             let cleanPath = path.hasPrefix("/") ? String(path.dropFirst()) : path
                                                             onNavigate(cleanPath)
+                                                        } else if let externalLink = menuItem.externalLink {
+                                                            // Handle external link if needed
                                                         }
                                                         withAnimation {
                                                             isOpen = false
                                                         }
                                                         onDismiss()
-                                                    }
-                                                )
-                                            } else if let menuItems = menuGroup.menuItems, !menuItems.isEmpty {
-                                                // If has children but no link, show as header with submenu
-                                                MenuItemText(
-                                                    text: menuGroup.groupName ?? "",
-                                                    onClick: {},
-                                                    isHeader: true
-                                                )
-                                                
-                                                // Menu items as submenu (with left border)
-                                                    ForEach(menuItems) { menuItem in
-                                                        MenuItemText(
-                                                            text: menuItem.label ?? "",
-                                                            onClick: {
-                                                                if let path = menuItem.path {
-                                                                    let cleanPath = path.hasPrefix("/") ? String(path.dropFirst()) : path
-                                                                    onNavigate(cleanPath)
-                                                                } else if let externalLink = menuItem.externalLink {
-                                                                    // Handle external link if needed
-                                                                }
-                                                                withAnimation {
-                                                                    isOpen = false
-                                                                }
-                                                                onDismiss()
-                                                            },
-                                                            isSubmenu: true
-                                                        )
-                                                    }
-                                            } else {
-                                                // Fallback: just show group name (non-clickable)
-                                                MenuItemText(
-                                                    text: menuGroup.groupName ?? "",
-                                                    onClick: {},
-                                                    isHeader: true
+                                                    },
+                                                    isSubmenu: true
                                                 )
                                             }
+                                        } else {
+                                            // Fallback: just show group name (non-clickable)
+                                            MenuItemText(
+                                                text: menuGroup.groupName ?? "",
+                                                onClick: {},
+                                                isHeader: true
+                                            )
                                         }
                                     }
                                 }
-                                .padding(.horizontal, 32)
-                                .padding(.vertical, 16)
                             }
+                            .padding(.horizontal, 32)
+                            .padding(.vertical, 16)
                         }
-                        .frame(width: geometry.size.width * 0.7)
-                        .background(Color.white)
-                        .transition(.move(edge: .trailing))
                     }
+                    .frame(width: geometry.size.width * 0.33) // Match Android - 1/3 of screen width
+                    .background(Color.white)
+                    .offset(x: isOpen ? 0 : geometry.size.width * 0.33)
+                    .animation(.easeInOut(duration: 0.3), value: isOpen)
                 }
             }
+            .allowsHitTesting(isOpen) // Only allow interactions when open
         }
     }
 }

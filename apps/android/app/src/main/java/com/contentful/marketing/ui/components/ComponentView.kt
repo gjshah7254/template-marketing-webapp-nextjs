@@ -130,30 +130,86 @@ fun InfoBlockView(infoBlock: Component.InfoBlock) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        infoBlock.imageUrl?.let { imageUrl ->
-            AsyncImage(
-                model = imageUrl,
-                contentDescription = infoBlock.headline,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-        }
+        // Headline and subline
         infoBlock.headline?.let {
             Text(
                 text = it,
                 style = MaterialTheme.typography.headlineSmall
             )
         }
-        Spacer(modifier = Modifier.height(8.dp))
-        infoBlock.bodyText?.let {
+        infoBlock.subline?.let {
             Text(
                 text = it,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+        }
+        
+        // Blocks arranged horizontally (like iOS)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            // Block 1
+            if (infoBlock.block1Body != null || infoBlock.block1ImageUrl != null) {
+                InfoBlockItem(
+                    imageUrl = infoBlock.block1ImageUrl,
+                    bodyText = infoBlock.block1Body,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            
+            // Block 2
+            if (infoBlock.block2Body != null || infoBlock.block2ImageUrl != null) {
+                InfoBlockItem(
+                    imageUrl = infoBlock.block2ImageUrl,
+                    bodyText = infoBlock.block2Body,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            
+            // Block 3
+            if (infoBlock.block3Body != null || infoBlock.block3ImageUrl != null) {
+                InfoBlockItem(
+                    imageUrl = infoBlock.block3ImageUrl,
+                    bodyText = infoBlock.block3Body,
+                    modifier = Modifier.weight(1f)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun InfoBlockItem(
+    imageUrl: String?,
+    bodyText: String?,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        imageUrl?.let { url ->
+            AsyncImage(
+                model = url,
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+            )
+        }
+        bodyText?.let { text ->
+            if (text.isNotBlank()) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = text,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
     }
 }

@@ -7,35 +7,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                // Content area
-                Group {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    } else if let error = viewModel.error {
-                        ErrorView(error: error) {
-                            Task {
-                                await viewModel.loadPage(slug: "home")
-                            }
-                        }
-                    } else if let page = viewModel.page {
-                        ScrollView {
-                            VStack(spacing: 0) {
-                                PageView(page: page)
-                                FooterView(
-                                    footer: viewModel.footer,
-                                    onNavigate: { path in
-                                        Task {
-                                            await viewModel.loadPage(slug: path)
-                                        }
-                                    }
-                                )
-                            }
-                        }
-                    }
-                }
-                .safeAreaInset(edge: .top, spacing: 0) {
-                    // Header - fixed at top with safe area
+                VStack(spacing: 0) {
+                    // Header - fixed at top
                     HeaderView(onMenuClick: {
                         withAnimation {
                             isMenuOpen = true
@@ -43,21 +16,57 @@ struct ContentView: View {
                     })
                     .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
                     .background(Color(.systemBackground))
-                }
-                
-                // Mobile Menu - overlays everything
-                MobileMenuView(
-                    isOpen: $isMenuOpen,
-                    menuGroups: viewModel.navigation?.menuItems,
-                    onDismiss: {
-                        isMenuOpen = false
-                    },
-                    onNavigate: { path in
-                        Task {
-                            await viewModel.loadPage(slug: path)
+                    .zIndex(100)
+                    
+                    // Content area
+                    Group {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        } else if let error = viewModel.error {
+                            ErrorView(error: error) {
+                                Task {
+                                    await viewModel.loadPage(slug: "home")
+                                }
+                            }
+                        } else if let page = viewModel.page {
+                            ScrollView {
+                                VStack(spacing: 0) {
+                                    PageView(page: page)
+                                    FooterView(
+                                        footer: viewModel.footer,
+                                        onNavigate: { path in
+                                            Task {
+                                                await viewModel.loadPage(slug: path)
+                                            }
+                                        }
+                                    )
+                                }
+                            }
                         }
                     }
-                )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                
+                // Mobile Menu - overlays everything, independent of content state
+                if isMenuOpen || viewModel.navigation != nil {
+                    MobileMenuView(
+                        isOpen: $isMenuOpen,
+                        menuGroups: viewModel.navigation?.menuItems,
+                        onDismiss: {
+                            withAnimation {
+                                isMenuOpen = false
+                            }
+                        },
+                        onNavigate: { path in
+                            Task {
+                                await viewModel.loadPage(slug: path)
+                            }
+                        }
+                    )
+                    .zIndex(1000) // Ensure menu stays on top
+                    .id("mobileMenu") // Stable identity to prevent recreation
+                }
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
